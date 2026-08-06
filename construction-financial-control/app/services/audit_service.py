@@ -1,0 +1,79 @@
+"""Append-only, hash-chained audit ledger.
+
+Pattern: Apache Fineract's command/audit journal (every state-changing command
+is journaled with maker + payload) combined with a per-table hash chain so
+tampering is detectable. Frappe's Version doctype inspired the JSON payload
+diff style.
+"""
+import hashlib
+import json
+from datetime import datetime, timezone
+
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+from app.models.audit import AuditEvent
+from app.models.user import User
+
+GENESIS_HASH = "0" * 64
+
+
+def _canonical(payload: dict) -> str:
+    return json.dumps(payload, sort_keys=True, separators=(",", ":"), default=str)
+
+
+def _canonical_ts(created_at: datetime) -> str:
+    """Timestamp form that survives the DB round-trip on any backend.
+
+    SQLite drops tzinfo and Postgres may localize timestamptz on read, so
+    normalize to naive UTC with fixed microsecond precision before hashing.
+    """
+    if created_at.tzinfo is not None:
+        created_at = created_at.astimezone(timezone.utc).replace(tzinfo=None)
+    return created_at.isoformat(timespec="microseconds")
+
+
+def _compute_hash(prev_hash: str, entity_type: str, entity_id: int, action: str,
+                  payload: dict, created_at: datetime) -> str:
+    material = (f"{prev_hash}|{entity_type}|{entity_id}|{action}|"
+                f"{_canonical(payload)}|{_canonical_ts(created_at)}")
+    return hashlib.sha256(material.encode("utf-8")).hexdigest()
+
+
+def record(db: Session, *, actor: User | None, entity_type: str, entity_id: int,
+           action: str, payload: dict | None = None) -> AuditEvent:
+    """Append one event to the ledger. Flushes (does not commit) the session."""
+    payload = payload or {}
+    last = db.execute(select(AuditEvent).order_by(AuditEvent.id.desc()).limit(1)).scalar_one_or_none()
+    prev_hash = last.hash if last else GENESIS_HASH
+    created_at = datetime.now(timezone.utc)
+    event = AuditEvent(
+        entity_type=entity_type,
+        entity_id=entity_id,
+        action=action,
+        actor_id=actor.id if actor else None,
+        payload=payload,
+        prev_hash=prev_hash,
+        hash=_compute_hash(prev_hash, entity_type, entity_id, action, payload, created_at),
+        created_at=created_at,
+    )
+    db.add(event)
+    db.flush()
+    return event
+
+
+def verify_chain(db: Session) -> dict:
+    """Recompute the whole chain; report first break if any."""
+    events = db.execute(select(AuditEvent).order_by(AuditEvent.id.asc())).scalars().all()
+    prev_hash = GENESIS_HASH
+    for event in events:
+        if event.prev_hash != prev_hash:
+            return {"valid": False, "events": len(events), "first_broken_event_id": event.id,
+                    "reason": "prev_hash mismatch"}
+        expected = _compute_hash(prev_hash, event.entity_type, event.entity_id,
+                                 event.action, event.payload, event.created_at)
+        if event.hash != expected:
+            return {"valid": False, "events": len(events), "first_broken_event_id": event.id,
+                    "reason": "hash mismatch"}
+        prev_hash = event.hash
+    return {"valid": True, "events": len(events), "first_broken_event_id": None, "reason": None}

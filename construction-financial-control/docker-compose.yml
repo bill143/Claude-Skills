@@ -1,0 +1,61 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: cfcs
+      POSTGRES_PASSWORD: cfcs
+      POSTGRES_DB: cfcs
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cfcs"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  api:
+    build: .
+    command: sh -c "python scripts/seed.py && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg2://cfcs:cfcs@db:5432/cfcs
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: dev-only-secret-change-me
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  ui:
+    build: .
+    command: streamlit run streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+    environment:
+      API_BASE_URL: http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+
+  # Optional: nightly forecast snapshots. Start with: docker compose --profile worker up
+  worker:
+    build: .
+    command: celery -A app.tasks worker --beat --loglevel=info
+    environment:
+      DATABASE_URL: postgresql+psycopg2://cfcs:cfcs@db:5432/cfcs
+      REDIS_URL: redis://redis:6379/0
+    profiles: ["worker"]
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+volumes:
+  pgdata:
