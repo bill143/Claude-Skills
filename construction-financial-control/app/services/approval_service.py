@@ -12,13 +12,14 @@ ApprovalRule of type T with threshold_amount <= X contributes one step,
 ordered by rule sequence. Steps must be decided in order. Any rejection
 rejects the document and auto-closes the remaining steps.
 """
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from decimal import Decimal
 
 from fastapi import HTTPException
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.orm import Session
 
+from app.db.session import locked_get
 from app.models.approval import ApprovalRequest, ApprovalRule
 from app.models.change_order import ChangeOrder
 from app.models.enums import (
@@ -75,7 +76,7 @@ def build_chain(
 
 def _load_entity(db: Session, entity_type: ApprovalEntityType, entity_id: int):
     model = ChangeOrder if entity_type == ApprovalEntityType.CHANGE_ORDER else PurchaseOrder
-    entity = db.get(model, entity_id)
+    entity = locked_get(db, model, entity_id)
     if entity is None:
         raise HTTPException(status_code=404, detail=f"{entity_type.value} {entity_id} not found")
     return entity
@@ -106,9 +107,17 @@ def _finalize_rejected(db: Session, entity_type: ApprovalEntityType, entity, act
     )
 
 
-def decide(db: Session, *, request: ApprovalRequest, approver: User,
+def decide(db: Session, *, request_id: int, approver: User,
            approve: bool, comment: str | None = None) -> dict:
-    """Record one approval decision, enforcing sequence order and role."""
+    """Record one approval decision, enforcing sequence order and role.
+
+    The request row (and later its entity) are loaded under row locks so two
+    concurrent decisions on the same step serialize: the loser re-reads a
+    non-PENDING status and gets a 409 instead of double-applying effects.
+    """
+    request = locked_get(db, ApprovalRequest, request_id)
+    if request is None:
+        raise HTTPException(status_code=404, detail="Approval request not found")
     if request.status != ApprovalStatus.PENDING:
         raise HTTPException(status_code=409, detail="Approval step already decided")
     if approver.role not in (request.required_role, UserRole.ADMIN):
@@ -127,10 +136,20 @@ def decide(db: Session, *, request: ApprovalRequest, approver: User,
     if earlier_pending is not None:
         raise HTTPException(status_code=409, detail="Earlier approval steps are still pending")
 
-    request.status = ApprovalStatus.APPROVED if approve else ApprovalStatus.REJECTED
-    request.approver_id = approver.id
-    request.comment = comment
-    request.decided_at = datetime.now(timezone.utc)
+    # Compare-and-swap: only wins if the row is still PENDING at write time.
+    # This is the portable race guard — under concurrent decisions exactly one
+    # writer flips the status; the loser sees rowcount 0 and gets a 409.
+    new_status = ApprovalStatus.APPROVED if approve else ApprovalStatus.REJECTED
+    result = db.execute(
+        update(ApprovalRequest)
+        .where(ApprovalRequest.id == request.id, ApprovalRequest.status == ApprovalStatus.PENDING)
+        .values(status=new_status, approver_id=approver.id, comment=comment,
+                decided_at=datetime.now(UTC))
+    )
+    if result.rowcount == 0:  # type: ignore[attr-defined]  # CursorResult at runtime
+        db.rollback()
+        raise HTTPException(status_code=409, detail="Approval step already decided")
+    db.expire(request)
 
     entity = _load_entity(db, request.entity_type, request.entity_id)
     audit_service.record(
@@ -151,7 +170,7 @@ def decide(db: Session, *, request: ApprovalRequest, approver: User,
         for step in remaining:
             step.status = ApprovalStatus.REJECTED
             step.comment = f"Auto-closed: chain rejected at step {request.sequence}"
-            step.decided_at = datetime.now(timezone.utc)
+            step.decided_at = datetime.now(UTC)
         _finalize_rejected(db, request.entity_type, entity, approver, comment)
         db.commit()
         return {"chain_complete": True, "entity_status": entity.status.value}
@@ -176,12 +195,13 @@ def pending_for_user(db: Session, user: User) -> list[ApprovalRequest]:
     query = select(ApprovalRequest).where(ApprovalRequest.status == ApprovalStatus.PENDING)
     if user.role != UserRole.ADMIN:
         query = query.where(ApprovalRequest.required_role == user.role)
-    return db.execute(query.order_by(ApprovalRequest.created_at.asc())).scalars().all()
+    return list(db.execute(query.order_by(ApprovalRequest.created_at.asc())).scalars().all())
 
 
-def requests_for_entity(db: Session, entity_type: ApprovalEntityType, entity_id: int) -> list[ApprovalRequest]:
-    return db.execute(
+def requests_for_entity(db: Session, entity_type: ApprovalEntityType,
+                        entity_id: int) -> list[ApprovalRequest]:
+    return list(db.execute(
         select(ApprovalRequest)
         .where(ApprovalRequest.entity_type == entity_type, ApprovalRequest.entity_id == entity_id)
         .order_by(ApprovalRequest.sequence.asc())
-    ).scalars().all()
+    ).scalars().all())

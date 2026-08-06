@@ -1,6 +1,7 @@
 from datetime import datetime
+from decimal import Decimal
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 from app.models.enums import ApprovalEntityType, ApprovalStatus, UserRole
 
@@ -8,7 +9,7 @@ from app.models.enums import ApprovalEntityType, ApprovalStatus, UserRole
 class ApprovalRuleCreate(BaseModel):
     entity_type: ApprovalEntityType
     role: UserRole
-    threshold_amount: float = 0.0
+    threshold_amount: Decimal = Field(default=Decimal("0"), ge=0, max_digits=16, decimal_places=2)
     sequence: int = 1
     description: str | None = None
 

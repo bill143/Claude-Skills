@@ -162,7 +162,7 @@ def main() -> None:  # noqa: PLR0915
                            json={"action": "submit_for_approval"})
         assert resp.status_code == 200
         steps = client.get(f"/api/v1/change-orders/{oco['id']}/approvals", headers=pm).json()
-        for step, headers in zip(steps, (pm, boss)):
+        for step, headers in zip(steps, (pm, boss), strict=True):
             resp = client.post(f"/api/v1/approvals/{step['id']}/decide", headers=headers,
                                json={"approve": True})
             assert resp.status_code == 200, resp.text

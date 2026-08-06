@@ -1,4 +1,4 @@
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from decimal import Decimal
 
 from sqlalchemy import Date, DateTime, Enum, Numeric, String
@@ -29,7 +29,7 @@ class Project(Base):
     end_date: Mapped[date | None] = mapped_column(Date)
     is_active: Mapped[bool] = mapped_column(default=True, nullable=False)
     created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False
+        DateTime(timezone=True), default=lambda: datetime.now(UTC), nullable=False
     )
 
     budget_lines = relationship("BudgetLine", back_populates="project", cascade="all, delete-orphan")

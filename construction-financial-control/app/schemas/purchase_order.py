@@ -1,4 +1,5 @@
 from datetime import date, datetime
+from decimal import Decimal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -8,8 +9,8 @@ from app.models.enums import PurchaseOrderStatus
 class PurchaseOrderLineIn(BaseModel):
     budget_line_id: int
     description: str
-    quantity: float = Field(default=1, gt=0)
-    unit_cost: float = Field(default=0, ge=0)
+    quantity: Decimal = Field(default=Decimal("1"), gt=0, max_digits=14, decimal_places=3)
+    unit_cost: Decimal = Field(default=Decimal("0"), ge=0, max_digits=16, decimal_places=2)
 
 
 class PurchaseOrderLineOut(BaseModel):

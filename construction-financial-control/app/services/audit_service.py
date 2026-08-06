@@ -7,15 +7,29 @@ diff style.
 """
 import hashlib
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
-from sqlalchemy import select
+from sqlalchemy import event, select
 from sqlalchemy.orm import Session
 
 from app.models.audit import AuditEvent
 from app.models.user import User
 
 GENESIS_HASH = "0" * 64
+
+
+class AuditImmutabilityError(RuntimeError):
+    pass
+
+
+@event.listens_for(AuditEvent, "before_update")
+def _forbid_update(mapper, connection, target):  # noqa: ANN001
+    raise AuditImmutabilityError("audit_events is append-only: updates are forbidden")
+
+
+@event.listens_for(AuditEvent, "before_delete")
+def _forbid_delete(mapper, connection, target):  # noqa: ANN001
+    raise AuditImmutabilityError("audit_events is append-only: deletes are forbidden")
 
 
 def _canonical(payload: dict) -> str:
@@ -29,7 +43,7 @@ def _canonical_ts(created_at: datetime) -> str:
     normalize to naive UTC with fixed microsecond precision before hashing.
     """
     if created_at.tzinfo is not None:
-        created_at = created_at.astimezone(timezone.utc).replace(tzinfo=None)
+        created_at = created_at.astimezone(UTC).replace(tzinfo=None)
     return created_at.isoformat(timespec="microseconds")
 
 
@@ -46,7 +60,7 @@ def record(db: Session, *, actor: User | None, entity_type: str, entity_id: int,
     payload = payload or {}
     last = db.execute(select(AuditEvent).order_by(AuditEvent.id.desc()).limit(1)).scalar_one_or_none()
     prev_hash = last.hash if last else GENESIS_HASH
-    created_at = datetime.now(timezone.utc)
+    created_at = datetime.now(UTC)
     event = AuditEvent(
         entity_type=entity_type,
         entity_id=entity_id,
@@ -66,14 +80,14 @@ def verify_chain(db: Session) -> dict:
     """Recompute the whole chain; report first break if any."""
     events = db.execute(select(AuditEvent).order_by(AuditEvent.id.asc())).scalars().all()
     prev_hash = GENESIS_HASH
-    for event in events:
-        if event.prev_hash != prev_hash:
-            return {"valid": False, "events": len(events), "first_broken_event_id": event.id,
+    for entry in events:
+        if entry.prev_hash != prev_hash:
+            return {"valid": False, "events": len(events), "first_broken_event_id": entry.id,
                     "reason": "prev_hash mismatch"}
-        expected = _compute_hash(prev_hash, event.entity_type, event.entity_id,
-                                 event.action, event.payload, event.created_at)
-        if event.hash != expected:
-            return {"valid": False, "events": len(events), "first_broken_event_id": event.id,
+        expected = _compute_hash(prev_hash, entry.entity_type, entry.entity_id,
+                                 entry.action, entry.payload, entry.created_at)
+        if entry.hash != expected:
+            return {"valid": False, "events": len(events), "first_broken_event_id": entry.id,
                     "reason": "hash mismatch"}
-        prev_hash = event.hash
+        prev_hash = entry.hash
     return {"valid": True, "events": len(events), "first_broken_event_id": None, "reason": None}

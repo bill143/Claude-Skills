@@ -22,16 +22,25 @@ services:
 
   api:
     build: .
-    command: sh -c "python scripts/seed.py && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    # Schema via Alembic (never create_all), then demo seed, then serve.
+    command: sh -c "alembic upgrade head && python scripts/seed.py && uvicorn app.main:app --host 0.0.0.0 --port 8000"
     environment:
+      ENVIRONMENT: dev
       DATABASE_URL: postgresql+psycopg2://cfcs:cfcs@db:5432/cfcs
       REDIS_URL: redis://redis:6379/0
-      SECRET_KEY: dev-only-secret-change-me
+      SECRET_KEY: dev-only-secret-change-me-32chars-min!!
+      CORS_ORIGINS: http://localhost:8501
+      AUTO_CREATE_TABLES: "false"
     ports:
       - "8000:8000"
     depends_on:
       db:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request;urllib.request.urlopen('http://localhost:8000/health/ready')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 12
 
   ui:
     build: .

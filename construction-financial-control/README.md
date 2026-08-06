@@ -49,26 +49,32 @@ cp .env.example .env                  # defaults expect Postgres on localhost:54
 # Option B — zero-setup SQLite:
 #   export DATABASE_URL=sqlite:///./cfcs.db
 
-python scripts/seed.py                # creates tables + demo data
+alembic upgrade head                  # schema (committed migrations 0001+0002)
+python scripts/seed.py                # demo data
 uvicorn app.main:app --reload         # terminal 1 → http://localhost:8000/docs
 streamlit run streamlit_app.py        # terminal 2 → http://localhost:8501
 ```
 
-Verify the whole control loop end-to-end (uses a throwaway SQLite DB):
+Run the test suite and the end-to-end smoke test:
 
 ```bash
+pip install -r requirements-dev.txt
+python -m pytest tests/ -v            # e2e, rejection, concurrency, idempotency, audit
 python scripts/smoke_test.py
 ```
 
-## Migrations
+## Migrations & environments
 
-Dev mode auto-creates tables (`AUTO_CREATE_TABLES=true`). For production:
-
-```bash
-export AUTO_CREATE_TABLES=false
-alembic revision --autogenerate -m "initial schema"
-alembic upgrade head
-```
+Alembic owns the schema — `alembic upgrade head` before starting the API.
+Committed revisions: `0001_initial_schema`, `0002_audit_immutability`
+(Postgres trigger making `audit_events` append-only at the DB level).
+`AUTO_CREATE_TABLES=true` is a dev-only shortcut; `ENVIRONMENT=stage|prod`
+forces it off, and `prod` additionally refuses default/short `SECRET_KEY`,
+`DEBUG`, wildcard `CORS_ORIGINS`, and SQLite. Probes: `/health/live` and
+`/health/ready` (DB + optional Redis). Money-moving endpoints (approval
+decide, PO submit, CO transition/convert) accept an `Idempotency-Key` header
+for safe retries. See `PRODUCTION_READINESS.md` and `docs/runbooks/` for the
+gap report, deployment, rollback, secrets, backup, and incident procedures.
 
 ---
 

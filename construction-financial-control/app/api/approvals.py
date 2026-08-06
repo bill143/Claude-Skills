@@ -1,10 +1,10 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, Header
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user, require_roles
 from app.db.session import get_db
-from app.models.approval import ApprovalRequest, ApprovalRule
+from app.models.approval import ApprovalRule
 from app.models.enums import UserRole
 from app.models.user import User
 from app.schemas.approval import (
@@ -14,7 +14,7 @@ from app.schemas.approval import (
     DecisionIn,
     DecisionOut,
 )
-from app.services import approval_service
+from app.services import approval_service, idempotency_service
 
 router = APIRouter(prefix="/approvals", tags=["approvals"])
 
@@ -28,14 +28,19 @@ def my_pending_approvals(db: Session = Depends(get_db), user: User = Depends(get
 def decide(
     request_id: int,
     body: DecisionIn,
+    idempotency_key: str | None = Header(default=None, alias="Idempotency-Key"),
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
 ):
-    request = db.get(ApprovalRequest, request_id)
-    if request is None:
-        raise HTTPException(status_code=404, detail="Approval request not found")
-    return approval_service.decide(
-        db, request=request, approver=user, approve=body.approve, comment=body.comment
+    return idempotency_service.run_idempotent(
+        db,
+        key=idempotency_key,
+        user=user,
+        endpoint=f"approvals.decide.{request_id}",
+        payload=body,
+        fn=lambda: approval_service.decide(
+            db, request_id=request_id, approver=user, approve=body.approve, comment=body.comment
+        ),
     )
 
 
@@ -52,12 +57,10 @@ def create_rule(
     db: Session = Depends(get_db),
     _admin: User = Depends(require_roles(UserRole.ADMIN)),
 ):
-    from decimal import Decimal
-
     rule = ApprovalRule(
         entity_type=body.entity_type,
         role=body.role,
-        threshold_amount=Decimal(str(body.threshold_amount)),
+        threshold_amount=body.threshold_amount,
         sequence=body.sequence,
         description=body.description,
     )

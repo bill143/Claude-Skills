@@ -18,3 +18,4 @@ from app.models.change_order import ChangeOrder, ChangeOrderLine  # noqa: F401
 from app.models.purchase_order import PurchaseOrder, PurchaseOrderLine  # noqa: F401
 from app.models.approval import ApprovalRule, ApprovalRequest  # noqa: F401
 from app.models.audit import AuditEvent  # noqa: F401
+from app.models.idempotency import IdempotencyRecord  # noqa: F401

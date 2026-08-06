@@ -1,5 +1,3 @@
-from decimal import Decimal
-
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -43,7 +41,7 @@ def create_budget_line(
         cost_code=body.cost_code,
         description=body.description,
         category=body.category,
-        original_budget=Decimal(str(body.original_budget)),
+        original_budget=body.original_budget,
     )
     db.add(line)
     db.flush()
@@ -80,7 +78,7 @@ def post_cost_entry(
     entry = CostEntry(
         budget_line_id=line.id,
         entry_date=body.entry_date,
-        amount=Decimal(str(body.amount)),
+        amount=body.amount,
         description=body.description,
         created_by_id=user.id,
     )

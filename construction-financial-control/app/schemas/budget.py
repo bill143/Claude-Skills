@@ -1,15 +1,20 @@
 from datetime import date
+from decimal import Decimal
 
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.models.enums import CostCategory, ForecastMethod
+
+# Money enters the API as Decimal (pydantic parses JSON numbers/strings via
+# str, never binary float) and is stored as Numeric(16,2). Output schemas use
+# float only for cent-quantized display values, which are IEEE-754 exact.
 
 
 class BudgetLineCreate(BaseModel):
     cost_code: str
     description: str
     category: CostCategory = CostCategory.GENERAL_CONDITIONS
-    original_budget: float = Field(ge=0)
+    original_budget: Decimal = Field(ge=0, max_digits=16, decimal_places=2)
 
 
 class BudgetLineOut(BaseModel):
@@ -48,7 +53,8 @@ class ProjectForecastOut(BaseModel):
 
 class CostEntryCreate(BaseModel):
     entry_date: date
-    amount: float
+    # Negative amounts are legal (credit memos / cost reversals).
+    amount: Decimal = Field(max_digits=16, decimal_places=2)
     description: str | None = None
 
 

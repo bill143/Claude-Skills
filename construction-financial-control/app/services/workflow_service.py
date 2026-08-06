@@ -10,12 +10,15 @@ Design sources:
 - Odoo purchase double-validation + OCA purchase-workflow tiers: submitting a
   PO or CO for approval spawns the threshold-based chain.
 """
+from datetime import UTC, datetime
 from decimal import Decimal
 
 from fastapi import HTTPException
+from sqlalchemy import update
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
+from app.db.session import locked_get
 from app.models.change_order import ChangeOrder, ChangeOrderLine
 from app.models.enums import (
     ApprovalEntityType,
@@ -31,6 +34,25 @@ from app.services import approval_service, audit_service, forecast_service, numb
 
 CO = ChangeOrderStatus
 PO = PurchaseOrderStatus
+
+
+def _cas_status(db: Session, model, entity_id: int, old_status, new_status) -> None:
+    """Compare-and-swap a document status; 409 if another writer won the race.
+
+    Guarded UPDATE ... WHERE status = <expected> works identically on SQLite
+    and PostgreSQL, so the row lock (Postgres) has a portable backstop.
+    """
+    result = db.execute(
+        update(model)
+        .where(model.id == entity_id, model.status == old_status)
+        .values(status=new_status, updated_at=datetime.now(UTC))
+    )
+    if result.rowcount == 0:  # type: ignore[attr-defined]  # CursorResult at runtime
+        db.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="Document was modified concurrently; refresh and retry",
+        )
 
 # (co_type, current_status) -> {action: next_status}. "submit_for_approval" is
 # special-cased below because it also builds the approval chain.
@@ -59,6 +81,9 @@ def allowed_change_order_actions(co: ChangeOrder) -> list[str]:
 
 
 def transition_change_order(db: Session, co: ChangeOrder, action: str, actor: User) -> ChangeOrder:
+    # Re-load under a row lock: concurrent transitions serialize and the loser
+    # fails the status-table check below instead of double-applying.
+    co = locked_get(db, ChangeOrder, co.id)
     table = PCO_TRANSITIONS if co.co_type == ChangeOrderType.PCO else CONTRACT_CO_TRANSITIONS
     valid = table.get(co.status, {})
     if action not in valid:
@@ -75,11 +100,13 @@ def transition_change_order(db: Session, co: ChangeOrder, action: str, actor: Us
             raise HTTPException(status_code=422, detail="SCO requires a vendor before submission")
 
     old_status = co.status
-    co.status = valid[action]
+    new_status = valid[action]
+    _cas_status(db, ChangeOrder, co.id, old_status, new_status)
+    db.expire(co)
     audit_service.record(
         db, actor=actor, entity_type="CHANGE_ORDER", entity_id=co.id,
         action=f"transition:{action}",
-        payload={"from": old_status.value, "to": co.status.value, "co_type": co.co_type.value},
+        payload={"from": old_status.value, "to": new_status.value, "co_type": co.co_type.value},
     )
 
     if action == "submit_for_approval":
@@ -116,6 +143,7 @@ def convert_pco(
     SCO lines copy the PCO cost lines verbatim (the buyout side).
     OCO lines apply the optional markup (owner price = cost * (1 + markup)).
     """
+    pco = locked_get(db, ChangeOrder, pco.id)
     if pco.co_type != ChangeOrderType.PCO:
         raise HTTPException(status_code=422, detail="Only a PCO can be converted")
     if pco.status != CO.SUBMITTED:
@@ -127,6 +155,11 @@ def convert_pco(
         raise HTTPException(status_code=422, detail="vendor_id is required to create an SCO")
     if not pco.lines:
         raise HTTPException(status_code=422, detail="PCO has no lines to convert")
+
+    # Claim the PCO first (CAS SUBMITTED -> CONVERTED) so a concurrent convert
+    # loses before any documents are created; rollback undoes the claim if
+    # document creation fails.
+    _cas_status(db, ChangeOrder, pco.id, CO.SUBMITTED, CO.CONVERTED)
 
     created: list[ChangeOrder] = []
     markup = Decimal(str(1.0 + max(oco_markup_pct, 0.0)))
@@ -165,12 +198,10 @@ def convert_pco(
         )
         created.append(doc)
 
-    old_status = pco.status
-    pco.status = CO.CONVERTED
     audit_service.record(
         db, actor=actor, entity_type="CHANGE_ORDER", entity_id=pco.id,
         action="transition:convert",
-        payload={"from": old_status.value, "to": pco.status.value,
+        payload={"from": CO.SUBMITTED.value, "to": CO.CONVERTED.value,
                  "created": [d.number for d in created]},
     )
     db.commit()
@@ -219,24 +250,26 @@ def check_po_budget(db: Session, po: PurchaseOrder) -> list[dict]:
 
 
 def submit_purchase_order(db: Session, po: PurchaseOrder, actor: User) -> dict:
+    po = locked_get(db, PurchaseOrder, po.id)
     if po.status != PO.DRAFT:
         raise HTTPException(status_code=422, detail=f"PO in status {po.status.value} cannot be submitted")
     if po.total_amount <= Decimal("0"):
         raise HTTPException(status_code=422, detail="Cannot submit a zero-amount purchase order")
 
     warnings = check_po_budget(db, po)
+
+    _cas_status(db, PurchaseOrder, po.id, PO.DRAFT, PO.PENDING_APPROVAL)
+    db.expire(po)
     for warning in warnings:
         audit_service.record(
             db, actor=actor, entity_type="PURCHASE_ORDER", entity_id=po.id,
             action="budget_warning", payload=warning,
         )
-
-    old_status = po.status
-    po.status = PO.PENDING_APPROVAL
     audit_service.record(
         db, actor=actor, entity_type="PURCHASE_ORDER", entity_id=po.id,
         action="transition:submit_for_approval",
-        payload={"from": old_status.value, "to": po.status.value, "total": str(po.total_amount)},
+        payload={"from": PO.DRAFT.value, "to": PO.PENDING_APPROVAL.value,
+                 "total": str(po.total_amount)},
     )
     chain = approval_service.build_chain(
         db,
@@ -260,6 +293,7 @@ def transition_purchase_order(db: Session, po: PurchaseOrder, action: str, actor
     if action == "submit_for_approval":
         submit_purchase_order(db, po, actor)
         return po
+    po = locked_get(db, PurchaseOrder, po.id)
     valid = PO_TRANSITIONS.get(po.status, {})
     if action not in valid:
         raise HTTPException(
@@ -268,11 +302,13 @@ def transition_purchase_order(db: Session, po: PurchaseOrder, action: str, actor
                    f"Allowed: {sorted(valid)}",
         )
     old_status = po.status
-    po.status = valid[action]
+    new_status = valid[action]
+    _cas_status(db, PurchaseOrder, po.id, old_status, new_status)
+    db.expire(po)
     audit_service.record(
         db, actor=actor, entity_type="PURCHASE_ORDER", entity_id=po.id,
         action=f"transition:{action}",
-        payload={"from": old_status.value, "to": po.status.value},
+        payload={"from": old_status.value, "to": new_status.value},
     )
     db.commit()
     db.refresh(po)

@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Header, HTTPException, Query
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -20,7 +20,13 @@ from app.schemas.change_order import (
     ConvertIn,
     TransitionIn,
 )
-from app.services import approval_service, audit_service, numbering_service, workflow_service
+from app.services import (
+    approval_service,
+    audit_service,
+    idempotency_service,
+    numbering_service,
+    workflow_service,
+)
 
 router = APIRouter(tags=["change-orders"])
 
@@ -76,8 +82,8 @@ def create_change_order(
     db.add(co)
     db.flush()
     for line in body.lines:
-        quantity = Decimal(str(line.quantity))
-        unit_cost = Decimal(str(line.unit_cost))
+        quantity = line.quantity
+        unit_cost = line.unit_cost
         db.add(ChangeOrderLine(
             change_order_id=co.id,
             budget_line_id=line.budget_line_id,
@@ -132,28 +138,47 @@ def get_change_order_approvals(
 def transition_change_order(
     co_id: int,
     body: TransitionIn,
+    idempotency_key: str | None = Header(default=None, alias="Idempotency-Key"),
     db: Session = Depends(get_db),
     user: User = Depends(require_roles(UserRole.PROJECT_MANAGER)),
 ):
     co = get_co_or_404(co_id, db)
-    co = workflow_service.transition_change_order(db, co, body.action, user)
-    return serialize_co(co)
+    return idempotency_service.run_idempotent(
+        db,
+        key=idempotency_key,
+        user=user,
+        endpoint=f"change_orders.transition.{co_id}",
+        payload=body,
+        fn=lambda: serialize_co(workflow_service.transition_change_order(db, co, body.action, user)),
+    )
 
 
 @router.post("/change-orders/{co_id}/convert", response_model=list[ChangeOrderOut])
 def convert_pco(
     co_id: int,
     body: ConvertIn,
+    idempotency_key: str | None = Header(default=None, alias="Idempotency-Key"),
     db: Session = Depends(get_db),
     user: User = Depends(require_roles(UserRole.PROJECT_MANAGER)),
 ):
     pco = get_co_or_404(co_id, db)
-    created = workflow_service.convert_pco(
+
+    def _convert():
+        created = workflow_service.convert_pco(
+            db,
+            pco,
+            targets=body.targets,
+            actor=user,
+            vendor_id=body.vendor_id,
+            oco_markup_pct=body.oco_markup_pct,
+        )
+        return [serialize_co(doc) for doc in created]
+
+    return idempotency_service.run_idempotent(
         db,
-        pco,
-        targets=body.targets,
-        actor=user,
-        vendor_id=body.vendor_id,
-        oco_markup_pct=body.oco_markup_pct,
+        key=idempotency_key,
+        user=user,
+        endpoint=f"change_orders.convert.{co_id}",
+        payload=body,
+        fn=_convert,
     )
-    return [serialize_co(doc) for doc in created]

@@ -28,11 +28,21 @@ from app.models.project import Project
 from app.models.purchase_order import PurchaseOrder, PurchaseOrderLine
 
 ZERO = Decimal("0")
+CENT = Decimal("0.01")
 COMMITTED_PO_STATUSES = (PurchaseOrderStatus.APPROVED, PurchaseOrderStatus.CLOSED)
 
 
 def _dec(value) -> Decimal:
     return Decimal(str(value)) if value is not None else ZERO
+
+
+def _check_invariants(*, current_budget: Decimal, actual: Decimal, etc: Decimal, eac: Decimal,
+                      vac: Decimal) -> None:
+    """Financial identities that must hold for every forecast we emit."""
+    if eac != (actual + etc).quantize(CENT):
+        raise ValueError(f"Forecast invariant violated: EAC {eac} != actual {actual} + ETC {etc}")
+    if vac != (current_budget - eac).quantize(CENT):
+        raise ValueError(f"Forecast invariant violated: VAC {vac} != budget {current_budget} - EAC {eac}")
 
 
 def approved_oco_changes(db: Session, budget_line_id: int) -> Decimal:
@@ -113,6 +123,10 @@ def line_metrics(
         method=method,
         percent_complete=percent_complete,
     )
+    vac = (current_budget - eac).quantize(CENT)
+    _check_invariants(current_budget=current_budget, actual=actual, etc=etc, eac=eac, vac=vac)
+    # All arithmetic above is Decimal; float() below is a serialization-only
+    # conversion of cent-quantized values (exact in IEEE-754 for our 16,2 range).
     return {
         "id": line.id,
         "cost_code": line.cost_code,
@@ -125,7 +139,7 @@ def line_metrics(
         "actual": float(actual),
         "etc": float(etc),
         "eac": float(eac),
-        "vac": float(current_budget - eac),
+        "vac": float(vac),
         "method": used_method.value,
     }
 
@@ -148,17 +162,16 @@ def compute_etc_eac(
         earned_value = current_budget * pct
         if earned_value > ZERO:
             cpi = earned_value / actual
-            eac = actual + (current_budget - earned_value) / cpi
-            eac = eac.quantize(Decimal("0.01"))
-            return eac - actual, eac, ForecastMethod.CPI
+            eac = (actual + (current_budget - earned_value) / cpi).quantize(CENT)
+            return (eac - actual).quantize(CENT), eac, ForecastMethod.CPI
 
     # REMAINING_BUDGET: you will spend at least what you have committed (or
     # already spent, if overrun), plus every dollar of budget not yet bought out.
     uncommitted = current_budget - committed
     if uncommitted < ZERO:
         uncommitted = ZERO
-    eac = max(committed, actual) + uncommitted
-    return eac - actual, eac, ForecastMethod.REMAINING_BUDGET
+    eac = (max(committed, actual) + uncommitted).quantize(CENT)
+    return (eac - actual).quantize(CENT), eac, ForecastMethod.REMAINING_BUDGET
 
 
 def project_forecast(

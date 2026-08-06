@@ -1,5 +1,3 @@
-from decimal import Decimal
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -35,7 +33,7 @@ def create_project(
         code=body.code,
         name=body.name,
         owner_name=body.owner_name,
-        original_contract_value=Decimal(str(body.original_contract_value)),
+        original_contract_value=body.original_contract_value,
         budget_control=body.budget_control,
         start_date=body.start_date,
         end_date=body.end_date,

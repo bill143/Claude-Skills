@@ -25,7 +25,7 @@ def get_current_user(
     try:
         payload = decode_access_token(token)
     except jwt.PyJWTError:
-        raise credentials_error
+        raise credentials_error from None
     email = payload.get("sub")
     if not email:
         raise credentials_error

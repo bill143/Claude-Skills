@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Header, HTTPException, Query
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -26,7 +26,13 @@ from app.schemas.purchase_order import (
     PurchaseOrderCreate,
     PurchaseOrderOut,
 )
-from app.services import approval_service, audit_service, numbering_service, workflow_service
+from app.services import (
+    approval_service,
+    audit_service,
+    idempotency_service,
+    numbering_service,
+    workflow_service,
+)
 
 router = APIRouter(tags=["purchase-orders"])
 
@@ -93,8 +99,8 @@ def create_purchase_order(
                     status_code=422,
                     detail=f"Budget line {line.budget_line_id} does not belong to project {project.id}",
                 )
-            quantity = Decimal(str(line.quantity))
-            unit_cost = Decimal(str(line.unit_cost))
+            quantity = line.quantity
+            unit_cost = line.unit_cost
             db.add(PurchaseOrderLine(
                 purchase_order_id=po.id,
                 budget_line_id=line.budget_line_id,
@@ -145,11 +151,19 @@ def get_purchase_order_approvals(
 @router.post("/purchase-orders/{po_id}/submit", response_model=POSubmitResult)
 def submit_purchase_order(
     po_id: int,
+    idempotency_key: str | None = Header(default=None, alias="Idempotency-Key"),
     db: Session = Depends(get_db),
     user: User = Depends(require_roles(UserRole.PROJECT_MANAGER)),
 ):
     po = get_po_or_404(po_id, db)
-    return workflow_service.submit_purchase_order(db, po, user)
+    return idempotency_service.run_idempotent(
+        db,
+        key=idempotency_key,
+        user=user,
+        endpoint=f"purchase_orders.submit.{po_id}",
+        payload={"po_id": po_id},
+        fn=lambda: workflow_service.submit_purchase_order(db, po, user),
+    )
 
 
 @router.post("/purchase-orders/{po_id}/transition", response_model=PurchaseOrderOut)
