@@ -12,7 +12,8 @@ from app.models.enums import CostCategory, ForecastMethod
 
 class BudgetLineCreate(BaseModel):
     cost_code: str
-    description: str
+    # Optional: blank auto-fills from the CSI MasterFormat library by code.
+    description: str | None = None
     category: CostCategory = CostCategory.GENERAL_CONDITIONS
     original_budget: Decimal = Field(ge=0, max_digits=16, decimal_places=2)
 
@@ -26,13 +27,24 @@ class BudgetLineOut(BaseModel):
     description: str
     category: CostCategory
     original_budget: float
+    manual_etc: float | None = None
+
+
+class BudgetLinePatch(BaseModel):
+    """Editable line fields. Budget amounts change only via change orders."""
+
+    description: str | None = None
+    manual_etc: Decimal | None = Field(default=None, ge=0, max_digits=16, decimal_places=2)
+    clear_manual_etc: bool = False
 
 
 class BudgetLineMetrics(BaseModel):
     id: int
     cost_code: str
+    division: str
     description: str
     category: str
+    manual_etc: float | None = None
     original_budget: float
     approved_changes: float
     current_budget: float

@@ -37,9 +37,11 @@ def client():
     from app.db.session import SessionLocal, engine
     from app.main import app
     from app.models import ApprovalEntityType, ApprovalRule, User, UserRole
+    from app.services.wbs_service import seed_cost_codes
 
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
+    seed_cost_codes(db)
     for email, role in (
         ("admin@test.io", UserRole.ADMIN),
         ("pm@test.io", UserRole.PROJECT_MANAGER),

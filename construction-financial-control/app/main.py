@@ -20,6 +20,7 @@ from app.api import (
     auth,
     budgets,
     change_orders,
+    cost_codes,
     dashboard,
     projects,
     purchase_orders,
@@ -44,6 +45,13 @@ async def lifespan(app: FastAPI):
 
         Base.metadata.create_all(bind=engine)
         logger.warning("AUTO_CREATE_TABLES ran (dev only) — use Alembic everywhere else")
+        from app.db.session import SessionLocal
+        from app.services.wbs_service import seed_cost_codes
+
+        with SessionLocal() as db:
+            loaded = seed_cost_codes(db)
+            if loaded:
+                logger.info("seeded CSI MasterFormat cost-code library (%d codes)", loaded)
     logger.info("startup complete", extra={"path": settings.ENVIRONMENT})
     yield
 
@@ -83,6 +91,7 @@ for router in (
     auth.router,
     projects.router,
     vendors.router,
+    cost_codes.router,
     budgets.router,
     change_orders.router,
     purchase_orders.router,

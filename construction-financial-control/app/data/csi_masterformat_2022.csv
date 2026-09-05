@@ -1,0 +1,3402 @@
+code,title,division,level
+00 00 00,Procurement and Contracting Requirements,00,1
+00 01 01,Project Title Page,00,3
+00 01 05,Certifications Page,00,3
+00 01 07,Seals Page,00,3
+00 01 10,Table of Contents,00,3
+00 01 15,List of Drawing Sheets,00,3
+00 01 20,List of Schedules,00,3
+00 10 00,Solicitation,00,2
+00 11 00,Advertisements and Invitations,00,2
+00 11 13,Advertisement for Bids,00,3
+00 11 16,Invitation to Bid,00,3
+00 11 19,Request for Proposal,00,3
+00 11 53,Request for Qualifications,00,3
+00 20 00,Instructions for Procurement,00,2
+00 21 00,Instructions,00,2
+00 21 13,Instructions to Bidders,00,3
+00 21 16,Instructions to Proposers,00,3
+00 22 00,Supplementary Instructions,00,2
+00 22 13,Supplementary Instructions to Bidders,00,3
+00 22 16,Supplementary Instructions to Proposers,00,3
+00 23 00,Procurement Definitions,00,2
+00 24 00,Procurement Scopes,00,2
+00 24 13,Scopes of Bids,00,3
+00 24 16,Scopes of Proposals,00,3
+00 25 00,Procurement Meetings,00,2
+00 25 13,Pre-Bid Meetings,00,3
+00 25 16,Pre-Proposal Meetings,00,3
+00 26 00,Procurement Substitution Procedures,00,2
+00 30 00,Available Information,00,2
+00 31 00,Available Project Information,00,2
+00 31 13,Preliminary Schedules,00,3
+00 31 16,Project Budget Information,00,3
+00 31 19,Existing Condition Information,00,3
+00 31 21,Survey Information,00,3
+00 31 24,Environmental Assessment Information,00,3
+00 31 25,Existing Material Information,00,3
+00 31 26,Existing Hazardous Material Information,00,3
+00 31 31,Geophysical Data,00,3
+00 31 32,Geotechnical Data,00,3
+00 31 43,Permit Application,00,3
+00 40 00,Procurement Forms and Supplements,00,2
+00 41 00,Bid Forms,00,2
+00 41 13,Bid Form – Stipulated Sum (Single-Prime Contract),00,3
+00 41 16,Bid Form – Stipulated Sum (Multiple-Prime Contract),00,3
+00 41 23,Bid Form – Construction Management (Single-Prime Contract),00,3
+00 41 26,Bid Form – Construction Management (Multiple-Prime Contract),00,3
+00 41 33,Bid Form – Cost Plus-Fee (Single-Prime Contract),00,3
+00 41 36,Bid Form – Cost-Plus-Fee (Multiple-Prime Contract),00,3
+00 41 43,Bid Form – Unit Price (Single-Prime Contract),00,3
+00 41 46,Bid Form – Unit Price (Multiple-Prime Contract),00,3
+00 41 53,Bid Form – Design/Build (Single-Prime Contract),00,3
+00 41 56,Bid Form – Design/Build (Multiple-Prime Contract),00,3
+00 41 63,Bid Form – Purchase Contract,00,3
+00 42 00,Proposal Forms,00,2
+00 42 13,Proposal Form – Stipulated Sum (Single-Prime Contract),00,3
+00 42 16,Proposal Form – Stipulated Sum (Multiple-Prime Contract),00,3
+00 42 23,Proposal Form – Construction Management (Single-Prime Contract),00,3
+00 42 26,Proposal Form – Construction Management (Multiple-Prime Contract),00,3
+00 42 33,Proposal Form – Cost-Plus-Fee (Single-Prime Contract),00,3
+00 42 36,Proposal Form – Cost-Plus-Fee (Multiple-Prime Contract),00,3
+00 42 43,Proposal Form – Unit Price (Single-Prime Contract),00,3
+00 42 46,Proposal Form – Unit Price (Multiple-Prime Contract),00,3
+00 42 53,Proposal Form – Design/Build (Single-Prime Contract),00,3
+00 42 56,Proposal Form – Design/Build (Multiple-Prime Contract),00,3
+00 42 63,Proposal Form – Purchase Contract,00,3
+00 43 00,Procurement Form Supplements,00,2
+00 43 13,Bid Security Form,00,3
+00 43 21,Allowance Form,00,3
+00 43 22,Unit Prices Form,00,3
+00 43 23,Alternates Form,00,3
+00 43 25,Substitution Request Form (During Procurement),00,3
+00 43 26,Estimated Quantities Form,00,3
+00 43 33,Proposed Products Form,00,3
+00 43 36,Proposed Subcontractors Form,00,3
+00 43 39,Minority Business Enterprise Statement of Intent Form,00,3
+00 43 43,Wage Rates Form,00,3
+00 43 73,Proposed Schedule of Values Form,00,3
+00 43 83,Proposed Construction Schedule Form,00,3
+00 43 86,Proposed Work Plan Schedule Form,00,3
+00 43 93,Bid Submittal Checklist,00,3
+00 45 00,Representations and Certifications,00,2
+00 45 13,Bidder’s Qualifications,00,3
+00 45 16,Proposer’s Qualifications,00,3
+00 45 19,Non-Collusion Affidavit,00,3
+00 45 23,Statement of Disposal Facility,00,3
+00 45 26,Worker’s Compensation Certificate Schedule,00,3
+00 45 33,Non-Segregated Facilities Affidavit,00,3
+00 45 36,Equal Employment Opportunity Affidavit,00,3
+00 45 39,Minority Business Enterprise Affidavit,00,3
+00 45 43,Corporate Resolutions,00,3
+00 45 46,Governmental Certifications,00,3
+00 50 00,Contracting Forms and Supplements,00,2
+00 51 00,Notice of Award,00,2
+00 52 00,Agreement Forms,00,2
+00 52 13,Agreement Form – Stipulated Sum (Single-Prime Contract),00,3
+00 52 16,Agreement Form – Stipulated Sum (Multiple-Prime Contract),00,3
+00 52 23,Agreement Form – Construction Management (Single-Prime Contract),00,3
+00 52 26,Agreement Form – Construction Management (Multiple-Prime Contract),00,3
+00 52 33,Agreement Form – Cost Plus-Fee (Single-Prime Contract),00,3
+00 52 36,Agreement Form – Cost-Plus-Fee (Multiple-Prime Contract),00,3
+00 52 43,Agreement Form – Unit Price (Single-Prime Contract),00,3
+00 52 46,Agreement Form – Unit Price (Multiple-Prime Contract),00,3
+00 52 53,Agreement Form – Design/Build (Single-Prime Contract),00,3
+00 52 56,Agreement Form – Design/Build (Multiple-Prime Contract),00,3
+00 52 63,Agreement Form – Purchase,00,3
+00 54 00,Agreement Form Supplements,00,2
+00 54 13,Supplementary Scope Statement,00,3
+00 54 21,Allowances Schedule,00,3
+00 54 22,Unit Prices Schedule,00,3
+00 55 00,Notice to Proceed,00,2
+00 60 00,Project Forms,00,2
+00 61 00,Bond Forms,00,2
+00 61 13,Performance and Payment Bond Form,00,3
+00 61 16,Lien Bond Form,00,3
+00 61 19,Maintenance Bond Form,00,3
+00 61 23,Retainage Bond Form,00,3
+00 61 26,Special Bond Form,00,3
+00 62 00,Certificates and Other Forms,00,2
+00 62 11,Submittal Transmittal Form,00,3
+00 62 16,Certificate of Insurance Form,00,3
+00 62 19,Infection Control Form,00,3
+00 62 23,Construction Waste Diversion Form,00,3
+00 62 33,Products Form,00,3
+00 62 34,Recycled Content of Materials Form,00,3
+00 62 39,Minority Business Enterprise Certification Form,00,3
+00 62 73,Schedule of Values Form,00,3
+00 62 76,Application for Payment Form,00,3
+00 62 79,Stored Material Form,00,3
+00 62 83,Construction Schedule Form,00,3
+00 62 86,Work Plan Schedule Form,00,3
+00 62 89,Construction Equipment Form,00,3
+00 63 00,Clarification and Modification Forms,00,2
+00 63 13,Request for Interpretation Form,00,3
+00 63 19,Clarification Form,00,3
+00 63 25,Substitution Request Form (During Construction),00,3
+00 63 33,Supplemental Instruction Form,00,3
+00 63 36,Field Order Form,00,3
+00 63 43,Written Amendment Form,00,3
+00 63 46,Construction Change Directive Form,00,3
+00 63 49,Work Change Directive Form,00,3
+00 63 53,Request for Proposal Form,00,3
+00 63 54,Proposal Worksheet Summary Form,00,3
+00 63 55,Proposal Worksheet Detail Form,00,3
+00 63 57,Change Order Request Form,00,3
+00 63 63,Change Order Form,00,3
+00 65 00,Closeout Forms,00,2
+00 65 13,Certificate of Compliance Form,00,3
+00 65 16,Certificate of Substantial Completion Form,00,3
+00 65 19,Certificate of Completion Form,00,3
+00 65 36,Warranty Form,00,3
+00 65 73,Statutory Declaration Form,00,3
+00 70 00,Conditions of the Contract,00,2
+00 71 00,Contracting Definitions,00,2
+00 72 00,General Conditions,00,2
+00 72 13,General Conditions – Stipulated Sum (Single-Prime Contract),00,3
+00 72 16,General Conditions – Stipulated Sum (Multiple-Prime Contract),00,3
+00 72 23,General Conditions – Construction Management (Single-Prime Contract),00,3
+00 72 26,General Conditions – Construction Management (Multiple-Prime Contract),00,3
+00 72 33,General Conditions – Cost Plus-Fee (Single-Prime Contract),00,3
+00 72 36,General Conditions – Cost-Plus-Fee (Multiple-Prime Contract),00,3
+00 72 43,General Conditions – Unit Price (Single-Prime Contract),00,3
+00 72 46,General Conditions – Unit Price (Multiple-Prime Contract),00,3
+00 72 53,General Conditions – Design/Build (Single-Prime Contract),00,3
+00 72 56,General Conditions – Design/Build (Multiple-Prime Contract),00,3
+00 73 00,Supplementary Conditions,00,2
+00 73 16,Insurance Requirements,00,3
+00 73 19,Health and Safety Requirements,00,3
+00 73 23,Purchase Contracts,00,3
+00 73 26,Assigned Contracts,00,3
+00 73 33,Non-Segregated Facilities Requirements,00,3
+00 73 36,Equal Employment Opportunity Requirements,00,3
+00 73 43,Wage Rate Requirements,00,3
+00 73 46,Wage Determination Schedule,00,3
+00 73 49,Labor Stabilization Agreement,00,3
+00 73 53,Anti-Pollution Measures,00,3
+00 73 63,Security Requirements,00,3
+00 73 73,Statutory Requirements,00,3
+00 80 00,Unassigned,00,2
+00 90 00,"Revisions, Clarifications, and Modifications",00,2
+00 91 00,Precontract Revisions,00,2
+00 91 13,Addenda,00,3
+00 91 16,Bid Revisions,00,3
+00 91 19,Proposal Revisions,00,3
+00 93 00,Record Clarifications and Proposals,00,2
+00 93 13,Record Requests for Interpretation,00,3
+00 93 19,Record Clarification Notices,00,3
+00 93 53,Record Proposal Requests,00,3
+00 93 54,Record Proposal Worksheet Summaries,00,3
+00 93 57,Record Change Order Requests,00,3
+00 94 00,Record Modifications,00,2
+00 94 33,Record Minor Changes in the Work,00,3
+00 94 36,Record Supplemental Instructions,00,3
+00 94 39,Record Field Orders,00,3
+00 94 43,Record Amendments,00,3
+00 94 46,Record Construction Change Directives,00,3
+00 94 49,Record Work Change Directives,00,3
+00 94 63,Record Change Orders,00,3
+01 00 00,General Requirements,01,1
+01 10 00,Summary,01,2
+01 11 00,Summary of Work,01,2
+01 11 13,Work Covered by Contract Documents,01,3
+01 11 16,Work by Owner,01,3
+01 11 19,Purchase Contracts,01,3
+01 12 00,Multiple Contract Summary,01,2
+01 12 13,Summary of Contracts,01,3
+01 12 16,Work Sequence,01,3
+01 12 19,Contract Interface,01,3
+01 14 00,Work Restrictions,01,2
+01 14 13,Access to Site,01,3
+01 14 16,Coordination with Occupants,01,3
+01 14 19,Use of Site,01,3
+01 18 00,Project Utility Sources,01,2
+01 20 00,Price and Payment Procedures,01,2
+01 21 00,Allowances,01,2
+01 21 13,Cash Allowances,01,3
+01 21 16,Contingency Allowances,01,3
+01 21 19,Testing and Inspecting Allowances,01,3
+01 21 23,Installation Allowances,01,3
+01 21 26,Product Allowances,01,3
+01 21 29,Quantity Allowances,01,3
+01 21 43,Time Allowances,01,3
+01 22 00,Unit Prices,01,2
+01 22 13,Unit Price Measurement,01,3
+01 22 16,Unit Price Payment,01,3
+01 23 00,Alternates,01,2
+01 24 00,Value Analysis,01,2
+01 24 13,Value Engineering,01,3
+01 25 00,Substitution Procedures,01,2
+01 25 13,Product Substitution Procedures,01,3
+01 25 16,Execution Substitution Procedures,01,3
+01 26 00,Contract Modification Procedures,01,2
+01 26 13,Requests for Interpretation,01,3
+01 26 19,Clarification Notices,01,3
+01 26 33,Minor Changes in the Work,01,3
+01 26 36,Supplemental Instructions,01,3
+01 26 39,Field Orders,01,3
+01 26 43,Amendments,01,3
+01 26 46,Construction Change Directives,01,3
+01 26 49,Work Change Directives,01,3
+01 26 53,Proposal Requests,01,3
+01 26 54,Proposal Worksheet Summaries,01,3
+01 26 57,Change Order Requests,01,3
+01 26 63,Change Orders,01,3
+01 29 00,Payment Procedures,01,2
+01 29 73,Schedule of Values,01,3
+01 29 76,Progress Payment Procedures,01,3
+01 29 83,Payment Procedures for Testing Laboratory Services,01,3
+01 30 00,Administrative Requirements,01,2
+01 31 00,Project Management and Coordination,01,2
+01 31 13,Project Coordination,01,3
+01 31 16,Multiple Contract Coordination,01,3
+01 31 19,Project Meetings,01,3
+01 31 23,Project Web Site,01,3
+01 32 00,Construction Progress Documentation,01,2
+01 32 13,Scheduling of Work,01,3
+01 32 16,Construction Progress Schedule,01,3
+01 32 19,Submittals Schedule,01,3
+01 32 23,Survey and Layout Data,01,3
+01 32 26,Construction Progress Reporting,01,3
+01 32 29,Periodic Work Observation,01,3
+01 32 33,Photographic Documentation,01,3
+01 32 43,Purchase Order Tracking,01,3
+01 33 00,Submittal Procedures,01,2
+01 33 13,Certificates,01,3
+01 33 16,Design Data,01,3
+01 33 19,Field Test Reporting,01,3
+01 33 23,"Shop Drawings, Product Data, and Samples",01,3
+01 33 26,Source Quality Control Reporting,01,3
+01 33 29,Sustainable Design Reporting,01,3
+01 35 00,Special Procedures,01,2
+01 35 13,Special Project Procedures,01,3
+01 35 16,Alteration Project Procedures,01,3
+01 35 23,Owner Safety Requirements,01,3
+01 35 26,Governmental Safety Requirements,01,3
+01 35 29,"Health, Safety, and Emergency Response Procedures",01,3
+01 35 33,Infection Control Procedures,01,3
+01 35 43,Environmental Procedures,01,3
+01 35 53,Security Procedures,01,3
+01 35 91,Historic Treatment Procedures,01,3
+01 40 00,Quality Requirements,01,2
+01 41 00,Regulatory Requirements,01,2
+01 41 13,Codes,01,3
+01 41 16,Laws,01,3
+01 41 19,Rules,01,3
+01 41 23,Fees,01,3
+01 41 26,Permits,01,3
+01 42 00,References,01,2
+01 42 13,Abbreviations and Acronyms,01,3
+01 42 16,Definitions,01,3
+01 42 19,Reference Standards,01,3
+01 43 00,Quality Assurance,01,2
+01 43 13,Manufacturer Qualifications,01,3
+01 43 16,Supplier Qualifications,01,3
+01 43 19,Fabricator Qualifications,01,3
+01 43 23,Installer Qualifications,01,3
+01 43 26,Testing and Inspecting Agency Qualifications,01,3
+01 43 29,Code-Required Special Inspector Qualifications,01,3
+01 43 33,Manufacturer’s Field Services,01,3
+01 43 36,Field Samples,01,3
+01 43 39,Mockups,01,3
+01 45 00,Quality Control,01,2
+01 45 13,Source Quality Control Procedures,01,3
+01 45 16,Field Quality Control Procedures,01,3
+01 45 23,Testing and Inspecting Services,01,3
+01 45 26,Plant Inspection Procedures,01,3
+01 45 29,Testing Laboratory Services,01,3
+01 45 33,Code-Required Special Inspections and Procedures,01,3
+01 50 00,Temporary Facilities and Controls,01,2
+01 51 00,Temporary Utilities,01,2
+01 51 13,Temporary Electricity,01,3
+01 51 16,Temporary Fire Protection,01,3
+01 51 19,Temporary Fuel Oil,01,3
+01 51 23,"Temporary Heating, Cooling, and Ventilating",01,3
+01 51 26,Temporary Lighting,01,3
+01 51 29,Temporary Natural-Gas,01,3
+01 51 33,Temporary Telecommunications,01,3
+01 51 36,Temporary Water,01,3
+01 52 00,Construction Facilities,01,2
+01 52 13,Field Offices and Sheds,01,3
+01 52 16,First Aid Facilities,01,3
+01 52 19,Sanitary Facilities,01,3
+01 53 00,Temporary Construction,01,2
+01 53 13,Temporary Bridges,01,3
+01 53 16,Temporary Decking,01,3
+01 53 19,Temporary Overpasses,01,3
+01 53 23,Temporary Ramps,01,3
+01 53 26,Temporary Runarounds,01,3
+01 54 00,Construction Aids,01,2
+01 54 13,Temporary Elevators,01,3
+01 54 16,Temporary Hoists,01,3
+01 54 19,Temporary Cranes,01,3
+01 54 23,Temporary Scaffolding and Platforms,01,3
+01 54 26,Temporary Swing Staging,01,3
+01 55 00,Vehicular Access and Parking,01,2
+01 55 13,Temporary Access Roads,01,3
+01 55 16,Haul Routes,01,3
+01 55 19,Temporary Parking Areas,01,3
+01 55 23,Temporary Roads,01,3
+01 55 26,Traffic Control,01,3
+01 55 29,Staging Areas,01,3
+01 56 00,Temporary Barriers and Enclosures,01,2
+01 56 13,Temporary Air Barriers,01,3
+01 56 16,Temporary Dust Barriers,01,3
+01 56 19,Temporary Noise Barriers,01,3
+01 56 23,Temporary Barricades,01,3
+01 56 26,Temporary Fencing,01,3
+01 56 29,Temporary Protective Walkways,01,3
+01 56 33,Temporary Security Barriers,01,3
+01 56 36,Temporary Security Enclosures,01,3
+01 56 39,Temporary Tree and Plant Protection,01,3
+01 57 00,Temporary Controls,01,2
+01 57 13,Temporary Erosion and Sediment Control,01,3
+01 57 16,Temporary Pest Control,01,3
+01 57 19,Temporary Environmental Controls,01,3
+01 57 23,Temporary Storm Water Pollution Control,01,3
+01 58 00,Project Identification,01,2
+01 58 13,Temporary Project Signage,01,3
+01 58 16,Temporary Interior Signage,01,3
+01 60 00,Product Requirements,01,2
+01 61 00,Common Product Requirements,01,2
+01 61 13,Software Licensing Requirements,01,3
+01 62 00,Product Options,01,2
+01 64 00,Owner-Furnished Products,01,2
+01 65 00,Product Delivery Requirements,01,2
+01 66 00,Product Storage and Handling Requirements,01,2
+01 66 13,Product Storage and Handling Requirements for Hazardous Materials,01,3
+01 66 16,Product Storage and Handling Requirements for Toxic Materials,01,3
+01 70 00,Execution and Closeout Requirements,01,2
+01 71 00,Examination and Preparation,01,2
+01 71 13,Mobilization,01,3
+01 71 16,Acceptance of Conditions,01,3
+01 71 23,Field Engineering,01,3
+01 71 33,Protection of Adjacent Construction,01,3
+01 73 00,Execution,01,2
+01 73 13,Application,01,3
+01 73 16,Erection,01,3
+01 73 19,Installation,01,3
+01 73 23,Bracing and Anchoring,01,3
+01 73 26,Existing Products,01,3
+01 73 29,Cutting and Patching,01,3
+01 74 00,Cleaning and Waste Management,01,2
+01 74 13,Progress Cleaning,01,3
+01 74 16,Site Maintenance,01,3
+01 74 19,Construction Waste Management and Disposal,01,3
+01 74 23,Final Cleaning,01,3
+01 75 00,Starting and Adjusting,01,2
+01 75 13,Checkout Procedures,01,3
+01 75 16,Startup Procedures,01,3
+01 76 00,Protecting Installed Construction,01,2
+01 77 00,Closeout Procedures,01,2
+01 77 13,Preliminary Closeout Reviews,01,3
+01 77 16,Final Closeout Review,01,3
+01 77 19,Closeout Requirements,01,3
+01 78 00,Closeout Submittals,01,2
+01 78 13,Completion and Correction List,01,3
+01 78 19,Maintenance Contracts,01,3
+01 78 23,Operation and Maintenance Data,01,3
+01 78 29,Final Site Survey,01,3
+01 78 33,Bonds,01,3
+01 78 36,Warranties,01,3
+01 78 39,Project Record Documents,01,3
+01 78 43,Spare Parts,01,3
+01 78 46,Extra Stock Materials,01,3
+01 78 53,Sustainable Design Closeout Documentation,01,3
+01 79 00,Demonstration and Training,01,2
+01 80 00,Performance Requirements,01,2
+01 81 00,Facility Performance Requirements,01,2
+01 81 13,Sustainable Design Requirements,01,3
+01 81 16,Facility Environmental Requirements,01,3
+01 81 19,Indoor Air Quality Requirements,01,3
+01 82 00,Facility Substructure Performance Requirements,01,2
+01 82 13,Foundation Performance Requirements,01,3
+01 82 16,Basement Construction Performance Requirements,01,3
+01 83 00,Facility Shell Performance Requirements,01,2
+01 83 13,Superstructure Performance Requirements,01,3
+01 83 16,Exterior Enclosure Performance Requirements,01,3
+01 83 19,Roofing Performance Requirements,01,3
+01 84 00,Interiors Performance Requirements,01,2
+01 84 13,Interior Construction Performance Requirements,01,3
+01 84 16,Stairways Performance Requirements,01,3
+01 84 19,Interior Finishes Performance Requirements,01,3
+01 85 00,Conveying Equipment Performance Requirements,01,2
+01 86 00,Facility Services Performance Requirements,01,2
+01 86 13,Fire Suppression Performance Requirements,01,3
+01 86 16,Plumbing Performance Requirements,01,3
+01 86 19,HVAC Performance Requirements,01,3
+01 86 23,Integrated Automation Performance Requirements,01,3
+01 86 26,Electrical Performance Requirements,01,3
+01 86 29,Communications Performance Requirements,01,3
+01 86 33,Electronic Safety and Security Performance Requirements,01,3
+01 87 00,Equipment and Furnishings Performance Requirements,01,2
+01 87 13,Equipment Performance Requirements,01,3
+01 87 16,Furnishings Performance Requirements,01,3
+01 88 00,Other Facility Construction Performance Requirements,01,2
+01 88 13,Special Construction Performance Requirements,01,3
+01 88 16,Selective Construction Performance Requirements,01,3
+01 89 00,Site Construction Performance Requirements,01,2
+01 89 13,Site Preparation Performance Requirements,01,3
+01 89 16,Site Improvements Performance Requirements,01,3
+01 89 19,Site Plumbing Utilities Performance Requirements,01,3
+01 89 23,Site HVAC Utilities Performance Requirements,01,3
+01 89 26,Site Electrical Utilities Performance Requirements,01,3
+01 89 29,Other Site Construction Performance Requirements,01,3
+01 90 00,Life Cycle Activities,01,2
+01 91 00,Commissioning,01,2
+01 91 13,General Commissioning Requirements,01,3
+01 91 16,Facility Substructure Commissioning,01,3
+01 91 19,Facility Shell Commissioning,01,3
+01 91 23,Interiors Commissioning,01,3
+01 92 00,Facility Operation,01,2
+01 92 13,Facility Operation Procedures,01,3
+01 93 00,Facility Maintenance,01,2
+01 93 13,Facility Maintenance Procedures,01,3
+01 93 16,Recycling Programs,01,3
+01 94 00,Facility Decommissioning,01,2
+01 94 13,Facility Decommissioning Procedures,01,3
+02 00 00,Existing Conditions,02,1
+02 06 00,Schedules for Existing Conditions,02,2
+02 06 30,Schedules for Subsurface Investigations,02,3
+02 06 50,Schedules for Site Remediation,02,3
+02 06 65,Schedules for Underground Storage Tank Removal,02,3
+02 06 80,Schedules for Facility Remediation,02,3
+02 06 86,Schedules for Hazardous Waste Drum Handling,02,3
+02 08 00,Commissioning of Existing Conditions,02,2
+02 10 00,Unassigned,02,2
+02 20 00,Assessment,02,2
+02 21 00,Surveys,02,2
+02 21 13,Site Surveys,02,3
+02 21 16,Measured Drawings,02,3
+02 22 00,Existing Conditions Assessment,02,2
+02 22 13,Movement and Vibration Assessment,02,3
+02 22 16,Acoustic Assessment,02,3
+02 22 19,Traffic Assessment,02,3
+02 22 23,Accessibility Assessment,02,3
+02 24 00,Environmental Assessment,02,2
+02 24 13,Natural Environment Assessment,02,3
+02 24 23,Chemical Sampling and Analysis of Soils,02,3
+02 24 43,Transboundary and Global Environmental Aspects Assessment,02,3
+02 25 00,Existing Material Assessment,02,2
+02 25 16,Existing Concrete Assessment,02,3
+02 25 19,Existing Masonry Assessment,02,3
+02 25 23,Existing Metals Assessment,02,3
+02 25 26,"Existing Wood, Plastics, and Composites Assessment",02,3
+02 25 29,Existing Thermal and Moisture Protection Assessment,02,3
+02 26 00,Hazardous Material Assessment,02,2
+02 26 23,Asbestos Assessment,02,3
+02 26 26,Lead Assessment,02,3
+02 26 29,Polychlorinate Biphenyl Assessment,02,3
+02 26 33,Biological Assessment,02,3
+02 26 36,Hazardous Waste Drum Assessment,02,3
+02 30 00,Subsurface Investigation,02,2
+02 31 00,Geophysical Investigations,02,2
+02 31 13,Seismic Investigations,02,3
+02 31 16,Gravity Investigations,02,3
+02 31 19,Magnetic Investigations,02,3
+02 31 23,Electromagnetic Investigations,02,3
+02 31 26,Electrical Resistivity Investigations,02,3
+02 31 29,Magnetotelluric Investigations,02,3
+02 32 00,Geotechnical Investigations,02,2
+02 32 13,Subsurface Drilling and Sampling,02,3
+02 32 16,Material Testing,02,3
+02 32 19,Exploratory Excavations,02,3
+02 32 23,Geotechnical Monitoring Before Construction,02,3
+02 40 00,Demolition and Structure Moving,02,2
+02 41 00,Demolition,02,2
+02 41 13,Selective Site Demolition,02,3
+02 41 16,Structure Demolition,02,3
+02 41 19,Selective Structure Demolition,02,3
+02 41 91,Selective Historic Demolition,02,3
+02 42 00,Removal and Salvage of Construction Materials,02,2
+02 42 91,Removal and Salvage of Historic Construction Materials,02,3
+02 43 00,Structure Moving,02,2
+02 43 13,Structure Relocation,02,3
+02 43 16,Structure Raising,02,3
+02 50 00,Site Remediation,02,2
+02 51 00,Physical Decontamination,02,2
+02 51 13,Coagulation and Flocculation Decontamination,02,3
+02 51 16,Reverse-Osmosis Decontamination,02,3
+02 51 19,Solidification and Stabilization Decontamination,02,3
+02 51 23,Mechanical Filtration Decontamination,02,3
+02 51 26,Radioactive Decontamination,02,3
+02 51 29,Surface Cleaning Decontamination,02,3
+02 51 33,Surface Removal Decontamination,02,3
+02 52 00,Chemical Decontamination,02,2
+02 52 13,Chemical Precipitation Decontamination,02,3
+02 52 16,Ion Change Decontamination,02,3
+02 52 19,Neutralization Decontamination,02,3
+02 53 00,Thermal Decontamination,02,2
+02 53 13,Incineration Decontamination,02,3
+02 53 16,Thermal Desorption Decontamination,02,3
+02 53 19,Vitrification Decontamination,02,3
+02 54 00,Biological Decontamination,02,2
+02 54 13,Aerobic Processes Decontamination,02,3
+02 54 16,Anaerobic Processes Decontamination,02,3
+02 54 19,Bioremediation Decontamination,02,3
+02 54 23,Soil Washing through Separation/Solubilization,02,3
+02 54 26,Organic Decontamination,02,3
+02 55 00,Remediation Soil Stabilization,02,2
+02 56 00,Site Containment,02,2
+02 56 13,Waste Containment,02,3
+02 56 19,Gas Containment,02,3
+02 57 00,Sinkhole Remediation,02,2
+02 57 13,Sinkhole Remediation by Grouting,02,3
+02 57 16,Sinkhole Remediation by Backfilling,02,3
+02 58 00,Snow Control,02,2
+02 58 13,Snow Fencing,02,3
+02 58 16,Snow Avalanche Control,02,3
+02 60 00,Contaminated Site Material Removal,02,2
+02 61 00,Removal and Disposal of Contaminated Soils,02,2
+02 61 13,Excavation and Handling of Contaminated Material,02,3
+02 61 23,Removal and Disposal of Polychlorinate Biphenyl Contaminated Soils,02,3
+02 61 26,Removal and Disposal of Asbestos Contaminated Soils,02,3
+02 61 29,Removal and Disposal of Organically Contaminated Soils,02,3
+02 62 00,Hazardous Waste Recovery Processes,02,2
+02 62 13,Air and Steam Stripping,02,3
+02 62 16,Soil Vapor Extraction,02,3
+02 62 19,Soil Washing and Flushing,02,3
+02 65 00,Underground Storage Tank Removal,02,2
+02 66 00,Landfill Construction and Storage,02,2
+02 70 00,Water Remediation,02,2
+02 71 00,Groundwater Treatment,02,2
+02 72 00,Water Decontamination,02,2
+02 72 13,Chemical Water Decontamination,02,3
+02 72 16,Biological Water Decontamination,02,3
+02 72 19,Electrolysis Water Decontamination,02,3
+02 80 00,Facility Remediation,02,2
+02 81 00,Transportation and Disposal of Hazardous Materials,02,2
+02 82 00,Asbestos Remediation,02,2
+02 82 13,Asbestos Abatement,02,3
+02 82 16,Engineering Control of Asbestos Containing Materials,02,3
+02 82 33,Removal and Disposal of Asbestos Containing Materials,02,3
+02 83 00,Lead Remediation,02,2
+02 83 13,Lead Hazard Control Activities,02,3
+02 83 19,Lead-Based Paint Remediation,02,3
+02 83 33,Removal and Disposal of Material Containing Lead,02,3
+02 84 00,Polychlorinate Biphenyl Remediation,02,2
+02 84 16,Handling of Lighting Ballasts and Lamps Containing PCBs and Mercury,02,3
+02 84 33,Removal and Disposal of Polychlorinate Biphenyls,02,3
+02 85 00,Mold Remediation,02,2
+02 85 13,Precautions for Mold Remediation,02,3
+02 85 16,Mold Remediation Preparation and Containment,02,3
+02 85 19,Mold Remediation Clearance Air Sampling,02,3
+02 85 33,Removal and Disposal of Materials with Mold,02,3
+02 86 00,Hazardous Waste Drum Handling,02,2
+02 90 00,Unassigned,02,2
+03 00 00,Concrete,03,1
+03 01 00,Maintenance of Concrete,03,2
+03 05 00,Common Work Results for Concrete,03,2
+03 06 00,Schedules for Concrete,03,2
+03 08 00,Commissioning of Concrete,03,2
+03 10 00,Concrete Forming and Accessories,03,2
+03 11 00,Concrete Forming,03,2
+03 11 13,Structural Cast-in-Place Concrete Forming,03,3
+03 11 16,Architectural Cast-in Place Concrete Forming,03,3
+03 11 19,Insulating Concrete Forming,03,3
+03 11 23,Permanent Stair Forming,03,3
+03 15 00,Concrete Accessories,03,2
+03 15 13,Waterstops,03,3
+03 20 00,Concrete Reinforcing,03,2
+03 21 00,Reinforcing Steel,03,2
+03 21 13,Galvanized Reinforcing Steel,03,3
+03 21 16,Epoxy-Coated Reinforcing Steel,03,3
+03 22 00,Welded Wire Fabric Reinforcing,03,2
+03 22 13,Galvanized Welded Wire Fabric Reinforcing,03,3
+03 22 16,Epoxy-Coated Welded Wire Fabric Reinforcing,03,3
+03 23 00,Stressing Tendons,03,2
+03 24 00,Fibrous Reinforcing,03,2
+03 30 00,Cast-in-Place Concrete,03,2
+03 30 53,Miscellaneous Cast-in-Place Concrete,03,3
+03 31 00,Structural Concrete,03,2
+03 31 13,Heavyweight Structural Concrete,03,3
+03 31 16,Lightweight Structural Concrete,03,3
+03 31 19,Shrinkage-Compensating Structural Concrete,03,3
+03 31 23,High-Performance Structural Concrete,03,3
+03 31 26,Self-Compacting Concrete,03,3
+03 33 00,Architectural Concrete,03,2
+03 33 13,Heavyweight Architectural Concrete,03,3
+03 33 16,Lightweight Architectural Concrete,03,3
+03 34 00,Low Density Concrete,03,2
+03 35 00,Concrete Finishing,03,2
+03 35 13,High-Tolerance Concrete Floor Finishing,03,3
+03 35 16,Heavy-Duty Concrete Floor Finishing,03,3
+03 35 19,Colored Concrete Finishing,03,3
+03 35 23,Exposed Aggregate Concrete Finishing,03,3
+03 35 26,Grooved Concrete Surface Finishing,03,3
+03 35 29,Tooled Concrete Finishing,03,3
+03 35 33,Stamped Concrete Finishing,03,3
+03 37 00,Specialty Placed Concrete,03,2
+03 37 13,Shotcrete,03,3
+03 37 16,Pumped Concrete,03,3
+03 37 19,Pneumatically Placed Concrete,03,3
+03 37 23,Roller-Compacted Concrete,03,3
+03 37 26,Underwater Placed Concrete,03,3
+03 38 00,Post-Tensioned Concrete,03,2
+03 38 13,Post-Tensioned Concrete Preparation,03,3
+03 38 16,Unbonded Post-Tensioned Concrete,03,3
+03 38 19,Bonded Post-Tensioned Concrete,03,3
+03 39 00,Concrete Curing,03,2
+03 39 13,Water Concrete Curing,03,3
+03 39 16,Sand Concrete Curing,03,3
+03 39 23,Membrane Concrete Curing,03,3
+03 40 00,Precast Concrete,03,2
+03 41 00,Precast Structural Concrete,03,2
+03 41 13,Precast Concrete Hollow Core Planks,03,3
+03 41 16,Precast Concrete Slabs,03,3
+03 41 23,Precast Concrete Stairs,03,3
+03 41 33,Precast Structural Pretensioned Concrete,03,3
+03 41 36,Precast Structural Post-Tensioned Concrete,03,3
+03 45 00,Precast Architectural Concrete,03,2
+03 45 13,Faced Architectural Precast Concrete,03,3
+03 45 33,Precast Architectural Pretensioned Concrete,03,3
+03 45 36,Precast Architectural Post-Tensioned Concrete,03,3
+03 47 00,Site-Cast Concrete,03,2
+03 47 13,Tilt-Up Concrete,03,3
+03 47 16,Lift-Slab Concrete,03,3
+03 48 00,Precast Concrete Specialties,03,2
+03 48 13,Precast Concrete Bollards,03,3
+03 48 16,Precast Concrete Splash Blocks,03,3
+03 48 19,Precast Concrete Stair Treads,03,3
+03 48 43,Precast Concrete Trim,03,3
+03 49 00,Glass-Fiber-Reinforced Concrete,03,2
+03 49 13,Glass-Fiber-Reinforced Concrete Column Covers,03,3
+03 49 16,Glass-Fiber-Reinforced Concrete Spandrels,03,3
+03 49 43,Glass-Fiber-Reinforced Concrete Trim,03,3
+03 50 00,Cast Decks and Underlayment,03,2
+03 51 00,Cast Roof Decks,03,2
+03 51 13,Cementitious Wood Fiber Decks,03,3
+03 51 16,Gypsum Concrete Roof Decks,03,3
+03 52 00,Lightweight Concrete Roof Insulation,03,2
+03 52 13,Composite Concrete Roof Insulation,03,3
+03 52 16,Lightweight Insulating Concrete,03,3
+03 53 00,Concrete Topping,03,2
+03 53 13,Emery-Aggregate Concrete Topping,03,3
+03 53 16,Iron-Aggregate Concrete Topping,03,3
+03 54 00,Cast Underlayment,03,2
+03 54 13,Gypsum Cement Underlayment,03,3
+03 54 16,Hydraulic Cement Underlayment,03,3
+03 60 00,Grouting,03,2
+03 61 00,Cementitious Grouting,03,2
+03 61 13,Dry-Pack Grouting,03,3
+03 62 00,Non-Shrink Grouting,03,2
+03 62 13,Non-Metallic Non-Shrink Grouting,03,3
+03 62 16,Metallic Non-Shrink Grouting,03,3
+03 63 00,Epoxy Grouting,03,2
+03 64 00,Injection Grouting,03,2
+03 64 23,Epoxy Injection Grouting,03,3
+03 70 00,Mass Concrete,03,2
+03 71 00,Mass Concrete for Raft Foundations,03,2
+03 72 00,Mass Concrete for Dams,03,2
+03 80 00,Concrete Cutting and Boring,03,2
+03 81 00,Concrete Cutting,03,2
+03 81 13,Flat Concrete Sawing,03,3
+03 81 16,Track Mounted Concrete Wall Sawing,03,3
+03 81 19,Wire Concrete Wall Sawing,03,3
+03 81 23,Hand Concrete Wall Sawing,03,3
+03 81 26,Chain Concrete Wall Sawing,03,3
+03 82 00,Concrete Boring,03,2
+03 82 13,Concrete Core Drilling,03,3
+03 90 00,Unassigned,03,2
+04 00 00,Masonry,04,1
+04 01 00,Maintenance of Masonry,04,2
+04 05 00,Common Work Results for Masonry,04,2
+04 06 00,Schedules for Masonry,04,2
+04 08 00,Commissioning of Masonry,04,2
+04 10 00,Unassigned,04,2
+04 20 00,Unit Masonry,04,2
+04 21 00,Clay Unit Masonry,04,2
+04 21 13,Brick Masonry,04,3
+04 21 16,Ceramic Glazed Clay Masonry,04,3
+04 21 19,Clay Tile Masonry,04,3
+04 21 23,Structural Clay Tile Masonry,04,3
+04 21 26,Glazed Structural Clay Tile Masonry,04,3
+04 21 29,Terra Cotta Masonry,04,3
+04 22 00,Concrete Unit Masonry,04,2
+04 22 19,Insulated Concrete Unit Masonry,04,3
+04 22 23,Architectural Concrete Unit Masonry,04,3
+04 22 33,Interlocking Concrete Unit Masonry,04,3
+04 23 00,Glass Unit Masonry,04,2
+04 23 13,Vertical Glass Unit Masonry,04,3
+04 23 16,Glass Unit Masonry Floors,04,3
+04 23 19,Glass Unit Masonry Skylights,04,3
+04 24 00,Adobe Unit Masonry,04,2
+04 24 13,Site-Cast Adobe Unit Masonry,04,3
+04 24 16,Manufactured Adobe Unit Masonry,04,3
+04 25 00,Unit Masonry Panels,04,2
+04 25 13,Metal-Supported Unit Masonry Panels,04,3
+04 27 00,Multiple-Wythe Unit Masonry,04,2
+04 27 13,Composite Unit Masonry,04,3
+04 27 23,Cavity Wall Unit Masonry,04,3
+04 28 00,Concrete Form Masonry Units,04,2
+04 28 13,"Dry-Stacked, Concrete-Filled Masonry Units",04,3
+04 28 23,"Mortar-Set, Concrete-Filled Masonry Units",04,3
+04 30 00,Unassigned,04,2
+04 40 00,Stone Assemblies,04,2
+04 41 00,Dry-Placed Stone,04,2
+04 42 00,Exterior Stone Cladding,04,2
+04 42 13,Masonry-Supported Stone Cladding,04,3
+04 42 16,Steel-Stud-Supported Stone Cladding,04,3
+04 42 19,Strongback-Frame-Supported Stone Cladding,04,3
+04 42 23,Truss-Supported Stone Cladding,04,3
+04 42 26,Grid-System-Supported Stone Cladding,04,3
+04 42 43,Stone Panels for Curtain Walls,04,3
+04 43 00,Stone Masonry,04,2
+04 50 00,Refractory Masonry,04,2
+04 51 00,Flue Liner Masonry,04,2
+04 52 00,Combustion Chamber Masonry,04,2
+04 53 00,Castable Refractory Masonry,04,2
+04 54 00,Refractory Brick Masonry,04,2
+04 57 00,Masonry Fireplaces,04,2
+04 60 00,Corrosion-Resistant Masonry,04,2
+04 61 00,Chemical-Resistant Brick Masonry,04,2
+04 62 00,Vitrified Clay Liner Plate,04,2
+04 70 00,Manufactured Masonry,04,2
+04 71 00,Manufactured Brick Masonry,04,2
+04 71 13,Calcium Silicate Manufactured Brick Masonry,04,3
+04 72 00,Cast Stone Masonry,04,2
+04 73 00,Manufactured Stone Masonry,04,2
+04 73 13,Calcium Silicate Manufactured Stone Masonry,04,3
+04 80 00,Unassigned,04,2
+04 90 00,Unassigned,04,2
+05 00 00,Metals,05,1
+05 01 00,Maintenance of Metals,05,2
+05 05 00,Common Work Results for Metals,05,2
+05 06 00,Schedules for Metals,05,2
+05 08 00,Commissioning of Metals,05,2
+05 10 00,Structural Metal Framing,05,2
+05 12 00,Structural Steel Framing,05,2
+05 12 13,Architecturally-Exposed Structural Steel Framing,05,3
+05 12 16,Fabricated Fireproofed Steel Columns,05,3
+05 12 23,Structural Steel for Buildings,05,3
+05 12 33,Structural Steel for Bridges,05,3
+05 13 00,Structural Stainless-Steel Framing,05,2
+05 14 00,Structural Aluminum Framing,05,2
+05 14 13,Architecturally-Exposed Structural Aluminum Framing,05,3
+05 15 00,Wire Rope Assemblies,05,2
+05 15 13,Aluminum Wire Rope Assemblies,05,3
+05 15 16,Steel Wire Rope Assemblies,05,3
+05 15 19,Stainless-Steel Wire Rope Assemblies,05,3
+05 16 00,Structural Cabling,05,2
+05 16 33,Bridge Cabling,05,3
+05 20 00,Metal Joists,05,2
+05 21 00,Steel Joist Framing,05,2
+05 21 13,Deep Longspan Steel Joist Framing,05,3
+05 21 16,Longspan Steel Joist Framing,05,3
+05 21 19,Open Web Steel Joist Framing,05,3
+05 21 23,Steel Joist Girder Framing,05,3
+05 25 00,Aluminum Joist Framing,05,2
+05 30 00,Metal Decking,05,2
+05 31 00,Steel Decking,05,2
+05 31 13,Steel Floor Decking,05,3
+05 31 23,Steel Roof Decking,05,3
+05 31 33,Steel Form Decking,05,3
+05 33 00,Aluminum Decking,05,2
+05 33 13,Aluminum Floor Decking,05,3
+05 33 23,Aluminum Roof Decking,05,3
+05 34 00,Acoustical Metal Decking,05,2
+05 35 00,Raceway Decking Assemblies,05,2
+05 36 00,Composite Metal Decking,05,2
+05 36 13,Composite Steel Plate and Elastomer Decking,05,3
+05 40 00,Cold-Formed Metal Framing,05,2
+05 41 00,Structural Metal Stud Framing,05,2
+05 42 00,Cold-Formed Metal Joist Framing,05,2
+05 42 13,Cold-Formed Metal Floor Joist Framing,05,3
+05 42 23,Cold-Formed Metal Roof Joist Framing,05,3
+05 43 00,Slotted Channel Framing,05,2
+05 44 00,Cold-Formed Metal Trusses,05,2
+05 45 00,Metal Support Assemblies,05,2
+05 45 13,Mechanical Metal Supports,05,3
+05 45 16,Electrical Metal Supports,05,3
+05 45 19,Communications Metal Supports,05,3
+05 45 23,Healthcare Metal Supports,05,3
+05 50 00,Metal Fabrications,05,2
+05 51 00,Metal Stairs,05,2
+05 51 13,Metal Pan Stairs,05,3
+05 51 16,Metal Floor Plate Stairs,05,3
+05 51 19,Metal Grating Stairs,05,3
+05 51 23,Metal Fire Escapes,05,3
+05 51 33,Metal Ladders,05,3
+05 51 36,Catwalks,05,3
+05 52 00,Metal Railings,05,2
+05 52 13,Pipe and Tube Railings,05,3
+05 53 00,Metal Gratings,05,2
+05 54 00,Metal Floor Plates,05,2
+05 55 00,Metal Stair Treads and Nosings,05,2
+05 55 13,Metal Stair Treads,05,3
+05 55 16,Metal Stair Nosings,05,3
+05 56 00,Metal Castings,05,2
+05 58 00,Formed Metal Fabrications,05,2
+05 58 13,Column Covers,05,3
+05 58 16,Formed Metal Enclosures,05,3
+05 58 19,Heating/Cooling Unit Covers,05,3
+05 59 00,Metal Specialties,05,2
+05 59 63,Detention Enclosures,05,3
+05 60 00,Unassigned,05,2
+05 70 00,Decorative Metal,05,2
+05 71 00,Decorative Metal Stairs,05,2
+05 71 13,Fabricated Metal Spiral Stairs,05,3
+05 73 00,Decorative Metal Railings,05,2
+05 73 13,Glazed Decorative Metal Railings,05,3
+05 73 16,Wire Rope Decorative Metal Railings,05,3
+05 74 00,Decorative Metal Castings,05,2
+05 75 00,Decorative Formed Metal,05,2
+05 76 00,Decorative Forged Metal,05,2
+05 80 00,Unassigned,05,2
+05 90 00,Unassigned,05,2
+06 00 00,"Wood, Plastics, and Composites",06,1
+06 01 00,"Maintenance of Wood, Plastics, and Composites",06,2
+06 05 00,"Common Work Results for Wood, Plastics, and Composites",06,2
+06 06 00,"Schedules for Wood, Plastics, and Composites",06,2
+06 08 00,"Commissioning of Wood, Plastics, and Composites",06,2
+06 10 00,Rough Carpentry,06,2
+06 10 53,Miscellaneous Rough Carpentry,06,3
+06 10 91,Curved Wood Members,06,3
+06 11 00,Wood Framing,06,2
+06 11 13,Engineered Wood Products,06,3
+06 11 16,Mechanically Graded Lumber,06,3
+06 12 00,Structural Panels,06,2
+06 12 13,Cementitious Reinforced Panels,06,3
+06 12 16,Stressed Skin Panels,06,3
+06 13 00,Heavy Timber,06,2
+06 13 13,Log Construction,06,3
+06 13 16,Pole Construction,06,3
+06 13 23,Heavy Timber Construction,06,3
+06 13 33,Heavy Timber Pier Construction,06,3
+06 14 00,Treated Wood Foundations,06,2
+06 15 00,Wood Decking,06,2
+06 15 13,Wood Floor Decking,06,3
+06 15 16,Wood Roof Decking,06,3
+06 15 19,Timber Decking,06,3
+06 15 23,Laminated Wood Decking,06,3
+06 15 33,Wood Patio Decking,06,3
+06 16 00,Sheathing,06,2
+06 16 13,Insulating Sheathing,06,3
+06 16 23,Subflooring,06,3
+06 16 26,Underlayment,06,3
+06 16 29,Acoustical Underlayment,06,3
+06 16 33,Wood Board Sheathing,06,3
+06 16 36,Wood Panel Product Sheathing,06,3
+06 16 43,Gypsum Sheathing,06,3
+06 16 53,Moisture-Resistant Sheathing Board,06,3
+06 16 63,Cementitious Sheathing,06,3
+06 17 00,Shop-Fabricated Structural Wood,06,2
+06 17 13,Laminated Veneer Lumber,06,3
+06 17 23,Parallel Strand Lumber,06,3
+06 17 33,Wood I-Joists,06,3
+06 17 36,Metal-Web Wood Joists,06,3
+06 17 43,Rim Boards,06,3
+06 17 53,Shop-Fabricated Wood Trusses,06,3
+06 18 00,Glued-Laminated Construction,06,2
+06 18 13,Glued-Laminated Beams,06,3
+06 18 16,Glued-Laminated Columns,06,3
+06 20 00,Finish Carpentry,06,2
+06 20 13,Exterior Finish Carpentry,06,3
+06 20 23,Interior Finish Carpentry,06,3
+06 22 00,Millwork,06,2
+06 22 13,Standard Pattern Wood Trim,06,3
+06 25 00,Prefinished Paneling,06,2
+06 25 13,Prefinished Hardboard Paneling,06,3
+06 25 16,Prefinished Plywood Paneling,06,3
+06 26 00,Board Paneling,06,2
+06 26 13,Profile Board Paneling,06,3
+06 30 00,Unassigned,06,2
+06 40 00,Architectural Woodwork,06,2
+06 40 13,Exterior Architectural Woodwork,06,3
+06 40 23,Interior Architectural Woodwork,06,3
+06 41 00,Architectural Wood Casework,06,2
+06 41 13,Wood-Veneer-Faced Architectural Cabinets,06,3
+06 41 16,Plastic-Laminate-Clad Architectural Cabinets,06,3
+06 42 00,Wood Paneling,06,2
+06 42 13,Solid Lumber Paneling,06,3
+06 42 16,Wood-Veneer Paneling,06,3
+06 42 19,Plastic-Laminate-Faced Wood Paneling,06,3
+06 43 00,Wood Stairs and Railings,06,2
+06 43 13,Wood Stairs,06,3
+06 43 16,Wood Railings,06,3
+06 44 00,Ornamental Woodwork,06,2
+06 44 13,Wood Turnings,06,3
+06 44 16,Wood Pilasters,06,3
+06 44 19,Wood Grilles,06,3
+06 44 23,Wood Corbels,06,3
+06 44 26,Wood Cupolas,06,3
+06 44 29,Wood Finials,06,3
+06 44 33,Wood Mantels,06,3
+06 44 36,Wood Pediment Heads,06,3
+06 44 39,Wood Posts and Columns,06,3
+06 46 00,Wood Trim,06,2
+06 46 13,Wood Door and Window Casings,06,3
+06 46 16,Wood Aprons,06,3
+06 46 19,Wood Base and Shoe Moldings,06,3
+06 46 23,Wood Chair Rails,06,3
+06 46 26,Wood Cornices,06,3
+06 46 29,Wood Fascia and Soffits,06,3
+06 46 33,"Wood Stops, Stools, and Sills",06,3
+06 46 91,Splicing of Wooden Components,06,3
+06 48 00,Wood Frames,06,2
+06 48 13,Exterior Wood Door Frames,06,3
+06 48 16,Interior Wood Door Frames,06,3
+06 48 19,Ornamental Wood Frames,06,3
+06 48 23,Stick-Built Wood Windows,06,3
+06 48 26,Wood-Veneer Frames,06,3
+06 49 00,Wood Screens and Exterior Wood Shutters,06,2
+06 49 13,Wood Screens,06,3
+06 49 16,Exterior Wood Blinds,06,3
+06 49 19,Exterior Wood Shutters,06,3
+06 50 00,Structural Plastics,06,2
+06 51 00,Structural Plastic Shapes and Plates,06,2
+06 51 13,Plastic Lumber,06,3
+06 52 00,Plastic Structural Assemblies,06,2
+06 53 00,Plastic Decking,06,2
+06 53 13,Solid Plastic Decking,06,3
+06 60 00,Plastic Fabrications,06,2
+06 61 00,Simulated Stone Fabrications,06,2
+06 61 13,Cultured Marble Fabrications,06,3
+06 61 16,Solid Surfacing Fabrications,06,3
+06 61 19,Quartz Surfacing Fabrications,06,3
+06 63 00,Plastic Railings,06,2
+06 64 00,Plastic Paneling,06,2
+06 65 00,Plastic Simulated Wood Trim,06,2
+06 66 00,Custom Ornamental Simulated Woodwork,06,2
+06 70 00,Structural Composites,06,2
+06 71 00,Structural Composite Shapes and Plates,06,2
+06 71 13,Composite Lumber,06,3
+06 72 00,Composite Structural Assemblies,06,2
+06 72 13,Composite Joist Assemblies,06,3
+06 73 00,Composite Decking,06,2
+06 73 13,Composite Structural Decking,06,3
+06 80 00,Composite Fabrications,06,2
+06 81 00,Composite Railings,06,2
+06 82 00,Glass-Fiber-Reinforced Plastic,06,2
+06 90 00,Unassigned,06,2
+07 00 00,Thermal and Moisture Protection,07,1
+07 01 00,Operation and Maintenance of Thermal and Moisture Protection,07,2
+07 05 00,Common Work Results for Thermal and Moisture Protection,07,2
+07 06 00,Schedules for Thermal and Moisture Protection,07,2
+07 08 00,Commissioning of Thermal and Moisture Protection,07,2
+07 10 00,Dampproofing and Waterproofing,07,2
+07 11 00,Dampproofing,07,2
+07 11 13,Bituminous Dampproofing,07,3
+07 11 16,Cementitious Dampproofing,07,3
+07 11 19,Sheet Dampproofing,07,3
+07 12 00,Built-Up Bituminous Waterproofing,07,2
+07 12 13,Built-Up Asphalt Waterproofing,07,3
+07 12 16,Built-Up Coal Tar Waterproofing,07,3
+07 13 00,Sheet Waterproofing,07,2
+07 13 13,Bituminous Sheet Waterproofing,07,3
+07 13 26,Self-Adhering Sheet Waterproofing,07,3
+07 13 52,Modified Bituminous Sheet Waterproofing,07,3
+07 13 53,Elastomeric Sheet Waterproofing,07,3
+07 13 54,Thermoplastic Sheet Waterproofing,07,3
+07 14 00,Fluid-Applied Waterproofing,07,2
+07 14 13,Hot Fluid-Applied Rubberized Asphalt Waterproofing,07,3
+07 14 16,Cold Fluid-Applied Waterproofing,07,3
+07 15 00,Sheet Metal Waterproofing,07,2
+07 16 00,Cementitious and Reactive Waterproofing,07,2
+07 16 13,Polymer Modified Cement Waterproofing,07,3
+07 16 16,Crystalline Waterproofing,07,3
+07 16 19,Metal Oxide Waterproofing,07,3
+07 17 00,Bentonite Waterproofing,07,2
+07 17 13,Bentonite Panel Waterproofing,07,3
+07 17 16,Bentonite Composite Sheet Waterproofing,07,3
+07 18 00,Traffic Coatings,07,2
+07 18 13,Pedestrian Traffic Coatings,07,3
+07 18 16,Vehicular Traffic Coatings,07,3
+07 19 00,Water Repellents,07,2
+07 19 13,Acrylic Water Repellents,07,3
+07 19 16,Silane Water Repellents,07,3
+07 19 19,Silicone Water Repellents,07,3
+07 19 23,Siloxane Water Repellents,07,3
+07 19 26,Stearate Water Repellents,07,3
+07 20 00,Thermal Protection,07,2
+07 21 00,Thermal Insulation,07,2
+07 21 13,Board Insulation,07,3
+07 21 16,Blanket Insulation,07,3
+07 21 19,Foamed-in-Place Insulation,07,3
+07 21 23,Loose-Fill Insulation,07,3
+07 21 26,Blown Insulation,07,3
+07 21 29,Sprayed Insulation,07,3
+07 22 00,Roof and Deck Insulation,07,2
+07 22 13,Asphaltic Perlite Concrete Deck,07,3
+07 22 16,Roof Board Insulation,07,3
+07 24 00,Exterior Insulation and Finish Systems,07,2
+07 24 13,Polymer-Based Exterior Insulation and Finish System,07,3
+07 24 16,Polymer-Modified Exterior Insulation and Finish System,07,3
+07 24 19,Water-Drainage Exterior Insulation and Finish System,07,3
+07 25 00,Weather Barriers,07,2
+07 26 00,Vapor Retarders,07,2
+07 26 13,Above-Grade Vapor Retarders,07,3
+07 26 16,Below-Grade Vapor Retarders,07,3
+07 26 23,Below-Grade Gas Retarders,07,3
+07 27 00,Air Barriers,07,2
+07 27 13,Modified Bituminous Sheet Air Barriers,07,3
+07 27 16,Sheet Metal Membrane Air Barriers,07,3
+07 27 19,Plastic Sheet Air Barriers,07,3
+07 27 23,Board Product Air Barriers,07,3
+07 27 26,Fluid-Applied Membrane Air Barriers,07,3
+07 30 00,Steep Slope Roofing,07,2
+07 30 91,Canvas Roofing,07,3
+07 31 00,Shingles and Shakes,07,2
+07 31 13,Asphalt Shingles,07,3
+07 31 16,Metal Shingles,07,3
+07 31 19,Mineral-Fiber Cement Shingles,07,3
+07 31 23,Porcelain Enamel Shingles,07,3
+07 31 26,Slate Shingles,07,3
+07 31 29,Wood Shingles and Shakes,07,3
+07 31 33,Composite Rubber Shingles,07,3
+07 31 53,Plastic Shakes,07,3
+07 32 00,Roof Tiles,07,2
+07 32 13,Clay Roof Tiles,07,3
+07 32 16,Concrete Roof Tiles,07,3
+07 32 19,Metal Roof Tiles,07,3
+07 32 23,Mineral-Fiber Cement Roof Tiles,07,3
+07 32 26,Plastic Roof Tiles,07,3
+07 32 29,Rubber Tiles/Panels,07,3
+07 33 00,Natural Roof Coverings,07,2
+07 33 13,Sod Roofing,07,3
+07 33 16,Thatched Roofing,07,3
+07 33 63,Vegetated Roofing,07,3
+07 40 00,Roofing and Siding Panels,07,2
+07 41 00,Roof Panels,07,2
+07 41 13,Metal Roof Panels,07,3
+07 41 23,Wood Roof Panels,07,3
+07 41 33,Plastic Roof Panels,07,3
+07 41 43,Composite Roof Panels,07,3
+07 41 63,Fabricated Roof Panel Assemblies,07,3
+07 42 00,Wall Panels,07,2
+07 42 13,Metal Wall Panels,07,3
+07 42 23,Wood Wall Panels,07,3
+07 42 33,Plastic Wall Panels,07,3
+07 42 43,Composite Wall Panels,07,3
+07 42 63,Fabricated Wall Panel Assemblies,07,3
+07 44 00,Faced Panels,07,2
+07 44 13,Aggregate Coated Panels,07,3
+07 44 16,Porcelain Enameled Faced Panels,07,3
+07 44 19,Tile-Faced Panels,07,3
+07 44 23,Ceramic-Tile-Faced Panels,07,3
+07 44 53,Glass-Fiber-Reinforced Cementitious Panels,07,3
+07 44 56,Mineral-Fiber-Reinforced Cementitious Panels,07,3
+07 44 63,Fabricated Faced Panel Assemblies,07,3
+07 46 00,Siding,07,2
+07 46 16,Aluminum Siding,07,3
+07 46 19,Steel Siding,07,3
+07 46 23,Wood Siding,07,3
+07 46 26,Hardboard Siding,07,3
+07 46 29,Plywood Siding,07,3
+07 46 33,Plastic Siding,07,3
+07 46 43,Composition Siding,07,3
+07 46 46,Mineral-Fiber Cement Siding,07,3
+07 46 63,Fabricated Panel Assemblies with Siding,07,3
+07 50 00,Membrane Roofing,07,2
+07 51 00,Built-Up Bituminous Roofing,07,2
+07 51 13,Built-Up Asphalt Roofing,07,3
+07 51 16,Built-Up Coal Tar Roofing,07,3
+07 51 23,Glass-Fiber-Reinforced Asphalt Emulsion Roofing,07,3
+07 52 00,Modified Bituminous Membrane Roofing,07,2
+07 52 13,Atactic-Polypropylene-Modified Bituminous Membrane Roofing,07,3
+07 52 16,Styrene-Butadiene-Styrene Modified Bituminous Membrane Roofing,07,3
+07 52 19,Self-Adhering Modified Bituminous Membrane Roofing,07,3
+07 53 00,Elastomeric Membrane Roofing,07,2
+07 53 13,Chlorinated-Polyethylene Roofing,07,3
+07 53 16,Chlorosulfonate-Polyethylene Roofing,07,3
+07 53 23,Ethylene-Propylene-Diene-Monomer Roofing,07,3
+07 53 29,Polyisobutylene Roofing,07,3
+07 54 00,Thermoplastic Membrane Roofing,07,2
+07 54 13,Copolymer-Alloy Roofing,07,3
+07 54 16,Ethylene-Interpolymer Roofing,07,3
+07 54 19,Polyvinyl-Chloride Roofing,07,3
+07 54 23,Thermoplastic-Polyolefin Roofing,07,3
+07 54 26,Nitrile-Butadiene-Polymer Roofing,07,3
+07 55 00,Protected Membrane Roofing,07,2
+07 55 51,Built-Up Bituminous Protected Membrane Roofing,07,3
+07 55 52,Modified Bituminous Protected Membrane Roofing,07,3
+07 55 53,Elastomeric Protected Membrane Roofing,07,3
+07 55 54,Thermoplastic Protected Membrane Roofing,07,3
+07 55 56,Fluid-Applied Protected Membrane Roofing,07,3
+07 55 63,Vegetated Protected Membrane Roofing,07,3
+07 56 00,Fluid-Applied Roofing,07,2
+07 57 00,Coated Foamed Roofing,07,2
+07 57 13,Sprayed Polyurethane Foam Roofing,07,3
+07 58 00,Roll Roofing,07,2
+07 60 00,Flashing and Sheet Metal,07,2
+07 61 00,Sheet Metal Roofing,07,2
+07 61 13,Standing Seam Sheet Metal Roofing,07,3
+07 61 16,Batten Seam Sheet Metal Roofing,07,3
+07 61 19,Flat Seam Sheet Metal Roofing,07,3
+07 61 91,Tinplate and Ternplate Roofing,07,3
+07 62 00,Sheet Metal Flashing and Trim,07,2
+07 63 00,Sheet Metal Roofing Specialties,07,2
+07 65 00,Flexible Flashing,07,2
+07 65 13,Laminated Sheet Flashing,07,3
+07 65 16,Modified Bituminous Sheet Flashing,07,3
+07 65 19,Plastic Sheet Flashing,07,3
+07 65 23,Rubber Sheet Flashing,07,3
+07 65 26,Self-Adhering Sheet Flashing,07,3
+07 70 00,Roof and Wall Specialties and Accessories,07,2
+07 71 00,Roof Specialties,07,2
+07 71 13,Manufactured Copings,07,3
+07 71 16,Manufactured Counterflashing Systems,07,3
+07 71 19,Manufactured Gravel Stops and Facias,07,3
+07 71 23,Manufactured Gutters and Downspouts,07,3
+07 71 26,Reglets,07,3
+07 71 29,Manufactured Roof Expansion Joints,07,3
+07 71 33,Manufactured Scuppers,07,3
+07 72 00,Roof Accessories,07,2
+07 72 13,Manufactured Curbs,07,3
+07 72 23,Relief Vents,07,3
+07 72 26,Ridge Vents,07,3
+07 72 33,Roof Hatches,07,3
+07 72 36,Smoke Vents,07,3
+07 72 43,Roof Walk Boards,07,3
+07 72 46,Roof Walkways,07,3
+07 72 53,Snow Guards,07,3
+07 72 63,Waste Containment Assemblies,07,3
+07 76 00,Roof Pavers,07,2
+07 76 13,Roof Ballast Pavers,07,3
+07 76 16,Roof Decking Pavers,07,3
+07 77 00,Wall Specialties,07,2
+07 80 00,Fire and Smoke Protection,07,2
+07 81 00,Applied Fireproofing,07,2
+07 81 13,Cement Aggregate Fireproofing,07,3
+07 81 16,Cementitious Fireproofing,07,3
+07 81 19,Foamed Magnesium-Oxychloride Fireproofing,07,3
+07 81 23,Intumescent Mastic Fireproofing,07,3
+07 81 26,Magnesium Cement Fireproofing,07,3
+07 81 29,Mineral-Fiber Cementitious Fireproofing,07,3
+07 81 33,Mineral-Fiber Fireproofing,07,3
+07 82 00,Board Fireproofing,07,2
+07 82 13,Calcium-Silicate Board Fireproofing,07,3
+07 82 16,Slag-Fiber Board Fireproofing,07,3
+07 84 00,Firestopping,07,2
+07 84 13,Penetration Firestopping,07,3
+07 84 16,Annular Space Protection,07,3
+07 84 23,Silicone Firestopping Foams,07,3
+07 84 26,Thermal Barriers for Plastics,07,3
+07 84 43,Fire-Resistant Joint Sealants,07,3
+07 84 53,Building Perimeter Firestopping,07,3
+07 84 56,Fire Safing,07,3
+07 86 00,Smoke Seals,07,2
+07 87 00,Smoke Containment Barriers,07,2
+07 90 00,Joint Protection,07,2
+07 91 00,Preformed Joint Seals,07,2
+07 91 13,Compression Seals,07,3
+07 91 16,Joint Gaskets,07,3
+07 91 23,Backer Rods,07,3
+07 91 26,Joint Fillers,07,3
+07 92 00,Joint Sealants,07,2
+07 92 13,Elastomeric Joint Sealants,07,3
+07 92 16,Rigid Joint Sealants,07,3
+07 92 19,Acoustical Joint Sealants,07,3
+07 95 00,Expansion Control,07,2
+07 95 13,Expansion Joint Cover Assemblies,07,3
+07 95 53,Joint Slide Bearings,07,3
+07 95 63,Bridge Expansion Joint Cover Assemblies,07,3
+08 00 00,Openings,08,1
+08 01 00,Operation and Maintenance of Openings,08,2
+08 05 00,Common Work Results for Openings,08,2
+08 06 00,Schedules for Openings,08,2
+08 08 00,Commissioning of Openings,08,2
+08 10 00,Doors and Frames,08,2
+08 11 00,Metal Doors and Frames,08,2
+08 11 13,Hollow Metal Doors and Frames,08,3
+08 11 16,Aluminum Doors and Frames,08,3
+08 11 19,Stainless-Steel Doors and Frames,08,3
+08 11 23,Bronze Doors and Frames,08,3
+08 11 63,Metal Screen and Storm Doors and Frames,08,3
+08 11 66,Metal Screen Doors and Frames,08,3
+08 11 69,Metal Storm Doors and Frames,08,3
+08 11 73,Sliding Metal Firedoors,08,3
+08 11 74,Sliding Metal Grilles,08,3
+08 12 00,Metal Frames,08,2
+08 12 13,Hollow Metal Frames,08,3
+08 12 16,Aluminum Frames,08,3
+08 12 19,Stainless-Steel Frames,08,3
+08 12 23,Bronze Frames,08,3
+08 13 00,Metal Doors,08,2
+08 13 13,Hollow Metal Doors,08,3
+08 13 16,Aluminum Doors,08,3
+08 13 19,Stainless-Steel Doors,08,3
+08 13 23,Bronze Doors,08,3
+08 13 73,Sliding Metal Doors,08,3
+08 13 76,Bifolding Metal Doors,08,3
+08 14 00,Wood Doors,08,2
+08 14 13,Carved Wood Doors,08,3
+08 14 16,Flush Wood Doors,08,3
+08 14 23,Clad Wood Doors,08,3
+08 14 29,Prefinished Wood Doors,08,3
+08 14 33,Stile and Rail Wood Doors,08,3
+08 14 66,Wood Screen Doors,08,3
+08 14 69,Wood Storm Doors,08,3
+08 14 73,Sliding Wood Doors,08,3
+08 14 76,Bifolding Wood Doors,08,3
+08 15 00,Plastic Doors,08,2
+08 15 13,Laminated Plastic Doors,08,3
+08 15 16,Solid Plastic Doors,08,3
+08 15 66,Plastic Screen Doors,08,3
+08 15 69,Plastic Storm Doors,08,3
+08 15 73,Sliding Plastic Doors,08,3
+08 15 76,Bifolding Plastic Doors,08,3
+08 16 00,Composite Doors,08,2
+08 16 13,Fiberglass Doors,08,3
+08 16 73,Sliding Composite Doors,08,3
+08 16 76,Bifolding Composite Doors,08,3
+08 17 00,Integrated Door Opening Assemblies,08,2
+08 17 13,Integrated Metal Door Opening Assemblies,08,3
+08 17 23,Integrated Wood Door Opening Assemblies,08,3
+08 17 33,Integrated Plastic Door Opening Assemblies,08,3
+08 17 43,Integrated Composite Door Opening Assemblies,08,3
+08 20 00,Unassigned,08,2
+08 30 00,Specialty Doors and Frames,08,2
+08 31 00,Access Doors and Panels,08,2
+08 31 13,Access Doors and Frames,08,3
+08 31 16,Access Panels and Frames,08,3
+08 32 00,Sliding Glass Doors,08,2
+08 32 13,Sliding Aluminum-Framed Glass Doors,08,3
+08 32 16,Sliding Plastic-Framed Glass Doors,08,3
+08 32 19,Sliding Wood-Framed Glass Doors,08,3
+08 33 00,Coiling Doors and Grilles,08,2
+08 33 13,Coiling Counter Doors,08,3
+08 33 16,Coiling Counter Grilles,08,3
+08 33 23,Overhead Coiling Doors,08,3
+08 33 26,Overhead Coiling Grilles,08,3
+08 33 33,Side Coiling Doors,08,3
+08 33 36,Side Coiling Grilles,08,3
+08 34 00,Special Function Doors,08,2
+08 34 13,Cold Storage Doors,08,3
+08 34 16,Hangar Doors,08,3
+08 34 19,Industrial Doors,08,3
+08 34 33,Lightproof Doors,08,3
+08 34 36,Darkroom Doors,08,3
+08 34 46,Radio-Frequency-Interference Shielding Doors,08,3
+08 34 49,Radiation Shielding Doors and Frames,08,3
+08 34 53,Security Doors and Frames,08,3
+08 34 56,Security Gates,08,3
+08 34 59,Vault Doors and Day Gates,08,3
+08 34 63,Detention Doors and Frames,08,3
+08 34 73,Sound Control Door Assemblies,08,3
+08 35 00,Folding Doors and Grilles,08,2
+08 35 13,Folding Doors,08,3
+08 35 16,Folding Grilles,08,3
+08 36 00,Panel Doors,08,2
+08 36 13,Sectional Doors,08,3
+08 36 16,Single-Panel Doors,08,3
+08 36 19,Multi-Leaf Vertical Lift Doors,08,3
+08 36 23,Telescoping Vertical Lift Doors,08,3
+08 38 00,Traffic Doors,08,2
+08 38 13,Flexible Strip Doors,08,3
+08 38 16,Flexible Traffic Doors,08,3
+08 38 19,Rigid Traffic Doors,08,3
+08 39 00,Pressure-Resistant Doors,08,2
+08 39 13,Airtight Doors,08,3
+08 39 19,Watertight Doors,08,3
+08 39 53,Blast-Resistant Doors,08,3
+08 40 00,"Entrances, Storefronts, and Curtain Walls",08,2
+08 41 00,Entrances and Storefronts,08,2
+08 41 13,Aluminum-Framed Entrances and Storefronts,08,3
+08 41 16,Bronze-Framed Entrances and Storefronts,08,3
+08 41 19,Stainless-Steel-Framed Entrances and Storefronts,08,3
+08 41 23,Steel-Framed Entrances and Storefronts,08,3
+08 41 26,All-Glass Entrances and Storefronts,08,3
+08 42 00,Entrances,08,2
+08 42 26,All-Glass Entrances,08,3
+08 42 29,Automatic Entrances,08,3
+08 42 33,Revolving Door Entrances,08,3
+08 42 36,Balanced Door Entrances,08,3
+08 42 39,Pressure-Resistant Entrances,08,3
+08 42 43,Intensive Care Unit/Critical Care Unit Entrances,08,3
+08 43 00,Storefronts,08,2
+08 43 13,Aluminum-Framed Storefronts,08,3
+08 43 16,Bronze-Framed Storefronts,08,3
+08 43 19,Stainless-Steel-Framed Storefronts,08,3
+08 43 23,Steel-Framed Storefronts,08,3
+08 43 26,All-Glass Storefronts,08,3
+08 43 29,Sliding Storefronts,08,3
+08 44 00,Curtain Wall and Glazed Assemblies,08,2
+08 44 13,Glazed Aluminum Curtain Walls,08,3
+08 44 16,Glazed Bronze Curtain Walls,08,3
+08 44 19,Glazed Stainless-Steel Curtain Walls,08,3
+08 44 26,Structural Glass Curtain Walls,08,3
+08 44 33,Sloped Glazing Assemblies,08,3
+08 45 00,Translucent Wall and Roof Assemblies,08,2
+08 45 13,Structured-Polycarbonate-Panel Assemblies,08,3
+08 45 23,Fiberglass-Sandwich-Panel Assemblies,08,3
+08 50 00,Windows,08,2
+08 51 00,Metal Windows,08,2
+08 51 13,Aluminum Windows,08,3
+08 51 16,Bronze Windows,08,3
+08 51 19,Stainless-Steel Windows,08,3
+08 51 23,Steel Windows,08,3
+08 51 66,Metal Window Screens,08,3
+08 51 69,Metal Storm Windows,08,3
+08 52 00,Wood Windows,08,2
+08 52 13,Metal-Clad Wood Windows,08,3
+08 52 16,Plastic-Clad Wood Windows,08,3
+08 52 66,Wood Window Screens,08,3
+08 52 69,Wood Storm Windows,08,3
+08 53 00,Plastic Windows,08,2
+08 53 13,Vinyl Windows,08,3
+08 53 66,Vinyl Window Screens,08,3
+08 53 69,Vinyl Storm Windows,08,3
+08 54 00,Composite Windows,08,2
+08 54 13,Fiberglass Windows,08,3
+08 54 66,Fiberglass Window Screens,08,3
+08 54 69,Fiberglass Storm Windows,08,3
+08 55 00,Pressure-Resistant Windows,08,2
+08 56 00,Special Function Windows,08,2
+08 56 19,Pass Windows,08,3
+08 56 46,Radio-Frequency-Interference Shielding Windows,08,3
+08 56 49,Radiation Shielding Windows,08,3
+08 56 53,Security Windows,08,3
+08 56 56,Security Window Screens,08,3
+08 56 59,Service and Teller Window Units,08,3
+08 56 63,Detention Windows,08,3
+08 56 66,Detention Window Screens,08,3
+08 56 73,Sound Control Windows,08,3
+08 60 00,Roof Windows and Skylights,08,2
+08 61 00,Roof Windows,08,2
+08 61 13,Metal Roof Windows,08,3
+08 61 16,Wood Roof Windows,08,3
+08 62 00,Unit Skylights,08,2
+08 62 13,Domed Unit Skylights,08,3
+08 62 16,Pyramidal Unit Skylights,08,3
+08 62 19,Vaulted Unit Skylights,08,3
+08 63 00,Metal-Framed Skylights,08,2
+08 63 13,Domed Metal-Framed Skylights,08,3
+08 63 16,Pyramidal Metal-Framed Skylights,08,3
+08 63 19,Vaulted Metal-Framed Skylights,08,3
+08 63 23,Ridge Metal-Framed Skylights,08,3
+08 63 53,Motorized Metal-Framed Skylights,08,3
+08 64 00,Plastic-Framed Skylights,08,2
+08 67 00,Skylight Protection and Screens,08,2
+08 70 00,Hardware,08,2
+08 71 00,Door Hardware,08,2
+08 71 13,Automatic Door Operators,08,3
+08 71 53,Security Door Hardware,08,3
+08 71 63,Detention Door Hardware,08,3
+08 74 00,Access Control Hardware,08,2
+08 74 13,Card Key Access Control Hardware,08,3
+08 74 16,Keypad Access Control Hardware,08,3
+08 74 19,Biometric Identity Access Control Hardware,08,3
+08 75 00,Window Hardware,08,2
+08 75 13,Automatic Window Equipment,08,3
+08 75 16,Window Operators,08,3
+08 78 00,Special Function Hardware,08,2
+08 79 00,Hardware Accessories,08,2
+08 79 13,Key Storage Equipment,08,3
+08 80 00,Glazing,08,2
+08 81 00,Glass Glazing,08,2
+08 81 13,Decorative Glass Glazing,08,3
+08 83 00,Mirrors,08,2
+08 83 13,Mirrored Glass Glazing,08,3
+08 83 16,Mirrored Plastic Glazing,08,3
+08 84 00,Plastic Glazing,08,2
+08 84 13,Decorative Plastic Glazing,08,3
+08 85 00,Glazing Accessories,08,2
+08 87 00,Glazing Surface Films,08,2
+08 87 13,Solar Control Films,08,3
+08 87 16,Safety Films,08,3
+08 87 53,Security Films,08,3
+08 88 00,Special Function Glazing,08,2
+08 88 19,Hurricane-Resistant Glazing,08,3
+08 88 23,Cable Suspended Glazing,08,3
+08 88 33,Transparent Mirrored Glazing,08,3
+08 88 39,Pressure-Resistant Glazing,08,3
+08 88 49,Radiation-Resistant Glazing,08,3
+08 88 53,Security Glazing,08,3
+08 88 56,Ballistics-Resistant Glazing,08,3
+08 90 00,Louvers and Vents,08,2
+08 91 00,Louvers,08,2
+08 91 13,Motorized Wall Louvers,08,3
+08 91 16,Operable Wall Louvers,08,3
+08 91 19,Fixed Louvers,08,3
+08 91 26,Door Louvers,08,3
+08 92 00,Louvered Equipment Enclosures,08,2
+08 95 00,Vents,08,2
+08 95 13,Soffit Vents,08,3
+08 95 16,Wall Vents,08,3
+09 00 00,Finishes,09,1
+09 01 00,Maintenance of Finishes,09,2
+09 05 00,Common Work Results for Finishes,09,2
+09 06 00,Schedules for Finishes,09,2
+09 08 00,Commissioning of Finishes,09,2
+09 10 00,Unassigned,09,2
+09 20 00,Plaster and Gypsum Board,09,2
+09 21 00,Plaster and Gypsum Board Assemblies,09,2
+09 21 13,Plaster Assemblies,09,3
+09 21 16,Gypsum Board Assemblies,09,3
+09 22 00,Supports for Plaster and Gypsum Board,09,2
+09 22 13,Metal Furring,09,3
+09 22 16,Non-Structural Metal Framing,09,3
+09 22 26,Suspension Systems,09,3
+09 22 36,Lath,09,3
+09 22 39,Veneer Plaster Base,09,3
+09 23 00,Gypsum Plastering,09,2
+09 23 13,Acoustical Gypsum Plastering,09,3
+09 23 82,Fireproof Gypsum Plastering,09,3
+09 24 00,Portland Cement Plastering,09,2
+09 24 13,Adobe Finish,09,3
+09 24 23,Portland Cement Stucco,09,3
+09 24 33,Portland Cement Parging,09,3
+09 25 00,Other Plastering,09,2
+09 25 13,Acrylic Plastering,09,3
+09 25 23,Lime Based Plastering,09,3
+09 26 00,Veneer Plastering,09,2
+09 26 13,Gypsum Veneer Plastering,09,3
+09 27 00,Plaster Fabrications,09,2
+09 27 13,Glass-Fiber-Reinforced Plaster Fabrications,09,3
+09 27 23,Simulated Plaster Fabrications,09,3
+09 28 00,Backing Boards and Underlayments,09,2
+09 28 13,Cementitious Backing Boards,09,3
+09 28 16,Glass-Mat Faced Gypsum Backing Boards,09,3
+09 28 19,Fibered Gypsum Backing Boards,09,3
+09 29 00,Gypsum Board,09,2
+09 29 82,Gypsum Board Fireproofing,09,3
+09 30 00,Tiling,09,2
+09 30 13,Ceramic Tiling,09,3
+09 30 16,Quarry Tiling,09,3
+09 30 19,Paver Tiling,09,3
+09 30 23,Glass Mosaic Tiling,09,3
+09 30 26,Plastic Tiling,09,3
+09 30 29,Metal Tiling,09,3
+09 30 33,Stone Tiling,09,3
+09 31 00,Thin-Set Tiling,09,2
+09 31 13,Thin-Set Ceramic Tiling,09,3
+09 31 16,Thin-Set Quarry Tiling,09,3
+09 31 19,Thin-Set Paver Tiling,09,3
+09 31 23,Thin-Set Glass Mosaic Tiling,09,3
+09 31 26,Thin-Set Plastic Tiling,09,3
+09 31 29,Thin-Set Metal Tiling,09,3
+09 31 33,Thin-Set Stone Tiling,09,3
+09 32 00,Mortar-Bed Tiling,09,2
+09 32 13,Mortar-Bed Ceramic Tiling,09,3
+09 32 16,Mortar-Bed Quarry Tiling,09,3
+09 32 19,Mortar-Bed Paver Tiling,09,3
+09 32 23,Mortar-Bed Glass Mosaic Tiling,09,3
+09 32 26,Mortar-Bed Plastic Tiling,09,3
+09 32 29,Mortar-Bed Metal Tiling,09,3
+09 32 33,Mortar-Bed Stone Tiling,09,3
+09 33 00,Conductive Tiling,09,2
+09 33 13,Conductive Ceramic Tiling,09,3
+09 33 16,Conductive Quarry Tiling,09,3
+09 33 19,Conductive Paver Tiling,09,3
+09 33 23,Conductive Glass Mosaic Tiling,09,3
+09 33 26,Conductive Plastic Tiling,09,3
+09 33 29,Conductive Metal Tiling,09,3
+09 33 33,Conductive Stone Tiling,09,3
+09 34 00,Waterproofing-Membrane Tiling,09,2
+09 34 13,Waterproofing-Membrane Ceramic Tiling,09,3
+09 34 16,Waterproofing-Membrane Quarry Tiling,09,3
+09 34 19,Waterproofing-Membrane Paver Tiling,09,3
+09 34 23,Waterproofing-Membrane Glass Mosaic Tiling,09,3
+09 34 26,Waterproofing-Membrane Plastic Tiling,09,3
+09 34 29,Waterproofing-Membrane Metal Tiling,09,3
+09 34 33,Waterproofing-Membrane Stone Tiling,09,3
+09 35 00,Chemical-Resistant Tiling,09,2
+09 35 13,Chemical-Resistant Ceramic Tiling,09,3
+09 35 16,Chemical-Resistant Quarry Tiling,09,3
+09 35 19,Chemical-Resistant Paver Tiling,09,3
+09 35 23,Chemical-Resistant Glass Mosaic Tiling,09,3
+09 35 26,Chemical-Resistant Plastic Tiling,09,3
+09 35 29,Chemical-Resistant Metal Tiling,09,3
+09 35 33,Chemical-Resistant Stone Tiling,09,3
+09 40 00,Unassigned,09,2
+09 50 00,Ceilings,09,2
+09 51 00,Acoustical Ceilings,09,2
+09 51 13,Acoustical Panel Ceilings,09,3
+09 51 23,Acoustical Tile Ceilings,09,3
+09 51 33,Acoustical Metal Pan Ceilings,09,3
+09 51 53,Direct-Applied Acoustical Ceilings,09,3
+09 53 00,Acoustical Ceiling Suspension Assemblies,09,2
+09 53 13,Curved Profile Ceiling Suspension Assemblies,09,3
+09 53 23,Metal Acoustical Ceiling Suspension Assemblies,09,3
+09 53 33,Plastic Acoustical Ceiling Suspension Assemblies,09,3
+09 54 00,Specialty Ceilings,09,2
+09 54 13,Open Metal Mesh Ceilings,09,3
+09 54 16,Luminous Ceilings,09,3
+09 54 19,Mirror Panel Ceilings,09,3
+09 54 23,Linear Metal Ceilings,09,3
+09 54 26,Linear Wood Ceilings,09,3
+09 54 33,Decorative Panel Ceilings,09,3
+09 54 36,Suspended Decorative Grids,09,3
+09 54 43,Stretched-Fabric Ceiling Systems,09,3
+09 54 46,Fabric-Wrapped Ceiling Panels,09,3
+09 56 00,Textured Ceilings,09,2
+09 56 13,Gypsum-Panel Textured Ceilings,09,3
+09 56 16,Metal-Panel Textured Ceilings,09,3
+09 57 00,Special Function Ceilings,09,2
+09 57 53,Security Ceiling Assemblies,09,3
+09 58 00,Integrated Ceiling Assemblies,09,2
+09 60 00,Flooring,09,2
+09 61 00,Flooring Treatment,09,2
+09 61 13,Slip-Resistant Flooring Treatment,09,3
+09 61 36,Static-Resistant Flooring Treatment,09,3
+09 62 00,Specialty Flooring,09,2
+09 62 13,Asphaltic Plank Flooring,09,3
+09 62 19,Laminate Flooring,09,3
+09 62 23,Bamboo Flooring,09,3
+09 62 26,Leather Flooring,09,3
+09 62 29,Cork Flooring,09,3
+09 62 35,Acid-Resistant Flooring,09,3
+09 62 48,Acoustic Flooring,09,3
+09 63 00,Masonry Flooring,09,2
+09 63 13,Brick Flooring,09,3
+09 63 40,Stone Flooring,09,3
+09 63 43,Composition Stone Flooring,09,3
+09 64 00,Wood Flooring,09,2
+09 64 16,Wood Block Flooring,09,3
+09 64 19,Wood Composition Flooring,09,3
+09 64 23,Wood Parquet Flooring,09,3
+09 64 29,Wood Strip and Plank Flooring,09,3
+09 64 33,Laminated Wood Flooring,09,3
+09 64 53,Resilient Wood Flooring Assemblies,09,3
+09 64 66,Wood Athletic Flooring,09,3
+09 65 00,Resilient Flooring,09,2
+09 65 13,Resilient Base and Accessories,09,3
+09 65 16,Resilient Sheet Flooring,09,3
+09 65 19,Resilient Tile Flooring,09,3
+09 65 33,Conductive Resilient Flooring,09,3
+09 65 36,Static-Control Resilient Flooring,09,3
+09 65 66,Resilient Athletic Flooring,09,3
+09 66 00,Terrazzo Flooring,09,2
+09 66 13,Portland Cement Terrazzo Flooring,09,3
+09 66 16,Terrazzo Floor Tile,09,3
+09 66 23,Resinous Matrix Terrazzo Flooring,09,3
+09 66 33,Conductive Terrazzo Flooring,09,3
+09 67 00,Fluid-Applied Flooring,09,2
+09 67 13,Elastomeric Liquid Flooring,09,3
+09 67 16,Epoxy-Marble Chip Flooring,09,3
+09 67 19,Magnesium-Oxychloride Flooring,09,3
+09 67 23,Resinous Flooring,09,3
+09 67 26,Quartz Flooring,09,3
+09 67 66,Fluid-Applied Athletic Flooring,09,3
+09 68 00,Carpeting,09,2
+09 68 13,Tile Carpeting,09,3
+09 68 16,Sheet Carpeting,09,3
+09 69 00,Access Flooring,09,2
+09 69 13,Rigid-Grid Access Flooring,09,3
+09 69 16,Snap-on Stringer Access Flooring,09,3
+09 69 19,Stringerless Access Flooring,09,3
+09 69 53,Access Flooring Accessories,09,3
+09 69 56,Access Flooring Stairs and Stringers,09,3
+09 70 00,Wall Finishes,09,2
+09 72 00,Wall Coverings,09,2
+09 72 13,Cork Wall Coverings,09,3
+09 72 16,Vinyl-Coated Fabric Wall Coverings,09,3
+09 72 19,Textile Wall Coverings,09,3
+09 72 23,Wallpapering,09,3
+09 73 00,Wall Carpeting,09,2
+09 74 00,Flexible Wood Sheets,09,2
+09 74 13,Wood Wall Coverings,09,3
+09 74 16,Flexible Wood Veneers,09,3
+09 75 00,Stone Facing,09,2
+09 76 00,Plastic Blocks,09,2
+09 77 00,Special Wall Surfacing,09,2
+09 77 13,Stretched-Fabric Wall Systems,09,3
+09 77 23,Fabric-Wrapped Panels,09,3
+09 80 00,Acoustic Treatment,09,2
+09 81 00,Acoustic Insulation,09,2
+09 81 13,Acoustic Board Insulation,09,3
+09 81 16,Acoustic Blanket Insulation,09,3
+09 81 29,Sprayed Acoustic Insulation,09,3
+09 83 00,Acoustic Finishes,09,2
+09 83 13,Acoustic Wall Coating,09,3
+09 83 16,Acoustic Ceiling Coating,09,3
+09 83 22,Acoustic Drapery,09,3
+09 84 00,Acoustic Room Components,09,2
+09 84 13,Fixed Sound-Absorptive Panels,09,3
+09 84 16,Fixed Sound-Reflective Panels,09,3
+09 84 23,Moveable Sound-Absorptive Panels,09,3
+09 84 26,Moveable Sound-Reflective Panels,09,3
+09 84 33,Sound-Absorbing Wall Units,09,3
+09 84 36,Sound-Absorbing Ceiling Units,09,3
+09 90 00,Painting and Coating,09,2
+09 91 00,Painting,09,2
+09 91 13,Exterior Painting,09,3
+09 91 23,Interior Painting,09,3
+09 93 00,Staining and Transparent Finishing,09,2
+09 93 13,Exterior Staining and Finishing,09,3
+09 93 23,Interior Staining and Finishing,09,3
+09 94 00,Decorative Finishing,09,2
+09 94 13,Textured Finishing,09,3
+09 94 16,Faux Finishing,09,3
+09 94 19,Multicolor Interior Finishing,09,3
+09 96 00,High-Performance Coatings,09,2
+09 96 13,Abrasion-Resistant Coatings,09,3
+09 96 23,Graffiti-Resistant Coatings,09,3
+09 96 26,Marine Coatings,09,3
+09 96 33,High-Temperature-Resistant Coatings,09,3
+09 96 35,Chemical-Resistant Coatings,09,3
+09 96 43,Fire-Retardant Coatings,09,3
+09 96 46,Intumescent Painting,09,3
+09 96 53,Elastomeric Coatings,09,3
+09 96 56,Epoxy Coatings,09,3
+09 96 59,High-Build Glazed Coatings,09,3
+09 96 63,Textured Plastic Coatings,09,3
+09 96 66,Aggregate Wall Coatings,09,3
+09 97 00,Special Coatings,09,2
+09 97 13,Steel Coatings,09,3
+09 97 23,Concrete and Masonry Coatings,09,3
+09 97 26,Cementitious Coatings,09,3
+10 00 00,Specialties,10,1
+10 01 00,Operation and Maintenance of Specialties,10,2
+10 05 00,Common Work Results for Specialties,10,2
+10 06 00,Schedules for Specialties,10,2
+10 08 00,Commissioning of Specialties,10,2
+10 10 00,Information Specialties,10,2
+10 11 00,Visual Display Surfaces,10,2
+10 11 13,Chalkboards,10,3
+10 11 16,Markerboards,10,3
+10 11 23,Tackboards,10,3
+10 11 33,Sliding Visual Display Units,10,3
+10 11 36,Visual Display Conference Units,10,3
+10 11 39,Visual Display Rails,10,3
+10 11 43,Visual Display Wall Panels,10,3
+10 11 46,Visual Display Fabrics,10,3
+10 12 00,Display Cases,10,2
+10 13 00,Directories,10,2
+10 13 13,Electronic Directories,10,3
+10 14 00,Signage,10,2
+10 14 16,Plaques,10,3
+10 14 19,Dimensional Letter Signage,10,3
+10 14 23,Panel Signage,10,3
+10 14 26,Post and Panel/Pylon Signage,10,3
+10 14 33,Illuminated Panel Signage,10,3
+10 14 36,Non-Illuminated Panel Signage,10,3
+10 14 43,Photoluminescent Signage,10,3
+10 14 53,Traffic Signage,10,3
+10 14 63,Electronic Message Signage,10,3
+10 14 66,Floating Signage,10,3
+10 17 00,Telephone Specialties,10,2
+10 17 13,Telephone Directory Units,10,3
+10 17 16,Telephone Enclosures,10,3
+10 17 19,Telephone Shelving,10,3
+10 18 00,Informational Kiosks,10,2
+10 20 00,Interior Specialties,10,2
+10 21 00,Compartments and Cubicles,10,2
+10 21 13,Toilet Compartments,10,3
+10 21 16,Shower and Dressing Compartments,10,3
+10 21 23,Cubicles,10,3
+10 22 00,Partitions,10,2
+10 22 13,Wire Mesh Partitions,10,3
+10 22 16,Folding Gates,10,3
+10 22 19,Demountable Partitions,10,3
+10 22 23,"Portable Partitions, Screens, and Panels",10,3
+10 22 26,Operable Partitions,10,3
+10 25 00,Service Walls,10,2
+10 25 13,Patient Bed Service Walls,10,3
+10 25 16,Modular Service Walls,10,3
+10 26 00,Wall and Door Protection,10,2
+10 26 13,Corner Guards,10,3
+10 26 16,Bumper Guards,10,3
+10 26 23,Protective Wall Covering,10,3
+10 26 33,Door and Frame Protection,10,3
+10 28 00,"Toilet, Bath, and Laundry Accessories",10,2
+10 28 13,Toilet Accessories,10,3
+10 28 16,Bath Accessories,10,3
+10 28 19,Tub and Shower Doors,10,3
+10 28 23,Laundry Accessories,10,3
+10 30 00,Fireplaces and Stoves,10,2
+10 31 00,Manufactured Fireplaces,10,2
+10 31 13,Manufactured Fireplace Chimneys,10,3
+10 31 16,Manufactured Fireplace Forms,10,3
+10 32 00,Fireplace Specialties,10,2
+10 32 13,Fireplace Dampers,10,3
+10 32 16,Fireplace Inserts,10,3
+10 32 19,Fireplace Screens,10,3
+10 32 23,Fireplace Doors,10,3
+10 32 26,Fireplace Water Heaters,10,3
+10 35 00,Stoves,10,2
+10 35 13,Heating Stoves,10,3
+10 35 23,Cooking Stoves,10,3
+10 40 00,Safety Specialties,10,2
+10 41 00,Emergency Access and Information Cabinets,10,2
+10 41 13,Fire Department Plan Cabinets,10,3
+10 41 16,Emergency Key Cabinets,10,3
+10 43 00,Emergency Aid Specialties,10,2
+10 43 13,Defibrillator Cabinets,10,3
+10 43 16,First Aid Cabinets,10,3
+10 44 00,Fire Protection Specialties,10,2
+10 44 13,Fire Extinguisher Cabinets,10,3
+10 44 16,Fire Extinguishers,10,3
+10 44 33,Fire Blankets and Cabinets,10,3
+10 44 43,Fire Extinguisher Accessories,10,3
+10 50 00,Storage Specialties,10,2
+10 51 00,Lockers,10,2
+10 51 13,Metal Lockers,10,3
+10 51 16,Wood Lockers,10,3
+10 51 23,Plastic-Laminate-Clad Lockers,10,3
+10 51 26,Plastic Lockers,10,3
+10 51 33,Glass Lockers,10,3
+10 51 43,Wire Mesh Storage Lockers,10,3
+10 51 53,Locker Room Benches,10,3
+10 55 00,Postal Specialties,10,2
+10 55 13,Central Mail Delivery Boxes,10,3
+10 55 16,Mail Collection Boxes,10,3
+10 55 19,Receiving Boxes,10,3
+10 55 23,Mail Boxes,10,3
+10 55 26,Parcel Lockers,10,3
+10 55 33,Data Distribution Boxes,10,3
+10 55 36,Package Depositories,10,3
+10 55 91,Mail Chutes,10,3
+10 56 00,Storage Assemblies,10,2
+10 56 13,Metal Storage Shelving,10,3
+10 56 16,Fabricated Wood Storage Shelving,10,3
+10 56 19,Plastic Storage Shelving,10,3
+10 56 23,Wire Storage Shelving,10,3
+10 56 26,Mobile Storage Shelving,10,3
+10 56 29,Storage Racks,10,3
+10 56 33,Mercantile Storage Assemblies,10,3
+10 57 00,Wardrobe and Closet Specialties,10,2
+10 57 13,Hat and Coat Racks,10,3
+10 57 23,Closet and Utility Shelving,10,3
+10 57 33,Closet and Utility Shelving Hardware,10,3
+10 60 00,Unassigned,10,2
+10 70 00,Exterior Specialties,10,2
+10 71 00,Exterior Protection,10,2
+10 71 13,Exterior Sun Control Devices,10,3
+10 71 16,Storm Panels,10,3
+10 73 00,Protective Covers,10,2
+10 73 13,Awnings,10,3
+10 73 16,Canopies,10,3
+10 73 23,Car Shelters,10,3
+10 73 26,Walkway Coverings,10,3
+10 73 33,Marquees,10,3
+10 73 43,Transportation Stop Shelters,10,3
+10 74 00,Manufactured Exterior Specialties,10,2
+10 74 13,Exterior Clocks,10,3
+10 74 23,Cupolas,10,3
+10 74 26,Spires,10,3
+10 74 29,Steeples,10,3
+10 74 33,Weathervanes,10,3
+10 74 43,Below-Grade Egress Assemblies,10,3
+10 74 46,Window Wells,10,3
+10 75 00,Flagpoles,10,2
+10 75 13,Automatic Flagpoles,10,3
+10 75 16,Ground-Set Flagpoles,10,3
+10 75 19,Nautical Flagpoles,10,3
+10 75 23,Wall-Mounted Flagpoles,10,3
+10 80 00,Other Specialties,10,2
+10 81 00,Pest Control Devices,10,2
+10 81 13,Bird Control Devices,10,3
+10 81 16,Insect Control Devices,10,3
+10 81 19,Rodent Control Devices,10,3
+10 82 00,Grilles and Screens,10,2
+10 82 13,Exterior Grilles and Screens,10,3
+10 82 23,Interior Grilles and Screens,10,3
+10 83 00,Flags and Banners,10,2
+10 83 13,Flags,10,3
+10 83 16,Banners,10,3
+10 86 00,Security Mirrors and Domes,10,2
+10 88 00,Scales,10,2
+10 90 00,Unassigned,10,2
+11 00 00,Equipment,11,1
+11 01 00,Operation and Maintenance of Equipment,11,2
+11 05 00,Common Work Results for Equipment,11,2
+11 06 00,Schedules for Equipment,11,2
+11 08 00,Commissioning of Equipment,11,2
+11 10 00,Vehicle and Pedestrian Equipment,11,2
+11 11 00,Vehicle Service Equipment,11,2
+11 11 13,Compressed-Air Vehicle Service Equipment,11,3
+11 11 19,Vehicle Lubrication Equipment,11,3
+11 11 23,Tire-Changing Equipment,11,3
+11 11 26,Vehicle-Washing Equipment,11,3
+11 12 00,Parking Control Equipment,11,2
+11 12 13,Parking Key and Card Control Units,11,3
+11 12 16,Parking Ticket Dispensers,11,3
+11 12 23,Parking Meters,11,3
+11 12 26,Parking Fee Collection Equipment,11,3
+11 12 33,Parking Gates,11,3
+11 13 00,Loading Dock Equipment,11,2
+11 13 13,Loading Dock Bumpers,11,3
+11 13 16,Loading Dock Seals and Shelters,11,3
+11 13 19,Stationary Loading Dock Equipment,11,3
+11 13 23,Portable Dock Equipment,11,3
+11 13 26,Loading Dock Lights,11,3
+11 14 00,Pedestrian Control Equipment,11,2
+11 14 13,Pedestrian Gates,11,3
+11 14 16,Money-Changing Equipment,11,3
+11 14 26,Pedestrian Fare Collection Equipment,11,3
+11 14 43,Pedestrian Detection Equipment,11,3
+11 14 53,Pedestrian Security Equipment,11,3
+11 15 00,"Security, Detention and Banking Equipment",11,2
+11 16 00,Vault Equipment,11,2
+11 16 13,Safe Deposit Boxes,11,3
+11 16 16,Safes,11,3
+11 16 23,Vault Ventilators,11,3
+11 17 00,Teller and Service Equipment,11,2
+11 17 13,Teller Equipment Systems,11,3
+11 17 16,Automatic Banking Systems,11,3
+11 17 23,Money Handling Equipment,11,3
+11 17 33,Money Cart Pass-Through,11,3
+11 17 36,Package Transfer Units,11,3
+11 18 00,Security Equipment,11,2
+11 18 13,Deal Drawers,11,3
+11 18 16,Gun Ports,11,3
+11 18 23,Valuable Material Storage,11,3
+11 19 00,Detention Equipment,11,2
+11 19 13,Detention Pass-Through Doors,11,3
+11 19 16,Detention Gun Lockers,11,3
+11 20 00,Commercial Equipment,11,2
+11 21 00,Mercantile and Service Equipment,11,2
+11 21 13,Cash Registers and Checking Equipment,11,3
+11 21 23,Vending Equipment,11,3
+11 21 33,Checkroom Equipment,11,3
+11 21 43,Weighing and Wrapping Equipment,11,3
+11 21 53,Barber and Beauty Shop Equipment,11,3
+11 22 00,Refrigerated Display Equipment,11,2
+11 23 00,Commercial Laundry and Dry Cleaning Equipment,11,2
+11 23 13,Dry Cleaning Equipment,11,3
+11 23 16,Drying and Conditioning Equipment,11,3
+11 23 19,Finishing Equipment,11,3
+11 23 23,Commercial Ironing Equipment,11,3
+11 23 26,Commercial Washers and Extractors,11,3
+11 23 33,Coin-Operated Laundry Equipment,11,3
+11 23 43,Hanging Garment Conveyors,11,3
+11 24 00,Maintenance Equipment,11,2
+11 24 13,Floor and Wall Cleaning Equipment,11,3
+11 24 16,Housekeeping Carts,11,3
+11 24 19,Vacuum Cleaning Systems,11,3
+11 24 23,Window Washing Systems,11,3
+11 25 00,Hospitality Equipment,11,2
+11 25 13,Registration Equipment,11,3
+11 26 00,Unit Kitchens,11,2
+11 26 13,Metal Unit Kitchens,11,3
+11 26 16,Wood Unit Kitchens,11,3
+11 26 19,Plastic-Laminate-Clad Unit Kitchens,11,3
+11 27 00,Photographic Processing Equipment,11,2
+11 27 13,Darkroom Processing Equipment,11,3
+11 27 16,Film Transfer Cabinets,11,3
+11 28 00,Office Equipment,11,2
+11 28 13,Computers,11,3
+11 28 16,Printers,11,3
+11 28 19,Self-Contained Facsimile Machines,11,3
+11 28 23,Copiers,11,3
+11 29 00,"Postal, Packaging, and Shipping Equipment",11,2
+11 29 23,Packaging Equipment,11,3
+11 29 33,Shipping Equipment,11,3
+11 29 55,Postal Equipment,11,3
+11 30 00,Residential Equipment,11,2
+11 31 00,Residential Appliances,11,2
+11 31 13,Residential Kitchen Appliances,11,3
+11 31 23,Residential Laundry Appliances,11,3
+11 33 00,Retractable Stairs,11,2
+11 40 00,Foodservice Equipment,11,2
+11 41 00,Food Storage Equipment,11,2
+11 41 13,Refrigerated Food Storage Cases,11,3
+11 41 23,Walk-In Coolers,11,3
+11 41 26,Walk-In Freezers,11,3
+11 42 00,Food Preparation Equipment,11,2
+11 43 00,Food Delivery Carts and Conveyors,11,2
+11 43 13,Food Delivery Carts,11,3
+11 43 16,Food Delivery Conveyors,11,3
+11 44 00,Food Cooking Equipment,11,2
+11 44 13,Commercial Ranges,11,3
+11 44 16,Commercial Ovens,11,3
+11 46 00,Food Dispensing Equipment,11,2
+11 46 13,Bar Equipment,11,3
+11 46 16,Service Line Equipment,11,3
+11 46 19,Soda Fountain Equipment,11,3
+11 47 00,Ice Machines,11,2
+11 48 00,Cleaning and Disposal Equipment,11,2
+11 48 13,Commercial Dishwashers,11,3
+11 50 00,Educational and Scientific Equipment,11,2
+11 51 00,Library Equipment,11,2
+11 51 13,Automated Book Storage and Retrieval Systems,11,3
+11 51 16,Book Depositories,11,3
+11 51 19,Book Theft Protection Equipment,11,3
+11 51 23,Library Stack Systems,11,3
+11 52 00,Audio-Visual Equipment,11,2
+11 52 13,Projection Screens,11,3
+11 52 16,Projectors,11,3
+11 52 19,Players and Recorders,11,3
+11 56 00,Observatory Equipment,11,2
+11 56 13,Telescopes,11,3
+11 56 16,Telescope Mounts,11,3
+11 56 19,Telescope Drive Mechanisms,11,3
+11 56 23,Telescope Domes,11,3
+11 57 00,Vocational Shop Equipment,11,2
+11 59 00,Exhibit Equipment,11,2
+11 60 00,Entertainment Equipment,11,2
+11 61 00,Theater and Stage Equipment,11,2
+11 61 13,Acoustical Shells,11,3
+11 61 23,Folding and Portable Stages,11,3
+11 61 33,Rigging Systems and Controls,11,3
+11 61 43,Stage Curtains,11,3
+11 62 00,Musical Equipment,11,2
+11 65 00,Athletic and Recreational Equipment,11,2
+11 66 00,Athletic Equipment,11,2
+11 66 13,Exercise Equipment,11,3
+11 66 23,Gymnasium Equipment,11,3
+11 66 43,Interior Scoreboards,11,3
+11 66 53,Gymnasium Dividers,11,3
+11 67 00,Recreational Equipment,11,2
+11 67 13,Bowling Alley Equipment,11,3
+11 67 23,Shooting Range Equipment,11,3
+11 67 43,Table Games Equipment,11,3
+11 68 00,Play Field Equipment and Structures,11,2
+11 68 13,Playground Equipment,11,3
+11 68 16,Play Structures,11,3
+11 68 23,Exterior Court Athletic Equipment,11,3
+11 68 33,Athletic Field Equipment,11,3
+11 68 43,Exterior Scoreboards,11,3
+11 70 00,Healthcare Equipment,11,2
+11 71 00,Medical Sterilizing Equipment,11,2
+11 72 00,Examination and Treatment Equipment,11,2
+11 72 13,Examination Equipment,11,3
+11 72 53,Treatment Equipment,11,3
+11 73 00,Patient Care Equipment,11,2
+11 74 00,Dental Equipment,11,2
+11 75 00,Optical Equipment,11,2
+11 76 00,Operating Room Equipment,11,2
+11 77 00,Radiology Equipment,11,2
+11 78 00,Mortuary Equipment,11,2
+11 78 13,Mortuary Refrigerators,11,3
+11 78 16,Crematorium Equipment,11,3
+11 78 19,Mortuary Lifts,11,3
+11 79 00,Therapy Equipment,11,2
+11 80 00,Collection and Disposal Equipment,11,2
+11 82 00,Solid Waste Handling Equipment,11,2
+11 82 13,Solid Waste Bins,11,3
+11 82 19,Packaged Incinerators,11,3
+11 82 23,Recycling Equipment,11,3
+11 82 26,Waste Compactors and Destructors,11,3
+11 82 29,Composting Equipment,11,3
+11 90 00,Other Equipment,11,2
+11 91 00,Religious Equipment,11,2
+11 91 13,Baptisteries,11,3
+11 92 00,Agricultural Equipment,11,2
+11 92 13,Milkers,11,3
+11 92 16,Stock Feeders,11,3
+11 92 19,Stock Waterers,11,3
+11 92 23,Agricultural Waste Clean-Up Equipment,11,3
+11 93 00,Horticultural Equipment,11,2
+11 93 13,Hydroponic Growing Systems,11,3
+11 93 16,Seeders,11,3
+11 93 19,Transplanters,11,3
+11 93 23,Potting Machines,11,3
+11 93 26,Flat Fillers,11,3
+11 93 29,Baggers,11,3
+11 93 33,Soil Mixers,11,3
+12 00 00,Furnishings,12,1
+12 01 00,Operation and Maintenance of Furnishings,12,2
+12 05 00,Common Work Results for Furnishings,12,2
+12 06 00,Schedules for Furnishings,12,2
+12 08 00,Commissioning of Furnishings,12,2
+12 10 00,Art,12,2
+12 11 00,Murals,12,2
+12 12 00,Wall Decorations,12,2
+12 12 13,Commissioned Paintings,12,3
+12 12 16,Framed Paintings,12,3
+12 12 19,Framed Prints,12,3
+12 12 23,Tapestries,12,3
+12 12 26,Wall Hangings,12,3
+12 14 00,Sculptures,12,2
+12 17 00,Art Glass,12,2
+12 19 00,Religious Art,12,2
+12 20 00,Window Treatments,12,2
+12 21 00,Window Blinds,12,2
+12 21 13,Horizontal Louver Blinds,12,3
+12 21 16,Vertical Louver Blinds,12,3
+12 21 23,Roll-Down Blinds,12,3
+12 21 26,Black-Out Blinds,12,3
+12 22 00,Curtains and Drapes,12,2
+12 22 13,Draperies,12,3
+12 22 16,Drapery Track and Accessories,12,3
+12 23 00,Interior Shutters,12,2
+12 24 00,Window Shades,12,2
+12 24 13,Roller Window Shades,12,3
+12 24 16,Pleated Window Shades,12,3
+12 25 00,Window Treatment Operating Hardware,12,2
+12 25 13,Motorized Drapery Rods,12,3
+12 30 00,Casework,12,2
+12 31 00,Manufactured Metal Casework,12,2
+12 31 16,Manufactured Metal Sandwich Panel Casework,12,3
+12 32 00,Manufactured Wood Casework,12,2
+12 32 13,Manufactured Wood-Veneer-Faced Casework,12,3
+12 32 16,Manufactured Plastic-Laminate-Clad Casework,12,3
+12 34 00,Manufactured Plastic Casework,12,2
+12 34 16,Manufactured Solid-Plastic Casework,12,3
+12 35 00,Specialty Casework,12,2
+12 35 50,Educational/Library Casework,12,3
+12 35 53,Laboratory Casework,12,3
+12 35 59,Display Casework,12,3
+12 35 70,Healthcare Casework,12,3
+12 35 91,Religious Casework,12,3
+12 36 00,Countertops,12,2
+12 36 13,Concrete Countertops,12,3
+12 36 16,Metal Countertops,12,3
+12 36 19,Wood Countertops,12,3
+12 36 23,Plastic Countertops,12,3
+12 36 40,Stone Countertops,12,3
+12 36 53,Laboratory Countertops,12,3
+12 36 61,Simulated Stone Countertops,12,3
+12 40 00,Furnishings and Accessories,12,2
+12 41 00,Office Accessories,12,2
+12 41 13,Desk Accessories,12,3
+12 42 00,Table Accessories,12,2
+12 42 13,Ceramics,12,3
+12 42 16,Flatware,12,3
+12 42 19,Hollowware,12,3
+12 42 23,Glassware,12,3
+12 42 26,Table Linens,12,3
+12 43 00,Portable Lamps,12,2
+12 43 13,Lamps,12,3
+12 44 00,Bath Furnishings,12,2
+12 44 13,Bath Linens,12,3
+12 44 16,Shower Curtains,12,3
+12 45 00,Bedroom Furnishings,12,2
+12 45 13,Bed Linens,12,3
+12 45 16,Pillows,12,3
+12 46 00,Furnishing Accessories,12,2
+12 46 13,Ash Receptacles,12,3
+12 46 16,Bowls,12,3
+12 46 19,Clocks,12,3
+12 46 23,Decorative Crafts,12,3
+12 46 26,Decorative Screens,12,3
+12 46 29,Vases,12,3
+12 46 33,Waste Receptacles,12,3
+12 48 00,Rugs and Mats,12,2
+12 48 13,Entrance Floor Mats and Frames,12,3
+12 48 16,Entrance Floor Grilles,12,3
+12 48 19,Entrance Floor Gratings,12,3
+12 48 23,Entrance Floor Grids,12,3
+12 48 26,Entrance Tile,12,3
+12 48 43,Floor Mats,12,3
+12 48 53,Rugs,12,3
+12 50 00,Furniture,12,2
+12 51 00,Office Furniture,12,2
+12 51 16,Case Goods,12,3
+12 51 19,Filing Cabinets,12,3
+12 51 83,Custom Office Furniture,12,3
+12 52 00,Seating,12,2
+12 52 13,Chairs,12,3
+12 52 19,Upholstered Seating,12,3
+12 52 23,Office Seating,12,3
+12 52 70,Healthcare Seating,12,3
+12 52 83,Custom Seating,12,3
+12 53 00,Retail Furniture,12,2
+12 53 83,Custom Retail Furniture,12,3
+12 54 00,Hospitality Furniture,12,2
+12 54 13,Hotel and Motel Furniture,12,3
+12 54 16,Restaurant Furniture,12,3
+12 54 83,Custom Hospitality Furniture,12,3
+12 55 00,Detention Furniture,12,2
+12 55 13,Detention Bunks,12,3
+12 55 16,Detention Desks,12,3
+12 55 19,Detention Stools,12,3
+12 55 23,Detention Tables,12,3
+12 55 26,Detention Safety Clothes Hooks,12,3
+12 55 83,Custom Detention Furniture,12,3
+12 56 00,Institutional Furniture,12,2
+12 56 33,Classroom Furniture,12,3
+12 56 39,Lecterns,12,3
+12 56 43,Dormitory Furniture,12,3
+12 56 51,Library Furniture,12,3
+12 56 52,Audio-Visual Furniture,12,3
+12 56 53,Laboratory Furniture,12,3
+12 56 70,Healthcare Furniture,12,3
+12 56 83,Custom Institutional Furniture,12,3
+12 57 00,Industrial Furniture,12,2
+12 57 13,Welding Benches,12,3
+12 57 16,Welding Screens,12,3
+12 57 83,Custom Industrial Furniture,12,3
+12 58 00,Residential Furniture,12,2
+12 58 13,Couches and Loveseats,12,3
+12 58 16,Residential Chairs,12,3
+12 58 19,Dining Tables and Chairs,12,3
+12 58 23,Coffee Tables,12,3
+12 58 26,Entertainment Centers,12,3
+12 58 29,Beds,12,3
+12 58 33,Dressers,12,3
+12 58 36,Nightstands,12,3
+12 58 83,Custom Residential Furniture,12,3
+12 59 00,Systems Furniture,12,2
+12 59 13,Panel-Hung Component System Furniture,12,3
+12 59 16,Free-Standing Component System Furniture,12,3
+12 59 19,Beam System Furniture,12,3
+12 59 23,Desk System Furniture,12,3
+12 59 83,Custom Systems Furniture,12,3
+12 60 00,Multiple Seating,12,2
+12 61 00,Fixed Audience Seating,12,2
+12 61 13,Upholstered Audience Seating,12,3
+12 61 16,Molded-Plastic Audience Seating,12,3
+12 62 00,Portable Audience Seating,12,2
+12 62 13,Folding Chairs,12,3
+12 62 16,Interlocking Chairs,12,3
+12 62 19,Stacking Chairs,12,3
+12 63 00,Stadium and Arena Seating,12,2
+12 63 13,Stadium and Arena Bench Seating,12,3
+12 63 23,Stadium and Arena Seats,12,3
+12 64 00,Booths and Tables,12,2
+12 65 00,Multiple-Use Fixed Seating,12,2
+12 66 00,Telescoping Stands,12,2
+12 66 13,Telescoping Bleachers,12,3
+12 66 23,Telescoping Chair Platforms,12,3
+12 67 00,Pews and Benches,12,2
+12 67 13,Pews,12,3
+12 67 23,Benches,12,3
+12 68 00,Seat and Table Assemblies,12,2
+12 68 13,Pedestal Tablet Arm Chairs,12,3
+12 70 00,Unassigned,12,2
+12 80 00,Unassigned,12,2
+12 90 00,Other Furnishings,12,2
+12 92 00,Interior Planters and Artificial Plants,12,2
+12 92 13,Interior Artificial Plants,12,3
+12 92 33,Interior Planters,12,3
+12 92 43,Interior Landscaping Accessories,12,3
+12 93 00,Site Furnishings,12,2
+12 93 13,Bicycle Racks,12,3
+12 93 23,Trash and Litter Receptors,12,3
+12 93 33,Manufactured Planters,12,3
+12 93 43,Site Seating and Tables,12,3
+13 00 00,Special Construction,13,1
+13 01 00,Operation and Maintenance of Special Construction,13,2
+13 05 00,Common Work Results for Special Construction,13,2
+13 06 00,Schedules for Special Construction,13,2
+13 08 00,Commissioning of Special Construction,13,2
+13 10 00,Special Facility Components,13,2
+13 11 00,Swimming Pools,13,2
+13 12 00,Fountains,13,2
+13 13 00,Aquariums,13,2
+13 14 00,Amusement Park Structures and Equipment,13,2
+13 17 00,Tubs and Pools,13,2
+13 18 00,Ice Rinks,13,2
+13 20 00,Special Purpose Rooms,13,2
+13 21 00,Controlled Environment Rooms,13,2
+13 22 00,Office Shelters and Booths,13,2
+13 23 00,Planetariums,13,2
+13 24 00,Special Activity Rooms,13,2
+13 26 00,Fabricated Rooms,13,2
+13 27 00,Vaults,13,2
+13 28 00,Athletic and Recreational Special Construction,13,2
+13 28 13,Indoor Soccer Boards,13,3
+13 28 16,Safety Netting,13,3
+13 28 19,Arena Football Boards,13,3
+13 28 26,Floor Sockets,13,3
+13 28 33,Athletic and Recreational Court Walls,13,3
+13 30 00,Special Structures,13,2
+13 31 00,Fabric Structures,13,2
+13 34 00,Fabricated Engineered Structures,13,2
+13 34 13,Glazed Structures,13,3
+13 34 16,Grandstands and Bleachers,13,3
+13 34 19,Metal Building Systems,13,3
+13 34 23,Fabricated Structures,13,3
+13 34 56,Observatories,13,3
+13 36 00,Towers,13,2
+13 36 13,Metal Towers,13,3
+13 36 23,Wood Towers,13,3
+13 40 00,Integrated Construction,13,2
+13 42 00,Building Modules,13,2
+13 44 00,Modular Mezzanines,13,2
+13 48 00,"Sound, Vibration, and Seismic Control",13,2
+13 49 00,Radiation Protection,13,2
+13 50 00,Special Instrumentation,13,2
+13 51 00,Stress Instrumentation,13,2
+13 52 00,Seismic Instrumentation,13,2
+13 53 00,Meteorological Instrumentation,13,2
+13 53 13,Solar Instrumentation,13,3
+13 53 23,Wind Instrumentation,13,3
+14 00 00,Conveying Equipment,14,1
+14 01 00,Operation and Maintenance of Conveying Equipment,14,2
+14 05 00,Common Work Results for Conveying Equipment,14,2
+14 06 00,Schedules for Conveying Equipment,14,2
+14 08 00,Commissioning of Conveying Equipment,14,2
+14 10 00,Dumbwaiters,14,2
+14 11 00,Manual Dumbwaiters,14,2
+14 12 00,Electric Dumbwaiters,14,2
+14 14 00,Hydraulic Dumbwaiters,14,2
+14 20 00,Elevators,14,2
+14 21 00,Electric Traction Elevators,14,2
+14 24 00,Hydraulic Elevators,14,2
+14 26 00,Limited-Use/Limited-Application Elevators,14,2
+14 27 00,Custom Elevator Cabs,14,2
+14 28 00,Elevator Equipment and Controls,14,2
+14 28 13,Elevator Doors,14,3
+14 28 16,Elevator Controls,14,3
+14 28 19,Elevator Equipment,14,3
+14 30 00,Escalators and Moving Walks,14,2
+14 31 00,Escalators,14,2
+14 33 00,Moving Ramps,14,2
+14 33 13,Motorized Ramps,14,3
+14 33 16,Powered Ramps,14,3
+14 40 00,Lifts,14,2
+14 41 00,People Lifts,14,2
+14 42 00,Wheelchair Lifts,14,2
+14 43 00,Platform Lifts,14,2
+14 44 00,Sidewalk Lifts,14,2
+14 45 00,Vehicle Lifts,14,2
+14 70 00,Turntables,14,2
+14 71 00,Industrial Turntables,14,2
+14 83 00,Elevating Platforms,14,2
+14 84 00,Powered Scaffolding,14,2
+14 90 00,Other Conveying Equipment,14,2
+14 91 00,Facility Chutes,14,2
+14 91 13,Coal Chutes,14,3
+14 91 23,Escape Chutes,14,3
+14 91 33,Laundry and Linen Chutes,14,3
+14 91 82,Trash Chutes,14,3
+14 92 00,Pneumatic Tube Systems,14,2
+21 00 00,Fire Suppression,21,1
+21 01 00,Operation and Maintenance of Fire Suppression,21,2
+21 05 00,Common Work Results for Fire Suppression,21,2
+21 06 00,Schedules for Fire Suppression,21,2
+21 07 00,Fire Suppression Systems Insulation,21,2
+21 08 00,Commissioning of Fire Suppression,21,2
+21 09 00,Instrumentation and Control for Fire-Suppression Systems,21,2
+21 10 00,Water-Based Fire-Suppression Systems,21,2
+21 11 00,Facility Fire-Suppression Water-Service Piping,21,2
+21 12 00,Fire-Suppression Standpipes,21,2
+21 12 13,Fire-Suppression Hoses and Nozzles,21,3
+21 12 16,Fire-Suppression Hose Reels,21,3
+21 12 19,Fire-Suppression Hose Racks,21,3
+21 12 23,Fire-Suppression Hose Valves,21,3
+21 12 26,Fire-Suppression Valve and Hose Cabinets,21,3
+21 13 00,Fire-Suppression Sprinkler Systems,21,2
+21 13 13,Wet-Pipe Sprinkler Systems,21,3
+21 13 16,Dry-Pipe Sprinkler Systems,21,3
+21 13 19,Preaction Sprinkler Systems,21,3
+21 13 23,Combined Dry-Pipe and Preaction Sprinkler Systems,21,3
+21 13 26,Deluge Fire-Suppression Sprinkler Systems,21,3
+21 13 29,Water Spray Fixed Systems,21,3
+21 13 36,Antifreeze Sprinkler Systems,21,3
+21 13 39,Foam-Water Systems,21,3
+21 20 00,Fire-Extinguishing Systems,21,2
+21 21 00,Carbon-Dioxide Fire-Extinguishing Systems,21,2
+21 21 13,Carbon-Dioxide Fire-Extinguishing Piping,21,3
+21 21 16,Carbon-Dioxide Fire-Extinguishing Equipment,21,3
+21 22 00,Clean-Agent Fire-Extinguishing Systems,21,2
+21 22 13,Clean-Agent Fire-Extinguishing Piping,21,3
+21 22 16,Clean-Agent Fire-Extinguishing Equipment,21,3
+21 23 00,Wet-Chemical Fire-Extinguishing Systems,21,2
+21 23 13,Wet-Chemical Fire-Extinguishing Piping,21,3
+21 23 16,Wet-Chemical Fire-Extinguishing Equipment,21,3
+21 24 00,Dry-Chemical Fire-Extinguishing Systems,21,2
+21 24 13,Dry-Chemical Fire-Extinguishing Piping,21,3
+21 24 16,Dry-Chemical Fire-Extinguishing Equipment,21,3
+21 30 00,Fire Pumps,21,2
+21 31 00,Centrifugal Fire Pumps,21,2
+21 31 13,"Electric-Drive, Centrifugal Fire Pumps",21,3
+21 31 16,"Diesel-Drive, Centrifugal Fire Pumps",21,3
+21 32 00,Vertical-Turbine Fire Pumps,21,2
+21 32 13,"Electric-Drive, Vertical-Turbine Fire Pumps",21,3
+21 32 16,"Diesel-Drive, Vertical-Turbine Fire Pumps",21,3
+21 33 00,Positive-Displacement Fire Pumps,21,2
+21 33 13,"Electric-Drive, Positive-Displacement Fire Pumps",21,3
+21 33 16,"Diesel-Drive, Positive-Displacement Fire Pumps",21,3
+21 40 00,Fire-Suppression Water Storage,21,2
+21 41 00,Storage Tanks for Fire-Suppression Water,21,2
+21 41 13,Pressurized Storage Tanks for Fire-Suppression Water,21,3
+21 41 16,Elevated Storage Tanks for Fire-Suppression Water,21,3
+21 41 19,Roof-Mounted Storage Tanks for Fire-Suppression Water,21,3
+21 41 23,Ground Suction Storage Tanks for Fire-Suppression Water,21,3
+21 41 26,Underground Storage Tanks for Fire-Suppression Water,21,3
+21 41 29,Storage Tanks for Fire-Suppression Water Additives,21,3
+22 00 00,Plumbing,22,1
+22 01 00,Operation and Maintenance of Plumbing,22,2
+22 05 00,Common Work Results for Plumbing,22,2
+22 06 00,Schedules for Plumbing,22,2
+22 07 00,Plumbing Insulation,22,2
+22 08 00,Commissioning of Plumbing,22,2
+22 09 00,Instrumentation and Control for Plumbing,22,2
+22 10 00,Plumbing Piping and Pumps,22,2
+22 11 00,Facility Water Distribution,22,2
+22 12 00,Facility Potable-Water Storage Tanks,22,2
+22 13 00,Facility Sanitary Sewerage,22,2
+22 13 23,Sanitary Waste Interceptors,22,3
+22 13 26,Sanitary Waste Separators,22,3
+22 13 29,Sanitary Sewerage Pumps,22,3
+22 13 33,"Packaged, Submersible Sewerage Pump Units",22,3
+22 13 36,"Packaged, Wastewater Pump Units",22,3
+22 13 43,Facility Packaged Sewage Pumping Stations,22,3
+22 13 53,Facility Septic Tanks,22,3
+22 14 00,Facility Storm Drainage,22,2
+22 14 13,Facility Storm Drainage Piping,22,3
+22 14 16,Rainwater Leaders,22,3
+22 14 19,Sump Pump Discharge Piping,22,3
+22 14 23,Storm Drainage Piping Specialties,22,3
+22 14 26,Facility Storm Drains,22,3
+22 14 29,Sump Pumps,22,3
+22 14 33,"Packaged, Pedestal Drainage Pump Units",22,3
+22 14 36,"Packaged, Submersible, Drainage Pump Units",22,3
+22 15 00,General Service Compressed-Air Systems,22,2
+22 15 13,General Service Compressed-Air Piping,22,3
+22 15 16,General Service Compressed-Air Valves,22,3
+22 15 19,General Service Packaged Air Compressors and Receivers,22,3
+22 30 00,Plumbing Equipment,22,2
+22 31 00,Domestic Water Softeners,22,2
+22 31 13,Residential Domestic Water Softeners,22,3
+22 31 16,Commercial Domestic Water Softeners,22,3
+22 32 00,Domestic Water Filtration Equipment,22,2
+22 32 13,Domestic-Water Bag-Type Filters,22,3
+22 32 16,Domestic-Water Freestanding Cartridge Filters,22,3
+22 32 19,Domestic-Water Off-Floor Cartridge Filters,22,3
+22 32 23,Domestic-Water Carbon Filters,22,3
+22 32 26,Domestic-Water Sand Filters,22,3
+22 33 00,Electric Domestic Water Heaters,22,2
+22 33 13,Instantaneous Electric Domestic Water Heaters,22,3
+22 33 30,"Residential, Electric Domestic Water Heaters",22,3
+22 33 33,Light-Commercial Electric Domestic Water Heaters,22,3
+22 33 36,Commercial Domestic Water Electric Booster Heaters,22,3
+22 34 00,Fuel-Fired Domestic Water Heaters,22,2
+22 34 13,"Instantaneous, Tankless, Gas Domestic Water Heaters",22,3
+22 34 30,Residential Gas Domestic Water Heaters,22,3
+22 34 36,Commercial Gas Domestic Water Heaters,22,3
+22 34 46,Oil-Fired Domestic Water Heaters,22,3
+22 34 56,Dual-Fuel-Fired Domestic Water Heaters,22,3
+22 35 00,Domestic Water Heat Exchangers,22,2
+22 35 13,Instantaneous Domestic Water Heat Exchangers,22,3
+22 35 23,"Circulating, Domestic Water Heat Exchangers",22,3
+22 35 29,"Noncirculating, Domestic Water Heat Exchangers",22,3
+22 35 36,Domestic Water Brazed-Plate Heat Exchangers,22,3
+22 35 39,Domestic Water Frame-and-Plate Heat Exchangers,22,3
+22 35 43,Domestic Water Heat Reclaimers,22,3
+22 40 00,Plumbing Fixtures,22,2
+22 41 00,Residential Plumbing Fixtures,22,2
+22 42 00,Commercial Plumbing Fixtures,22,2
+22 43 00,Healthcare Plumbing Fixtures,22,2
+22 45 00,Emergency Plumbing Fixtures,22,2
+22 46 00,Security Plumbing Fixtures,22,2
+22 47 00,Drinking Fountains and Water Coolers,22,2
+22 50 00,Pool and Fountain Plumbing Systems,22,2
+22 51 00,Swimming Pool Plumbing Systems,22,2
+22 52 00,Fountain Plumbing Systems,22,2
+22 60 00,Gas and Vacuum Systems for Laboratory and Healthcare Facilities,22,2
+22 61 00,Compressed-Air Systems for Laboratory and Healthcare Facilities,22,2
+22 62 00,Vacuum Systems for Laboratory and Healthcare Facilities,22,2
+22 63 00,Gas Systems for Laboratory and Healthcare Facilities,22,2
+22 66 00,Chemical-Waste Systems for Laboratory and Healthcare Facilities,22,2
+22 67 00,Processed Water Systems for Laboratory and Healthcare Facilities,22,2
+23 00 00,"Heating, Ventilating, and Air-Conditioning (HVAC)",23,1
+23 01 00,Operation and Maintenance of HVAC Systems,23,2
+23 05 00,Common Work Results for HVAC,23,2
+23 06 00,Schedules for HVAC,23,2
+23 07 00,HVAC Insulation,23,2
+23 07 13,Duct Insulation,23,3
+23 07 16,HVAC Equipment Insulation,23,3
+23 07 19,HVAC Piping Insulation,23,3
+23 08 00,Commissioning of HVAC,23,2
+23 09 00,Instrumentation and Control for HVAC,23,2
+23 09 13,Instrumentation and Control Devices for HVAC,23,3
+23 09 23,Direct-Digital Control System for HVAC,23,3
+23 09 33,Electric and Electronic Control System for HVAC,23,3
+23 09 43,Pneumatic Control System for HVAC,23,3
+23 09 53,Pneumatic and Electric Control System for HVAC,23,3
+23 09 93,Sequence of Operations for HVAC Controls,23,3
+23 10 00,Facility Fuel Systems,23,2
+23 11 00,Facility Fuel Piping,23,2
+23 11 13,Facility Fuel-Oil Piping,23,3
+23 11 16,Facility Gasoline Piping,23,3
+23 11 23,Facility Natural-Gas Piping,23,3
+23 11 26,Facility Liquefied-Petroleum Gas Piping,23,3
+23 12 00,Facility Fuel Pumps,23,2
+23 12 13,Facility Fuel-Oil Pumps,23,3
+23 12 16,Facility Gasoline Dispensing Pumps,23,3
+23 13 00,Facility Fuel-Storage Tanks,23,2
+23 13 13,"Facility Underground Fuel-Oil, Storage Tanks",23,3
+23 13 23,"Facility Aboveground Fuel-Oil, Storage Tanks",23,3
+23 20 00,HVAC Piping and Pumps,23,2
+23 21 00,Hydronic Piping and Pumps,23,2
+23 21 13,Hydronic Piping,23,3
+23 21 23,Hydronic Pumps,23,3
+23 21 29,Automatic Condensate Pump Units,23,3
+23 22 00,Steam and Condensate Piping and Pumps,23,2
+23 22 13,Steam and Condensate Heating Piping,23,3
+23 22 23,Steam Condensate Pumps,23,3
+23 23 00,Refrigerant Piping,23,2
+23 23 13,Refrigerant Piping Valves,23,3
+23 23 16,Refrigerant Piping Specialties,23,3
+23 23 19,Refrigerant Safety Relief Valve Discharge Piping,23,3
+23 23 23,Refrigerants,23,3
+23 24 00,Internal-Combustion Engine Piping,23,2
+23 24 13,Internal-Combustion Engine Remote-Radiator Coolant Piping,23,3
+23 24 16,Internal-Combustion Engine Exhaust Piping,23,3
+23 25 00,HVAC Water Treatment,23,2
+23 25 13,Water Treatment for Closed-Loop Hydronic Systems,23,3
+23 25 16,Water Treatment for Open Hydronic Systems,23,3
+23 25 19,Water Treatment for Steam System Feedwater,23,3
+23 25 23,Water Treatment for Humidification Steam System Feedwater,23,3
+23 30 00,HVAC Air Distribution,23,2
+23 31 00,HVAC Ducts and Casings,23,2
+23 31 13,Metal Ducts,23,3
+23 31 16,Nonmetal Ducts,23,3
+23 31 19,HVAC Casings,23,3
+23 32 00,Air Plenums and Chases,23,2
+23 32 13,"Fabricated, Metal Air Plenums",23,3
+23 32 33,Air-Distribution Ceiling Plenums,23,3
+23 32 36,Air-Distribution Floor Plenums,23,3
+23 32 39,Air-Distribution Wall Plenums,23,3
+23 32 43,Air-Distribution Chases Formed by General Construction,23,3
+23 32 48,Acoustical Air Plenums,23,3
+23 33 00,Air Duct Accessories,23,2
+23 33 13,Dampers,23,3
+23 33 19,Duct Silencers,23,3
+23 33 23,Turning Vanes,23,3
+23 33 33,Duct-Mounting Access Doors,23,3
+23 33 43,Flexible Connectors,23,3
+23 33 46,Flexible Ducts,23,3
+23 33 53,Duct Liners,23,3
+23 34 00,HVAC Fans,23,2
+23 34 13,Axial HVAC Fans,23,3
+23 34 16,Centrifugal HVAC Fans,23,3
+23 34 23,HVAC Power Ventilators,23,3
+23 34 33,Air Curtains,23,3
+23 35 00,Special Exhaust Systems,23,2
+23 35 13,Sawdust Collection Systems,23,3
+23 35 16,Engine Exhaust Systems,23,3
+23 36 00,Air Terminal Units,23,2
+23 36 13,Constant-Air-Volume Units,23,3
+23 36 16,Variable-Air-Volume Units,23,3
+23 37 00,Air Outlets and Inlets,23,2
+23 37 13,"Diffusers, Registers, and Grilles",23,3
+23 37 16,Fabric Air Distribution Devices,23,3
+23 37 23,HVAC Gravity Ventilators,23,3
+23 38 00,Ventilation Hoods,23,2
+23 38 13,Commercial-Kitchen Hoods,23,3
+23 38 16,Fume Hoods,23,3
+23 40 00,HVAC Air Cleaning Devices,23,2
+23 41 00,Particulate Air Filtration,23,2
+23 41 13,Panel Air Filters,23,3
+23 41 16,Renewable-Media Air Filters,23,3
+23 41 19,Washable Air Filters,23,3
+23 41 23,Extended Surface Filters,23,3
+23 41 33,High-Efficiency Particulate Filtration,23,3
+23 41 43,Ultra-Low Penetration Filtration,23,3
+23 41 46,Super Ultra-Low Penetration Filtration,23,3
+23 42 00,Gas-Phase Air Filtration,23,2
+23 42 13,Activated-Carbon Air Filtration,23,3
+23 42 16,Chemically-Impregnated Adsorption Air Filtration,23,3
+23 42 19,Catalytic-Adsorption Air Filtration,23,3
+23 43 00,Electronic Air Cleaners,23,2
+23 43 13,Washable Electronic Air Cleaners,23,3
+23 43 16,Agglomerator Electronic Air Cleaners,23,3
+23 43 23,Self-Contained Electronic Air Cleaners,23,3
+23 50 00,Central Heating Equipment,23,2
+23 51 00,"Breechings, Chimneys, and Stacks",23,2
+23 51 13,Draft Control Devices,23,3
+23 51 16,Fabricated Breechings and Accessories,23,3
+23 51 19,Fabricated Stacks,23,3
+23 51 23,Gas Vents,23,3
+23 51 33,Insulated Sectional Chimneys,23,3
+23 51 43,Flue-Gas Filtration Equipment,23,3
+23 52 00,Heating Boilers,23,2
+23 52 13,Electric Boilers,23,3
+23 52 16,Condensing Boilers,23,3
+23 52 19,Pulse Combustion Boilers,23,3
+23 52 23,Cast-Iron Boilers,23,3
+23 52 33,Water-Tube Boilers,23,3
+23 52 39,Fire-Tube Boilers,23,3
+23 53 00,Heating Boiler Feedwater Equipment,23,2
+23 53 13,Boiler Feedwater Pumps,23,3
+23 53 16,Deaerators,23,3
+23 54 00,Furnaces,23,2
+23 54 13,Electric-Resistance Furnaces,23,3
+23 54 16,Fuel-Fired Furnaces,23,3
+23 55 00,Fuel-Fired Heaters,23,2
+23 55 13,Fuel-Fired Duct Heaters,23,3
+23 55 23,Gas-Fired Radiant Heaters,23,3
+23 55 33,Fuel-Fired Unit Heaters,23,3
+23 56 00,Solar Energy Heating Equipment,23,2
+23 56 13,Heating Solar Collectors,23,3
+23 56 16,Packaged Solar Heating Equipment,23,3
+23 57 00,Heat Exchangers for HVAC,23,2
+23 57 13,Steam-to-Steam Heat Exchangers,23,3
+23 57 16,Steam-to-Water Heat Exchangers,23,3
+23 57 19,Liquid-to-Liquid Heat Exchangers,23,3
+23 57 33,Direct Geoexchange Heat Exchangers,23,3
+23 60 00,Central Cooling Equipment,23,2
+23 61 00,Refrigerant Compressors,23,2
+23 61 13,Centrifugal Refrigerant Compressors,23,3
+23 61 16,Reciprocating Refrigerant Compressors,23,3
+23 61 19,Scroll Refrigerant Compressors,23,3
+23 61 23,Rotary-Screw Refrigerant Compressors,23,3
+23 62 00,Packaged Compressor and Condenser Units,23,2
+23 62 13,Packaged Air-Cooled Refrigerant Compressor and Condenser Units,23,3
+23 62 23,Packaged Water-Cooled Refrigerant Compressor and Condenser Units,23,3
+23 63 00,Refrigerant Condensers,23,2
+23 63 13,Air-Cooled Refrigerant Condensers,23,3
+23 63 23,Water-Cooled Refrigerant Condensers,23,3
+23 63 33,Evaporative Refrigerant Condensers,23,3
+23 64 00,Packaged Water Chillers,23,2
+23 64 13,Absorption Water Chillers,23,3
+23 64 16,Centrifugal Water Chillers,23,3
+23 64 19,Reciprocating Water Chillers,23,3
+23 64 23,Scroll Water Chillers,23,3
+23 64 26,Rotary-Screw Water Chillers,23,3
+23 65 00,Cooling Towers,23,2
+23 65 13,Forced-Draft Cooling Towers,23,3
+23 65 16,Natural-Draft Cooling Towers,23,3
+23 65 23,Field-Erected Cooling Towers,23,3
+23 65 33,Liquid Coolers,23,3
+23 70 00,Central HVAC Equipment,23,2
+23 71 00,Thermal Storage,23,2
+23 71 13,Thermal Heat Storage,23,3
+23 71 16,Chilled-Water Thermal Storage,23,3
+23 71 19,Ice Storage,23,3
+23 72 00,Air-to-Air Energy Recovery Equipment,23,2
+23 72 13,Heat-Wheel Air-to-Air Energy-Recovery Equipment,23,3
+23 72 16,Heat-Pipe Air-to-Air Energy-Recovery Equipment,23,3
+23 72 19,Fixed-Plate Air-to-Air Energy-Recovery Equipment,23,3
+23 72 23,Packaged Air-to-Air Energy-Recovery Units,23,3
+23 73 00,Indoor Central-Station Air-Handling Units,23,2
+23 73 13,Modular Indoor Central-Station Air-Handling Units,23,3
+23 73 23,Custom Indoor Central-Station Air-Handling Units,23,3
+23 73 33,Indoor Indirect Fuel-Fired Heating and Ventilating Units,23,3
+23 73 39,"Indoor, Direct Gas-Fired Heating and Ventilating Units",23,3
+23 74 00,Packaged Outdoor HVAC Equipment,23,2
+23 74 13,"Packaged, Outdoor, Central-Station Air-Handling Units",23,3
+23 74 23,"Packaged, Outdoor, Heating-Only Makeup-Air Units",23,3
+23 74 33,"Packaged, Outdoor, Heating and Cooling Makeup Air-Conditioners",23,3
+23 75 00,Custom-Packaged Outdoor HVAC Equipment,23,2
+23 75 13,"Custom-Packaged, Outdoor, Central-Station Air-Handling Units",23,3
+23 75 23,"Custom-Packaged, Outdoor, Heating and Ventilating Makeup-Air Units",23,3
+23 75 33,"Custom-Packaged, Outdoor, Heating and Cooling Makeup Air-Conditioners",23,3
+23 76 00,Evaporative Air-Cooling Equipment,23,2
+23 76 13,Direct Evaporative Air Coolers,23,3
+23 76 16,Indirect Evaporative Air Coolers,23,3
+23 76 19,Combined Direct and Indirect Evaporative Air Coolers,23,3
+23 80 00,Decentralized HVAC Equipment,23,2
+23 81 00,Decentralized Unitary HVAC Equipment,23,2
+23 81 13,Packaged Terminal Air-Conditioners,23,3
+23 81 16,Room Air-Conditioners,23,3
+23 81 19,Self-Contained Air-Conditioners,23,3
+23 81 23,Computer-Room Air-Conditioners,23,3
+23 81 26,Split-System Air-Conditioners,23,3
+23 81 43,Air-Source Unitary Heat Pumps,23,3
+23 81 46,Water-Source Unitary Heat Pumps,23,3
+23 82 00,Convection Heating and Cooling Units,23,2
+23 82 13,Valance Heating and Cooling Units,23,3
+23 82 16,Air Coils,23,3
+23 82 19,Fan Coil Units,23,3
+23 82 23,Unit Ventilators,23,3
+23 82 26,Induction Units,23,3
+23 82 29,Radiators,23,3
+23 82 33,Convectors,23,3
+23 82 36,Finned-Tube Radiation Heaters,23,3
+23 82 39,Unit Heaters,23,3
+23 83 00,Radiant Heating Units,23,2
+23 83 13,Radiant-Heating Electric Cables,23,3
+23 83 16,Radiant-Heating Hydronic Piping,23,3
+23 83 23,Radiant-Heating Electric Panels,23,3
+23 83 33,Electric Radiant Heaters,23,3
+23 84 00,Humidity Control Equipment,23,2
+23 84 13,Humidifiers,23,3
+23 84 16,Dehumidifiers,23,3
+23 84 19,Indoor Pool and Ice-Rink Dehumidification Units,23,3
+25 00 00,Integrated Automation,25,1
+25 01 00,Operation and Maintenance of Integrated Automation,25,2
+25 05 00,Common Work Results for Integrated Automation,25,2
+25 06 00,Schedules for Integrated Automation,25,2
+25 08 00,Commissioning of Integrated Automation,25,2
+25 10 00,Integrated Automation Network Equipment,25,2
+25 11 00,Integrated Automation Network Devices,25,2
+25 11 13,Integrated Automation Network Servers,25,3
+25 11 16,"Integrated Automation Network Routers, Bridges, Switches, Hubs, and Modems",25,3
+25 11 19,Integrated Automation Network Operator Workstations,25,3
+25 12 00,Integrated Automation Network Gateways,25,2
+25 12 13,Hardwired Integration Network Gateways,25,3
+25 12 16,Direct-Protocol Integration Network Gateways,25,3
+25 12 19,Neutral-Protocol Integration Network Gateways,25,3
+25 12 23,Client-Server Information/Database Integration Network Gateways,25,3
+25 13 00,Integrated Automation Control and Monitoring Network,25,2
+25 13 13,Integrated Automation Control and Monitoring Network Supervisory Control,25,3
+25 13 16,Integrated Automation Control and Monitoring Network Integration Panels,25,3
+25 13 19,Integrated Automation Control and Monitoring Network Interoperability,25,3
+25 14 00,Integrated Automation Local Control Units,25,2
+25 14 13,Integrated Automation Remote Control Panels,25,3
+25 14 16,Integrated Automation Application-Specific Control Panels,25,3
+25 14 19,Integrated Automation Terminal Control Units,25,3
+25 14 23,Integrated Automation Field Equipment Panels,25,3
+25 15 00,Integrated Automation Software,25,2
+25 15 13,Integrated Automation Software for Network Gateways,25,3
+25 15 16,Integrated Automation Software for Control and Monitoring Networks,25,3
+25 15 19,Integrated Automation Software for Local Control Units,25,3
+25 30 00,Integrated Automation Instrumentation and Terminal Devices,25,2
+25 31 00,Integrated Automation Instrumentation and Terminal Devices for Facility Equipment,25,2
+25 32 00,Integrated Automation Instrumentation and Terminal Devices for Conveying Equipment,25,2
+25 33 00,Integrated Automation Instrumentation and Terminal Devices for Fire-Suppression Systems,25,2
+25 34 00,Integrated Automation Instrumentation and Terminal Devices for Plumbing,25,2
+25 35 00,Integrated Automation Instrumentation and Terminal Devices for HVAC,25,2
+25 35 13,Integrated Automation Actuators and Operators,25,3
+25 35 16,Integrated Automation Sensors and Transmitters,25,3
+25 35 19,Integrated Automation Control Valves,25,3
+25 35 23,Integrated Automation Control Dampers,25,3
+25 35 26,Integrated Automation Compressed Air Supply,25,3
+25 36 00,Integrated Automation Instrumentation and Terminal Devices for Electrical Systems,25,2
+25 36 13,Integrated Automation Power Meters,25,3
+25 36 16,Integrated Automation KW Transducers,25,3
+25 36 19,Integrated Automation Current Sensors,25,3
+25 36 23,Integrated Automation Battery Monitors,25,3
+25 36 26,Integrated Automation Lighting Relays,25,3
+25 36 29,Integrated Automation UPS Monitors,25,3
+25 37 00,Integrated Automation Instrumentation and Terminal Devices for Communications Systems,25,2
+25 38 00,Integrated Automation Instrumentation and Terminal Devices for Electronic Safety and Security Systems,25,2
+25 50 00,Integrated Automation Facility Controls,25,2
+25 51 00,Integrated Automation Control of Facility Equipment,25,2
+25 52 00,Integrated Automation Control of Conveying Equipment,25,2
+25 53 00,Integrated Automation Control of Fire-Suppression Systems,25,2
+25 54 00,Integrated Automation Control of Plumbing,25,2
+25 55 00,Integrated Automation Control of HVAC,25,2
+25 56 00,Integrated Automation Control of Electrical Systems,25,2
+25 57 00,Integrated Automation Control of Communications Systems,25,2
+25 58 00,Integrated Automation Control of Electronic Safety and Security Systems,25,2
+25 90 00,Integrated Automation Control Sequences,25,2
+25 91 00,Integrated Automation Control Sequences for Facility Equipment,25,2
+25 92 00,Integrated Automation Control Sequences for Conveying Equipment,25,2
+25 93 00,Integrated Automation Control Sequences for Fire-Suppression Systems,25,2
+25 94 00,Integrated Automation Control Sequences for Plumbing,25,2
+25 95 00,Integrated Automation Control Sequences for HVAC,25,2
+25 96 00,Integrated Automation Control Sequences for Electrical Systems,25,2
+25 97 00,Integrated Automation Control Sequences for Communications Systems,25,2
+25 98 00,Integrated Automation Control Sequences for Electronic Safety and Security Systems,25,2
+26 00 00,Electrical,26,1
+26 01 00,Operation and Maintenance of Electrical Systems,26,2
+26 05 00,Common Work Results for Electrical,26,2
+26 06 00,Schedules for Electrical,26,2
+26 08 00,Commissioning of Electrical Systems,26,2
+26 09 00,Instrumentation and Control for Electrical Systems,26,2
+26 09 13,Electrical Power Monitoring and Control,26,3
+26 09 23,Lighting Control Devices,26,3
+26 09 26,Lighting Control Panelboards,26,3
+26 09 33,Central Dimming Controls,26,3
+26 09 36,Modular Dimming Controls,26,3
+26 09 43,Network Lighting Controls,26,3
+26 09 61,Theatrical Lighting Controls,26,3
+26 10 00,Medium-Voltage Electrical Distribution,26,2
+26 11 00,Substations,26,2
+26 11 13,Primary Unit Substations,26,3
+26 11 16,Secondary Unit Substations,26,3
+26 12 00,Medium-Voltage Transformers,26,2
+26 12 13,"Liquid-Filled, Medium-Voltage Transformers",26,3
+26 12 16,"Dry-Type, Medium-Voltage Transformers",26,3
+26 12 19,"Pad-Mounted, Liquid-Filled, Medium-Voltage Transformers",26,3
+26 13 00,Medium-Voltage Switchgear,26,2
+26 13 13,Medium-Voltage Circuit Breaker Switchgear,26,3
+26 13 16,Medium-Voltage Fusible Interrupter Switchgear,26,3
+26 13 19,Medium-Voltage Vacuum Interrupter Switchgear,26,3
+26 18 00,Medium-Voltage Circuit Protection Devices,26,2
+26 18 13,Medium-Voltage Cutouts,26,3
+26 18 16,Medium-Voltage Fuses,26,3
+26 18 19,Medium-Voltage Lightning Arresters,26,3
+26 18 23,Medium-Voltage Surge Arresters,26,3
+26 18 26,Medium-Voltage Reclosers,26,3
+26 18 29,Medium-Voltage Enclosed Bus,26,3
+26 18 33,Medium-Voltage Enclosed Fuse Cutouts,26,3
+26 18 36,Medium-Voltage Enclosed Fuses,26,3
+26 18 39,Medium-Voltage Motor Controllers,26,3
+26 20 00,Low-Voltage Electrical Distribution,26,2
+26 21 00,Low-Voltage Overhead Electrical Power Systems,26,2
+26 22 00,Low-Voltage Transformers,26,2
+26 22 13,Low-Voltage Distribution Transformers,26,3
+26 22 16,Low-Voltage Buck-Boost Transformers,26,3
+26 22 19,Control and Signal Transformers,26,3
+26 23 00,Low-Voltage Switchgear,26,2
+26 23 13,Paralleling Low-Voltage Switchgear,26,3
+26 24 00,Switchboards and Panelboards,26,2
+26 24 13,Switchboards,26,3
+26 24 16,Panelboards,26,3
+26 24 19,Motor-Control Centers,26,3
+26 25 00,Enclosed Bus Assemblies,26,2
+26 26 00,Power Distribution Units,26,2
+26 27 00,Low-Voltage Distribution Equipment,26,2
+26 27 13,Electricity Metering,26,3
+26 27 16,Electrical Cabinets and Enclosures,26,3
+26 27 19,Multi-Outlet Assemblies,26,3
+26 27 23,Indoor Service Poles,26,3
+26 27 26,Wiring Devices,26,3
+26 27 73,Door Chimes,26,3
+26 28 00,Low-Voltage Circuit Protective Devices,26,2
+26 28 13,Fuses,26,3
+26 28 16,Enclosed Switches and Circuit Breakers,26,3
+26 29 00,Low-Voltage Controllers,26,2
+26 29 13,Enclosed Controllers,26,3
+26 29 23,Variable-Frequency Motor Controllers,26,3
+26 30 00,Facility Electrical Power Generating and Storing Equipment,26,2
+26 31 00,Photovoltaic Collectors,26,2
+26 32 00,Packaged Generator Assemblies,26,2
+26 32 13,Engine Generators,26,3
+26 32 16,Steam-Turbine Generators,26,3
+26 32 19,Hydro-Turbine Generators,26,3
+26 32 23,Wind Energy Equipment,26,3
+26 32 26,Frequency Changers,26,3
+26 32 29,Rotary Converters,26,3
+26 32 33,Rotary Uninterruptible Power Units,26,3
+26 33 00,Battery Equipment,26,2
+26 33 13,Batteries,26,3
+26 33 16,Battery Racks,26,3
+26 33 19,Battery Units,26,3
+26 33 23,Central Battery Equipment,26,3
+26 33 33,Static Power Converters,26,3
+26 33 43,Battery Chargers,26,3
+26 33 46,Battery Monitoring,26,3
+26 33 53,Static Uninterruptible Power Supply,26,3
+26 35 00,Power Filters and Conditioners,26,2
+26 35 13,Capacitors,26,3
+26 35 16,Chokes and Inductors,26,3
+26 35 23,Electromagnetic-Interference Filters,26,3
+26 35 26,Harmonic Filters,26,3
+26 35 33,Power Factor Correction Equipment,26,3
+26 35 36,Slip Controllers,26,3
+26 35 43,Static-Frequency Converters,26,3
+26 35 46,Radio-Frequency-Interference Filters,26,3
+26 35 53,Voltage Regulators,26,3
+26 36 00,Transfer Switches,26,2
+26 36 13,Manual Transfer Switches,26,3
+26 36 23,Automatic Transfer Switches,26,3
+26 40 00,Electrical and Cathodic Protection,26,2
+26 41 00,Facility Lightning Protection,26,2
+26 41 13,Lightning Protection for Structures,26,3
+26 41 16,Lightning Prevention and Dissipation,26,3
+26 41 19,Early Streamer Emission Lightning Protection,26,3
+26 41 23,Lightning Protection Surge Arresters and Suppressors,26,3
+26 42 00,Cathodic Protection,26,2
+26 42 13,Passive Cathodic Protection for Underground and Submerged Piping,26,3
+26 42 16,Passive Cathodic Protection for Underground Storage Tank,26,3
+26 43 00,Transient Voltage Suppression,26,2
+26 43 13,Transient-Voltage Suppression for Low-Voltage Electrical Power Circuits,26,3
+26 50 00,Lighting,26,2
+26 51 00,Interior Lighting,26,2
+26 51 13,"Interior Lighting Fixtures, Lamps, And Ballasts",26,3
+26 52 00,Emergency Lighting,26,2
+26 53 00,Exit Signs,26,2
+26 54 00,Classified Location Lighting,26,2
+26 55 00,Special Purpose Lighting,26,2
+26 55 23,Outline Lighting,26,3
+26 55 29,Underwater Lighting,26,3
+26 55 33,Hazard Warning Lighting,26,3
+26 55 36,Obstruction Lighting,26,3
+26 55 53,Security Lighting,26,3
+26 55 59,Display Lighting,26,3
+26 55 61,Theatrical Lighting,26,3
+26 55 63,Detention Lighting,26,3
+26 55 70,Healthcare Lighting,26,3
+26 56 00,Exterior Lighting,26,2
+26 56 13,Lighting Poles and Standards,26,3
+26 56 16,Parking Lighting,26,3
+26 56 19,Roadway Lighting,26,3
+26 56 23,Area Lighting,26,3
+26 56 26,Landscape Lighting,26,3
+26 56 29,Site Lighting,26,3
+26 56 33,Walkway Lighting,26,3
+26 56 36,Flood Lighting,26,3
+26 56 68,Exterior Athletic Lighting,26,3
+27 00 00,Communications,27,1
+27 01 00,Operation and Maintenance of Communications Systems,27,2
+27 05 00,Common Work Results for Communications,27,2
+27 06 00,Schedules for Communications,27,2
+27 08 00,Commissioning of Communications,27,2
+27 10 00,Structured Cabling,27,2
+27 11 00,Communications Equipment Room Fittings,27,2
+27 11 13,Communications Entrance Protection,27,3
+27 11 16,"Communications Cabinets, Racks, Frames and Enclosures",27,3
+27 11 19,Communications Termination Blocks and Patch Panels,27,3
+27 11 23,Communications Cable Management and Ladder Rack,27,3
+27 11 26,Communications Rack Mounted Power Protection and Power Strips,27,3
+27 13 00,Communications Backbone Cabling,27,2
+27 13 13,Communications Copper Backbone Cabling,27,3
+27 13 23,Communications Optical Fiber Backbone Cabling,27,3
+27 13 33,Communications Coaxial Backbone Cabling,27,3
+27 13 43,Communications Services Cabling,27,3
+27 15 00,Communications Horizontal Cabling,27,2
+27 15 13,Communications Copper Horizontal Cabling,27,3
+27 15 23,Communications Optical Fiber Horizontal Cabling,27,3
+27 15 33,Communications Coaxial Horizontal Cabling,27,3
+27 15 43,Communications Faceplates and Connectors,27,3
+27 16 00,"Communications Connecting Cords, Devices and Adapters",27,2
+27 16 13,Communications Custom Cable Assemblies,27,3
+27 16 16,"Communications Media Converters, Adapters, and Transceivers",27,3
+27 16 19,"Communications Patch Cords, Station Cords, and Cross Connect Wire",27,3
+27 20 00,Data Communications,27,2
+27 21 00,Data Communications Network Equipment,27,2
+27 21 13,Data Communications Firewalls,27,3
+27 21 16,"Data Communications Routers, CSU/DSU, Multiplexers, Codec’s, and Modems",27,3
+27 21 26,Data Communications Network Management,27,3
+27 21 29,Data Communications Switches and Hubs,27,3
+27 21 33,Data Communications Wireless Access Points,27,3
+27 22 00,Data Communications Hardware,27,2
+27 22 13,Data Communications Mainframes,27,3
+27 22 16,Data Communications Storage and Backup,27,3
+27 22 19,Data Communications Servers,27,3
+27 22 23,Data Communications Desktops,27,3
+27 22 26,Data Communications Laptops,27,3
+27 22 29,Data Communications Handhelds,27,3
+27 24 00,Data Communications Peripheral Data Equipment,27,2
+27 24 13,Printers,27,3
+27 24 16,Scanners,27,3
+27 24 19,External Drives,27,3
+27 24 23,Audio-Video Devices,27,3
+27 24 26,Virtual Reality Equipment,27,3
+27 24 29,Disaster Recovery Equipment,27,3
+27 25 00,Data Communications Software,27,2
+27 25 13,Virus Protection Software,27,3
+27 25 16,Application Suites,27,3
+27 25 19,Email Software,27,3
+27 25 23,Graphics/Multimedia Software,27,3
+27 25 26,Customer Relationship Management Software,27,3
+27 25 29,Operating System Software,27,3
+27 25 33,Database Software,27,3
+27 25 37,Virtual Private Network Software,27,3
+27 25 39,Internet Conferencing Software,27,3
+27 26 00,Data Communications Programming and Integration Services,27,2
+27 26 13,Web Development,27,3
+27 26 16,Database Development,27,3
+27 26 19,Application Development,27,3
+27 26 23,Network Integration Requirements,27,3
+27 26 26,Data Communications Integration Requirements,27,3
+27 30 00,Voice Communications,27,2
+27 31 00,Voice Communications Switching and Routing Equipment,27,2
+27 31 13,PBX/ Key Systems,27,3
+27 31 23,Internet Protocol Voice Switches,27,3
+27 32 00,"Voice Communications Telephone Sets, Facsimiles and Modems",27,2
+27 32 13,Telephone Sets,27,3
+27 32 16,Wireless Transceivers,27,3
+27 32 23,Elevator Telephones,27,3
+27 32 26,Ring-Down Emergency Telephones,27,3
+27 32 29,Facsimiles and Modems,27,3
+27 32 36,TTY Equipment,27,3
+27 33 00,Voice Communications Messaging,27,2
+27 33 16,Voice Mail and Auto Attendant,27,3
+27 33 23,Interactive Voice Response,27,3
+27 33 26,Facsimile Servers,27,3
+27 34 00,Call Accounting,27,2
+27 34 13,Toll Fraud Equipment and Software,27,3
+27 34 16,Telemanagement Software,27,3
+27 35 00,Call Management,27,2
+27 35 13,Digital Voice Announcers,27,3
+27 35 16,Automatic Call Distributors,27,3
+27 35 19,Call Status and Management Displays,27,3
+27 35 23,Dedicated 911 Systems,27,3
+27 40 00,Audio-Video Communications,27,2
+27 41 00,Audio-Video Systems,27,2
+27 41 13,Architecturally Integrated Audio-Video Equipment,27,3
+27 41 16,Integrated Audio-Video Systems and Equipment,27,3
+27 41 19,Portable Audio-Video Equipment,27,3
+27 41 23,Audio-Video Accessories,27,3
+27 42 00,Electronic Digital Systems,27,2
+27 42 13,Point of Sale Systems,27,3
+27 42 16,Transportation Information Display Systems,27,3
+27 42 19,Public Information Systems,27,3
+27 50 00,Distributed Communications and Monitoring Systems,27,2
+27 51 00,Distributed Audio-Video Communications Systems,27,2
+27 51 13,Paging Systems,27,3
+27 51 16,Public Address and Mass Notification Systems,27,3
+27 51 19,Sound Masking Systems,27,3
+27 51 23,Intercommunications and Program Systems,27,3
+27 52 00,Healthcare Communications and Monitoring Systems,27,2
+27 52 13,Patient Monitoring and Telemetry Systems,27,3
+27 52 16,Telemedicine Systems,27,3
+27 52 19,Healthcare Imaging Systems,27,3
+27 52 23,Nurse Call/Code Blue Systems,27,3
+27 53 00,Distributed Systems,27,2
+27 53 13,Clock Systems,27,3
+27 53 16,Infrared and Radio Frequency Tracking Systems,27,3
+27 53 19,"Internal Cellular, Paging, and Antenna Systems",27,3
+28 00 00,Electronic Safety and Security,28,1
+28 01 00,Operation and Maintenance of Electronic Safety and Security,28,2
+28 05 00,Common Work Results for Electronic Safety and Security,28,2
+28 06 00,Schedules for Electronic Safety and Security,28,2
+28 08 00,Commissioning of Electronic Safety and Security,28,2
+28 10 00,Electronic Access Control and Intrusion Detection,28,2
+28 13 00,Access Control,28,2
+28 13 13,Access Control Global Applications,28,3
+28 13 16,Access Control Systems and Database Management,28,3
+28 13 19,Access Control Systems Infrastructure,28,3
+28 13 26,Access Control Remote Devices,28,3
+28 13 33,Access Control Interfaces,28,3
+28 13 43,Access Control Identification Management Systems,28,3
+28 13 53,Security Access Detection,28,3
+28 16 00,Intrusion Detection,28,2
+28 16 13,"Intrusion Detection Control, GUI, and Logic Systems",28,3
+28 16 16,Intrusion Detection Systems Infrastructure,28,3
+28 16 19,Intrusion Detection Remote Devices and Sensors,28,3
+28 16 33,Intrusion Detection Interfaces,28,3
+28 16 43,Perimeter Security Systems,28,3
+28 16 46,Intrusion Detection Vehicle Control Systems,28,3
+28 20 00,Electronic Surveillance,28,2
+28 23 00,Video Surveillance,28,2
+28 23 13,Video Surveillance Control and Management Systems,28,3
+28 23 16,Video Surveillance Monitoring and Supervisory Interfaces,28,3
+28 23 19,Digital Video Recorders and Analog Recording Devices,28,3
+28 23 23,Video Surveillance Systems Infrastructure,28,3
+28 23 26,Video Surveillance Remote Positioning Equipment,28,3
+28 23 29,Video Surveillance Remote Devices and Sensors,28,3
+28 26 00,Electronic Personal Protection Systems,28,2
+28 26 13,Electronic Personal Safety Detection Systems,28,3
+28 26 16,Electronic Personal Safety Alarm Annunciation and Control Systems,28,3
+28 26 19,Electronic Personal Safety Interfaces to Remote Monitoring,28,3
+28 26 23,Electronic Personal Safety Emergency Aid Devices,28,3
+28 30 00,Electronic Detection and Alarm,28,2
+28 31 00,Fire Detection and Alarm,28,2
+28 31 13,"Fire Detection and Alarm Control, GUI, and Logic Systems",28,3
+28 31 23,Fire Detection and Alarm Annunciation Panels and Fire Stations,28,3
+28 31 33,Fire Detection and Alarm Interfaces,28,3
+28 31 43,Fire Detection Sensors,28,3
+28 31 46,Smoke Detection Sensors,28,3
+28 31 49,Carbon-Monoxide Detection Sensors,28,3
+28 31 53,Fire Alarm Initiating Devices,28,3
+28 31 63,Fire Alarm Integrated Audio Visual Evacuation Systems,28,3
+28 32 00,Radiation Detection and Alarm,28,2
+28 32 13,"Radiation Detection and Alarm Control, GUI, and Logic Systems",28,3
+28 32 23,Radiation Detection and Alarm Integrated Audio Evacuation Systems,28,3
+28 32 33,Radiation and Alarm Detection Sensors,28,3
+28 32 43,Radiation and Alarm Dosimeters,28,3
+28 33 00,Fuel-Gas Detection and Alarm,28,2
+28 33 13,"Fuel-Gas Detection and Alarm Control, GUI, and Logic Systems",28,3
+28 33 23,Fuel-Gas Detection and Alarm Integrated Audio Evacuation Systems,28,3
+28 33 33,Fuel-Gas Detection Sensors,28,3
+28 34 00,Fuel-Oil Detection and Alarm,28,2
+28 34 13,"Fuel-Oil Detection and Alarm Control, GUI, and Logic Systems",28,3
+28 34 23,Fuel-Oil Detection and Alarm Integrated Audio Evacuation Systems,28,3
+28 34 33,Fuel-Oil Detection Sensors,28,3
+28 35 00,Refrigerant Detection and Alarm,28,2
+28 35 13,"Refrigerant Detection and Alarm Control, GUI, and Logic Systems",28,3
+28 35 23,Refrigerant Detection and Alarm Integrated Audio Evacuation Systems,28,3
+28 35 33,Refrigerant Detection Sensors,28,3
+28 40 00,Electronic Monitoring and Control,28,2
+28 46 00,Electronic Detention Monitoring and Control Systems,28,2
+28 46 13,Hard-Wired Detention Monitoring and Control Systems,28,3
+28 46 16,Relay-Logic Detention Monitoring and Control Systems,28,3
+28 46 19,PLC Electronic Detention Monitoring and Control Systems,28,3
+28 46 23,Computer-Based Detention Monitoring and Control Systems,28,3
+28 46 26,Discreet-Logic Detention Monitoring and Control Systems,28,3
+28 46 29,Discreet-Distributed Intelligence Detention Monitoring and Control Systems,28,3
+31 00 00,Earthwork,31,1
+31 01 00,Maintenance of Earthwork,31,2
+31 05 00,Common Work Results for Earthwork,31,2
+31 06 00,Schedules for Earthwork,31,2
+31 08 00,Commissioning of Earthwork,31,2
+31 09 00,Geotechnical Instrumentation and Monitoring of Earthwork,31,2
+31 09 13,Geotechnical Instrumentation and Monitoring,31,3
+31 09 16,Special Foundation and Load Bearing Elements Instrumentation and Monitoring,31,3
+31 10 00,Site Clearing,31,2
+31 11 00,Clearing and Grubbing,31,2
+31 12 00,Selective Clearing,31,2
+31 13 00,Selective Tree and Shrub Removal and Trimming,31,2
+31 13 13,Selective Tree and Shrub Removal,31,3
+31 13 16,Selective Tree and Shrub Trimming,31,3
+31 14 00,Earth Stripping and Stockpiling,31,2
+31 14 13,Soil Stripping and Stockpiling,31,3
+31 14 16,Sod Stripping and Stockpiling,31,3
+31 20 00,Earth Moving,31,2
+31 21 00,Off-Gassing Mitigation,31,2
+31 21 13,Radon Mitigation,31,3
+31 21 16,Methane Mitigation,31,3
+31 22 00,Grading,31,2
+31 22 13,Rough Grading,31,3
+31 22 16,Fine Grading,31,3
+31 22 19,Finish Grading,31,3
+31 23 00,Excavation and Fill,31,2
+31 23 13,Subgrade Preparation,31,3
+31 23 16,Excavation,31,3
+31 23 19,Dewatering,31,3
+31 23 23,Fill,31,3
+31 23 33,Trenching and Backfilling,31,3
+31 24 00,Embankments,31,2
+31 24 13,Roadway Embankments,31,3
+31 24 16,Railway Embankments,31,3
+31 25 00,Erosion and Sedimentation Controls,31,2
+31 25 13,Erosion Controls,31,3
+31 25 23,Rock Barriers,31,3
+31 25 53,Sedimentation Controls,31,3
+31 25 63,Rock Basins,31,3
+31 30 00,Earthwork Methods,31,2
+31 31 00,Soil Treatment,31,2
+31 31 13,Rodent Control,31,3
+31 31 16,Termite Control,31,3
+31 31 19,Vegetation Control,31,3
+31 32 00,Soil Stabilization,31,2
+31 32 13,Soil Mixing Stabilization,31,3
+31 32 16,Chemical Treatment Soil Stabilization,31,3
+31 32 19,Geosynthetic Soil Stabilization and Layer Separation,31,3
+31 32 23,Pressure Grouting Soil Stabilization,31,3
+31 32 33,Shotcrete Soil Slope Stabilization,31,3
+31 32 36,Soil Nailing,31,3
+31 33 00,Rock Stabilization,31,2
+31 33 13,Rock Bolting and Grouting,31,3
+31 33 23,Rock Slope Netting,31,3
+31 33 26,Rock Slope Wire Mesh,31,3
+31 33 33,Shotcrete Rock Slope Stabilization,31,3
+31 33 43,Vegetated Rock Slope Stabilization,31,3
+31 34 00,Soil Reinforcement,31,2
+31 34 19,Geosynthetic Soil Reinforcement,31,3
+31 34 23,Fiber Soil Reinforcement,31,3
+31 35 00,Slope Protection,31,2
+31 35 19,Geosynthetic Slope Protection,31,3
+31 35 23,Slope Protection with Slope Paving,31,3
+31 35 26,Containment Barriers,31,3
+31 36 00,Gabions,31,2
+31 36 13,Gabion Boxes,31,3
+31 36 19,Gabion Mattresses,31,3
+31 37 00,Riprap,31,2
+31 37 13,Machined Riprap,31,3
+31 37 16,Non-Machined Riprap,31,3
+31 40 00,Shoring and Underpinning,31,2
+31 41 00,Shoring,31,2
+31 41 13,Timber Shoring,31,3
+31 41 16,Sheet Piling,31,3
+31 41 19,Metal Hydraulic Shoring,31,3
+31 41 23,Pneumatic Shoring,31,3
+31 41 33,Trench Shielding,31,3
+31 43 00,Concrete Raising,31,2
+31 43 13,Pressure Grouting,31,3
+31 43 16,Compaction Grouting,31,3
+31 43 19,Mechanical Jacking,31,3
+31 45 00,Vibroflotation and Densification,31,2
+31 45 13,Vibroflotation,31,3
+31 45 16,Densification,31,3
+31 46 00,Needle Beams,31,2
+31 46 13,Cantilever Needle Beams,31,3
+31 48 00,Underpinning,31,2
+31 48 13,Underpinning Piers,31,3
+31 48 19,Bracket Piers,31,3
+31 48 23,Jacked Piers,31,3
+31 48 33,Micropile Underpinning,31,3
+31 50 00,Excavation Support and Protection,31,2
+31 51 00,Anchor Tiebacks,31,2
+31 51 13,Excavation Soil Anchors,31,3
+31 51 16,Excavation Rock Anchors,31,3
+31 52 00,Cofferdams,31,2
+31 52 13,Sheet Piling Cofferdams,31,3
+31 52 16,Timber Cofferdams,31,3
+31 52 19,Precast Concrete Cofferdams,31,3
+31 53 00,Cribbing and Walers,31,2
+31 53 13,Timber Cribwork,31,3
+31 54 00,Ground Freezing,31,2
+31 56 00,Slurry Walls,31,2
+31 56 13,Bentonite Slurry Walls,31,3
+31 56 16,Attipulgite Slurry Walls,31,3
+31 56 19,Slurry-Geomembrane Composite Slurry Walls,31,3
+31 56 23,Lean Concrete Slurry Walls,31,3
+31 56 26,Bio-Polymer Trench Drain,31,3
+31 60 00,Special Foundations and Load-Bearing Elements,31,2
+31 62 00,Driven Piles,31,2
+31 62 13,Concrete Piles,31,3
+31 62 16,Steel Piles,31,3
+31 62 19,Timber Piles,31,3
+31 62 23,Composite Piles,31,3
+31 63 00,Bored Piles,31,2
+31 63 13,Bored and Augered Test Piles,31,3
+31 63 16,Auger Cast Grout Piles,31,3
+31 63 19,Bored and Socketed Piles,31,3
+31 63 23,Bored Concrete Piles,31,3
+31 63 26,Drilled Caissons,31,3
+31 63 29,Drilled Concrete Piers and Shafts,31,3
+31 63 33,Drilled Micropiles,31,3
+31 64 00,Caissons,31,2
+31 64 13,Box Caissons,31,3
+31 64 16,Excavated Caissons,31,3
+31 64 19,Floating Caissons,31,3
+31 64 23,Open Caissons,31,3
+31 64 26,Pneumatic Caissons,31,3
+31 64 29,Sheeted Caissons,31,3
+31 66 00,Special Foundations,31,2
+31 66 13,Special Piles,31,3
+31 66 16,Special Foundation Walls,31,3
+31 66 19,Refrigerated Foundations,31,3
+31 68 00,Foundation Anchors,31,2
+31 68 13,Rock Foundation Anchors,31,3
+31 70 00,Tunneling and Mining,31,2
+31 71 00,Tunnel Excavation,31,2
+31 71 13,Shield Driving Tunnel Excavation,31,3
+31 71 16,Tunnel Excavation by Drilling and Blasting,31,3
+31 71 19,Tunnel Excavation by Tunnel Boring Machine,31,3
+31 72 00,Tunnel Support Systems,31,2
+31 72 13,Rock Reinforcement and Initial Support,31,3
+31 72 16,Steel Ribs and Lagging,31,3
+31 73 00,Tunnel Grouting,31,2
+31 73 13,Cement Tunnel Grouting,31,3
+31 73 16,Chemical Tunnel Grouting,31,3
+31 74 00,Tunnel Construction,31,2
+31 74 13,Cast-in-Place Concrete Tunnel Lining,31,3
+31 74 16,Precast Concrete Tunnel Lining,31,3
+31 74 19,Shotcrete Tunnel Lining,31,3
+31 75 00,Shaft Construction,31,2
+31 75 13,Cast-in-Place Concrete Shaft Lining,31,3
+31 75 16,Precast Concrete Shaft Lining,31,3
+31 77 00,Submersible Tube Tunnels,31,2
+31 77 13,Trench Excavation for Submerged Tunnels,31,3
+31 77 16,Tube Construction (Outfitting Tunnel Tubes),31,3
+31 77 19,Floating and Laying Submerged Tunnels,31,3
+31 80 00,Unassigned,31,2
+31 90 00,Unassigned,31,2
+32 00 00,Exterior Improvements,32,1
+32 01 00,Operation and Maintenance of Exterior Improvements,32,2
+32 05 00,Common Work Results for Exterior Improvements,32,2
+32 06 00,Schedules for Exterior Improvements,32,2
+32 08 00,Commissioning of Exterior Improvements,32,2
+32 10 00,"Bases, Ballasts, and Paving",32,2
+32 11 00,Base Courses,32,2
+32 11 13,Subgrade Modifications,32,3
+32 11 16,Subbase Courses,32,3
+32 11 23,Aggregate Base Courses,32,3
+32 11 26,Asphaltic Base Courses,32,3
+32 11 29,Lime Treated Base Courses,32,3
+32 11 33,Cement-Treated Base Courses,32,3
+32 11 36,Concrete Base Courses,32,3
+32 12 00,Flexible Paving,32,2
+32 12 13,Preparatory Coats,32,3
+32 12 16,Asphalt Paving,32,3
+32 12 19,Asphalt Paving Wearing Courses,32,3
+32 12 33,Flexible Paving Surface Treatments,32,3
+32 12 36,Seal Coats,32,3
+32 12 43,Porous Flexible Paving,32,3
+32 12 73,Asphalt Paving Joint Sealants,32,3
+32 13 00,Rigid Paving,32,2
+32 13 13,Concrete Paving,32,3
+32 13 16,Decorative Concrete Paving,32,3
+32 13 73,Concrete Paving Joint Sealants,32,3
+32 14 00,Unit Paving,32,2
+32 14 13,Precast Concrete Unit Paving,32,3
+32 14 16,Brick Unit Paving,32,3
+32 14 23,Asphalt Unit Paving,32,3
+32 14 26,Wood Paving,32,3
+32 14 29,Recycled-Rubber Paving,32,3
+32 14 40,Stone Paving,32,3
+32 14 43,Porous Unit Paving,32,3
+32 15 00,Aggregate Surfacing,32,2
+32 15 13,Cinder Surfacing,32,3
+32 15 40,Crushed Stone Surfacing,32,3
+32 16 00,Curbs and Gutters,32,2
+32 16 13,Concrete Curbs and Gutters,32,3
+32 16 19,Asphalt Curbs,32,3
+32 16 40,Stone Curbs,32,3
+32 17 00,Paving Specialties,32,2
+32 17 13,Parking Bumpers,32,3
+32 17 23,Pavement Markings,32,3
+32 17 26,Tactile Warning Surfacing,32,3
+32 18 00,Athletic and Recreational Surfacing,32,2
+32 18 13,Synthetic Grass Surfacing,32,3
+32 18 16,Synthetic Resilient Surfacing,32,3
+32 18 23,Athletic Surfacing,32,3
+32 20 00,Unassigned,32,2
+32 30 00,Site Improvements,32,2
+32 31 00,Fences and Gates,32,2
+32 31 13,Chain Link Fences and Gates,32,3
+32 31 16,Welded Wire Fences and Gates,32,3
+32 31 19,Decorative Metal Fences and Gates,32,3
+32 31 23,Plastic Fences and Gates,32,3
+32 31 26,Wire Fences and Gates,32,3
+32 31 29,Wood Fences and Gates,32,3
+32 32 00,Retaining Walls,32,2
+32 32 13,Cast-in-Place Concrete Retaining Walls,32,3
+32 32 16,Precast Concrete Retaining Walls,32,3
+32 32 19,Unit Masonry Retaining Walls,32,3
+32 32 23,Segmental Retaining Walls,32,3
+32 32 26,Metal Crib Retaining Walls,32,3
+32 32 29,Timber Retaining Walls,32,3
+32 32 34,Reinforced Soil Retaining Walls,32,3
+32 32 36,Gabion Retaining Walls,32,3
+32 32 43,Soldier-Beam Retaining Walls,32,3
+32 34 00,Fabricated Bridges,32,2
+32 35 00,Screening Devices,32,2
+32 35 13,Screens and Louvers,32,3
+32 35 16,Sound Barriers,32,3
+32 40 00,Unassigned,32,2
+32 50 00,Unassigned,32,2
+32 60 00,Unassigned,32,2
+32 70 00,Wetlands,32,2
+32 71 00,Constructed Wetlands,32,2
+32 72 00,Wetlands Restoration,32,2
+32 80 00,Irrigation,32,2
+32 82 00,Irrigation Pumps,32,2
+32 84 00,Planting Irrigation,32,2
+32 84 13,Drip Irrigation,32,3
+32 84 23,Underground Sprinklers,32,3
+32 86 00,Agricultural Irrigation,32,2
+32 90 00,Planting,32,2
+32 91 00,Planting Preparation,32,2
+32 91 13,Soil Preparation,32,3
+32 91 16,Planting Soil Stabilization,32,3
+32 91 19,Landscape Grading,32,3
+32 92 00,Turf and Grasses,32,2
+32 92 13,Hydro-Mulching,32,3
+32 92 16,Plugging,32,3
+32 92 19,Seeding,32,3
+32 92 23,Sodding,32,3
+32 92 26,Sprigging,32,3
+32 93 00,Plants,32,2
+32 93 13,Ground Covers,32,3
+32 93 23,Plants and Bulbs,32,3
+32 93 33,Shrubs,32,3
+32 93 43,Trees,32,3
+32 94 00,Planting Accessories,32,2
+32 94 13,Landscape Edging,32,3
+32 94 16,Landscape Timbers,32,3
+32 94 33,Planters,32,3
+32 94 43,Tree Grates,32,3
+32 94 46,Tree Grids,32,3
+32 96 00,Transplanting,32,2
+32 96 13,Ground Cover Transplanting,32,3
+32 96 23,Plant and Bulb Transplanting,32,3
+32 96 33,Shrub Transplanting,32,3
+32 96 43,Tree Transplanting,32,3
+33 00 00,Utilities,33,1
+33 01 00,Operation and Maintenance of Utilities,33,2
+33 05 00,Common Work Results for Utilities,33,2
+33 06 00,Schedules for Utilities,33,2
+33 08 00,Commissioning of Utilities,33,2
+33 09 00,Instrumentation and Control for Utilities,33,2
+33 10 00,Water Utilities,33,2
+33 11 00,Water Utility Distribution Piping,33,2
+33 11 13,Public Water Utility Distribution Piping,33,3
+33 11 16,Site Water Utility Distribution Piping,33,3
+33 11 19,Fire Suppression Utility Water Distribution Piping,33,3
+33 12 00,Water Utility Distribution Equipment,33,2
+33 12 13,Water Service Connections,33,3
+33 12 16,Water Utility Distribution Valves,33,3
+33 12 19,Water Utility Distribution Fire Hydrants,33,3
+33 12 23,Water Utility Pumping Stations,33,3
+33 12 33,Water Utility Metering,33,3
+33 13 00,Disinfecting of Water Utility Distribution,33,2
+33 16 00,Water Utility Storage Tanks,33,2
+33 16 13,Aboveground Water Utility Storage Tanks,33,3
+33 16 16,Underground Water Utility Storage Tanks,33,3
+33 16 19,Elevated Water Utility Storage Tanks,33,3
+33 20 00,Wells,33,2
+33 21 00,Water Supply Wells,33,2
+33 21 13,Public Water Supply Wells,33,3
+33 21 16,Irrigation Water Wells,33,3
+33 22 00,Test Wells,33,2
+33 23 00,Extraction Wells,33,2
+33 24 00,Monitoring Wells,33,2
+33 24 13,Groundwater Monitoring Wells,33,3
+33 25 00,Recharge Wells,33,2
+33 26 00,Relief Wells,33,2
+33 29 00,Well Abandonment,33,2
+33 30 00,Sanitary Sewerage Utilities,33,2
+33 31 00,Sanitary Utility Sewerage Piping,33,2
+33 31 13,Public Sanitary Utility Sewerage Piping,33,3
+33 31 16,Industrial Waste Utility Sewerage Piping,33,3
+33 32 00,Wastewater Utility Pumping Stations,33,2
+33 32 13,Packaged Utility Lift Stations,33,3
+33 32 16,Packaged Utility Wastewater Pumping Stations,33,3
+33 32 19,Public Utility Wastewater Pumping Stations,33,3
+33 33 00,Low Pressure Utility Sewerage,33,2
+33 33 13,Sanitary Utility Sewerage,33,3
+33 33 16,Combined Utility Sewerage,33,3
+33 34 00,Sanitary Utility Sewerage Force Mains,33,2
+33 34 13,Sanitary Utility Sewerage Inverted Siphons,33,3
+33 36 00,Utility Septic Tanks,33,2
+33 36 13,Utility Septic Tank and Effluent Wet Wells,33,3
+33 36 16,Utility Septic Tank Effluent Pumps,33,3
+33 36 33,Utility Drainage Field,33,3
+33 39 00,Sanitary Utility Sewerage Structures,33,2
+33 39 13,"Sanitary Utility Sewerage Manholes, Frames, and Covers",33,3
+33 39 23,Sanitary Utility Sewerage Cleanouts,33,3
+33 40 00,Storm Drainage Utilities,33,2
+33 41 00,Storm Utility Drainage Piping,33,2
+33 41 13,Public Storm Utility Drainage Piping,33,3
+33 42 00,Culverts,33,2
+33 42 13,Pipe Culverts,33,3
+33 42 16,Concrete Culverts,33,3
+33 44 00,Storm Utility Water Drains,33,2
+33 44 13,Utility Area Drains,33,3
+33 44 16,Utility Trench Drains,33,3
+33 44 19,Utility Storm Water Treatment,33,3
+33 45 00,Storm Utility Drainage Pumps,33,2
+33 46 00,Subdrainage,33,2
+33 46 13,Foundation Drainage,33,3
+33 46 16,Subdrainage Piping,33,3
+33 46 19,Underslab Drainage,33,3
+33 46 23,Drainage Layers,33,3
+33 46 26,Geotextile Subsurface Drainage Filtration,33,3
+33 46 33,Retaining Wall Drainage,33,3
+33 47 00,Ponds and Reservoirs,33,2
+33 47 13,Pond and Reservoir Liners,33,3
+33 47 16,Pond and Reservoir Covers,33,3
+33 47 19,Water Ponds and Reservoirs,33,3
+33 47 23,Sanitary Sewerage Lagoons,33,3
+33 47 26,Storm Drainage Ponds and Reservoirs,33,3
+33 49 00,Storm Drainage Structures,33,2
+33 49 13,"Storm Drainage Manholes, Frames, and Covers",33,3
+33 49 23,Storm Drainage Water Retention Structures,33,3
+33 50 00,Fuel Distribution Utilities,33,2
+33 51 00,Natural-Gas Distribution,33,2
+33 51 13,Natural-Gas Piping,33,3
+33 51 33,Natural-Gas Metering,33,3
+33 52 00,Liquid Fuel Distribution,33,2
+33 52 13,Fuel-Oil Distribution,33,3
+33 52 16,Gasoline Distribution,33,3
+33 52 19,Diesel Fuel Distribution,33,3
+33 52 43,Aviation Fuel Distribution,33,3
+33 56 00,Fuel-Storage Tanks,33,2
+33 56 13,Aboveground Fuel-Storage Tanks,33,3
+33 56 16,Underground Fuel-Storage Tanks,33,3
+33 56 43,Aviation Fuel-Storage Tanks,33,3
+33 56 53,Compressed Gases Storage Tanks,33,3
+33 60 00,Hydronic and Steam Energy Utilities,33,2
+33 61 00,Hydronic Energy Distribution,33,2
+33 61 13,Underground Hydronic Energy Distribution,33,3
+33 61 23,Aboveground Hydronic Energy Distribution,33,3
+33 61 33,Hydronic Energy Distribution Metering,33,3
+33 63 00,Steam Energy Distribution,33,2
+33 63 13,Underground Steam and Condensate Distribution Piping,33,3
+33 63 23,Aboveground Steam and Condensate Distribution Piping,33,3
+33 63 33,Steam Energy Distribution Metering,33,3
+33 70 00,Electrical Utilities,33,2
+33 71 00,Electrical Utility Transmission and Distribution,33,2
+33 71 13,Electrical Utility Towers,33,3
+33 71 16,Electrical Utility Poles,33,3
+33 71 19,Electrical Underground Ducts and Manholes,33,3
+33 71 23,Insulators and Fittings,33,3
+33 71 26,Transmission and Distribution Equipment,33,3
+33 71 36,Extra-High-Voltage Wiring,33,3
+33 71 39,High-Voltage Wiring,33,3
+33 71 49,Medium-Voltage Wiring,33,3
+33 71 53,Direct-Current Transmission,33,3
+33 71 73,Electrical Utility Services,33,3
+33 71 83,Transmission and Distribution Specialties,33,3
+33 72 00,Utility Substations,33,2
+33 72 13,Deadend Structures,33,3
+33 72 23,Structural Bus Supports,33,3
+33 72 26,Substation Bus Assemblies,33,3
+33 72 33,Control House Equipment,33,3
+33 72 43,Substation Control Wiring,33,3
+33 73 00,Utility Transformers,33,2
+33 73 13,Liquid-Filled Utility Transformers,33,3
+33 73 23,Dry-Type Utility Transformers,33,3
+33 75 00,High-Voltage Switchgear and Protection Devices,33,2
+33 75 13,Air High-Voltage Circuit Breaker,33,3
+33 75 16,Oil High-Voltage Circuit Breaker,33,3
+33 75 19,Gas High-Voltage Circuit Breaker,33,3
+33 75 23,Vacuum High-Voltage Circuit Breaker,33,3
+33 75 36,High-Voltage Utility Fuses,33,3
+33 75 39,High-Voltage Surge Arresters,33,3
+33 75 43,Shunt Reactors,33,3
+33 77 00,Medium-Voltage Utility Switchgear and Protection Devices,33,2
+33 77 13,Air Medium-Voltage Circuit Breaker,33,3
+33 77 16,Oil Medium-Voltage Circuit Breaker,33,3
+33 77 19,Gas Medium-Voltage Circuit Breaker,33,3
+33 77 23,Vacuum Medium-Voltage Circuit Breaker,33,3
+33 77 26,Medium-Voltage Utility Fusible Interrupter Switchgear,33,3
+33 77 33,Medium-Voltage Utility Cutouts,33,3
+33 77 36,Medium-Voltage Utility Fuses,33,3
+33 77 39,Medium-Voltage Utility Surge Arresters,33,3
+33 77 53,Medium-Voltage Utility Reclosers,33,3
+33 79 00,Site Grounding,33,2
+33 79 13,Site Improvements Grounding,33,3
+33 79 16,Tower Grounding,33,3
+33 79 19,Utilities Grounding,33,3
+33 79 23,Utility Substation Grounding,33,3
+33 79 83,Site Grounding Conductors,33,3
+33 79 93,Site Lightning Protection,33,3
+33 80 00,Communications Utilities,33,2
+33 81 00,Communications Structures,33,2
+33 81 13,Communications Transmission Towers,33,3
+33 81 16,Antenna Towers,33,3
+33 81 19,Communications Utility Poles,33,3
+33 81 23,Aerial Cable Installation Hardware,33,3
+33 81 26,"Communications Underground Ducts, Manholes, and Handholes",33,3
+33 81 29,"Communications Vaults, Pedestals and Enclosures",33,3
+33 81 33,"Communications Blowers, Fans, and Ventilation",33,3
+33 82 00,Communications Distribution,33,2
+33 82 13,Copper Communications Distribution Cabling,33,3
+33 82 23,Optical Fiber Communications Distribution Cabling,33,3
+33 82 33,Coaxial Communications Distribution Cabling,33,3
+33 82 43,Grounding and Bonding for Communications Distribution,33,3
+33 82 46,Cable Pressurization Equipment,33,3
+33 82 53,"Cleaning, Lubrication and Restoration Chemicals",33,3
+33 83 00,Wireless Communications Distribution,33,2
+33 83 13,Laser Transmitters and Receivers,33,3
+33 83 16,Microwave Transmitters and Receivers,33,3
+33 83 19,Infrared Transmitters and Receivers,33,3
+33 83 23,UHF/VHF Transmitters and Antennas,33,3

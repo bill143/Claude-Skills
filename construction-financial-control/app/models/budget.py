@@ -31,6 +31,9 @@ class BudgetLine(Base):
         _enum(CostCategory), nullable=False, default=CostCategory.GENERAL_CONDITIONS
     )
     original_budget: Mapped[Decimal] = mapped_column(Numeric(16, 2), nullable=False, default=Decimal("0"))
+    # PM-entered cost-to-complete; when set it overrides the computed ETC for
+    # this line (EAC = actual + manual_etc). Null = use the selected method.
+    manual_etc: Mapped[Decimal | None] = mapped_column(Numeric(16, 2))
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=lambda: datetime.now(UTC), nullable=False
     )

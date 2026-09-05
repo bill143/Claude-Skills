@@ -76,5 +76,6 @@ class BudgetControlAction(str, enum.Enum):
 
 
 class ForecastMethod(str, enum.Enum):
-    REMAINING_BUDGET = "REMAINING_BUDGET"  # EAC = max(committed, actual) + uncommitted budget
+    REMAINING_BUDGET = "REMAINING_BUDGET"  # EAC = max(current budget, committed, actual)
     CPI = "CPI"  # EAC = current_budget / CPI (earned-value method)
+    MANUAL = "MANUAL"  # per-line PM override: EAC = actual + manual ETC

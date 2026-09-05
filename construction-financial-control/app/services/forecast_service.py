@@ -10,8 +10,12 @@ Cost model per budget line:
   current_budget = original_budget + approved OCO line amounts
   committed      = approved/closed PO lines + approved SCO lines not yet
                    superseded by a PO sourced from that SCO (no double count)
-  actual         = sum of dated cost entries
-  EAC (REMAINING_BUDGET) = max(committed, actual) + max(current_budget - committed, 0)
+  actual         = sum of dated cost entries (draws AGAINST the budget/commitments,
+                   never stacked on top of them)
+  EAC (MANUAL)           = actual + manual_etc  (PM-entered cost-to-complete; wins
+                           over any method whenever the line has manual_etc set)
+  EAC (REMAINING_BUDGET) = max(current_budget, committed, actual) — you will spend
+                           the budget unless commitments or actuals already exceed it
   EAC (CPI)              = actual + (current_budget - EV) / CPI, EV = pct_complete * current_budget
   ETC = EAC - actual ;  VAC = current_budget - EAC
 """
@@ -34,6 +38,25 @@ COMMITTED_PO_STATUSES = (PurchaseOrderStatus.APPROVED, PurchaseOrderStatus.CLOSE
 
 def _dec(value) -> Decimal:
     return Decimal(str(value)) if value is not None else ZERO
+
+
+def code_digits(raw_code: str) -> str:
+    """Digits of a cost code: '03 30 00' / '03-30-00' / '033000' -> '033000'."""
+    return "".join(ch for ch in str(raw_code) if ch.isdigit())
+
+
+def normalize_code(raw_code: str) -> str:
+    """Canonical 'XX YY ZZ' for 6-digit CSI codes; cleaned original otherwise."""
+    digits = code_digits(raw_code)
+    if len(digits) == 6:
+        return f"{digits[0:2]} {digits[2:4]} {digits[4:6]}"
+    return str(raw_code).strip()
+
+
+def division_of(raw_code: str) -> str:
+    """WBS master level: the first two digits of the cost code ('99' if unknown)."""
+    digits = code_digits(raw_code)
+    return digits[:2] if len(digits) >= 2 else "99"
 
 
 def _check_invariants(*, current_budget: Decimal, actual: Decimal, etc: Decimal, eac: Decimal,
@@ -116,13 +139,18 @@ def line_metrics(
     committed = committed_cost(db, line.id)
     actual = actual_cost(db, line.id)
 
-    etc, eac, used_method = compute_etc_eac(
-        current_budget=current_budget,
-        committed=committed,
-        actual=actual,
-        method=method,
-        percent_complete=percent_complete,
-    )
+    if line.manual_etc is not None:
+        etc = _dec(line.manual_etc).quantize(CENT)
+        eac = (actual + etc).quantize(CENT)
+        used_method = ForecastMethod.MANUAL
+    else:
+        etc, eac, used_method = compute_etc_eac(
+            current_budget=current_budget,
+            committed=committed,
+            actual=actual,
+            method=method,
+            percent_complete=percent_complete,
+        )
     vac = (current_budget - eac).quantize(CENT)
     _check_invariants(current_budget=current_budget, actual=actual, etc=etc, eac=eac, vac=vac)
     # All arithmetic above is Decimal; float() below is a serialization-only
@@ -130,8 +158,10 @@ def line_metrics(
     return {
         "id": line.id,
         "cost_code": line.cost_code,
+        "division": division_of(line.cost_code),
         "description": line.description,
         "category": line.category.value,
+        "manual_etc": float(_dec(line.manual_etc)) if line.manual_etc is not None else None,
         "original_budget": float(original),
         "approved_changes": float(changes),
         "current_budget": float(current_budget),
@@ -165,12 +195,9 @@ def compute_etc_eac(
             eac = (actual + (current_budget - earned_value) / cpi).quantize(CENT)
             return (eac - actual).quantize(CENT), eac, ForecastMethod.CPI
 
-    # REMAINING_BUDGET: you will spend at least what you have committed (or
-    # already spent, if overrun), plus every dollar of budget not yet bought out.
-    uncommitted = current_budget - committed
-    if uncommitted < ZERO:
-        uncommitted = ZERO
-    eac = (max(committed, actual) + uncommitted).quantize(CENT)
+    # REMAINING_BUDGET: actuals and commitments draw against the budget, so the
+    # forecast is the budget itself until committed or spent cost exceeds it.
+    eac = max(current_budget, committed, actual).quantize(CENT)
     return (eac - actual).quantize(CENT), eac, ForecastMethod.REMAINING_BUDGET
 
 

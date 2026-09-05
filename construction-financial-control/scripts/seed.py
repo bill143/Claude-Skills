@@ -48,13 +48,13 @@ VENDORS = [
     ("Metro Building Supply", VendorType.SUPPLIER, "Materials"),
 ]
 
-BUDGET_LINES = [
-    ("01-000", "General Conditions", CostCategory.GENERAL_CONDITIONS, "450000"),
-    ("03-300", "Cast-in-Place Concrete", CostCategory.SUBCONTRACT, "1200000"),
-    ("05-100", "Structural Steel", CostCategory.SUBCONTRACT, "950000"),
-    ("06-100", "Rough Carpentry", CostCategory.LABOR, "380000"),
-    ("09-900", "Finishes", CostCategory.MATERIAL, "620000"),
-    ("15-000", "Mechanical / Plumbing", CostCategory.SUBCONTRACT, "1100000"),
+BUDGET_LINES = [  # real CSI MasterFormat codes; titles auto-match the library
+    ("01 31 00", "Project Management and Coordination", CostCategory.GENERAL_CONDITIONS, "450000"),
+    ("03 30 00", "Cast-in-Place Concrete", CostCategory.SUBCONTRACT, "1200000"),
+    ("05 12 00", "Structural Steel Framing", CostCategory.SUBCONTRACT, "950000"),
+    ("06 10 00", "Rough Carpentry", CostCategory.LABOR, "380000"),
+    ("09 91 00", "Painting", CostCategory.MATERIAL, "620000"),
+    ("22 00 00", "Plumbing", CostCategory.SUBCONTRACT, "1100000"),
 ]
 
 APPROVAL_RULES = [
@@ -67,9 +67,14 @@ APPROVAL_RULES = [
 
 
 def main() -> None:
+    from app.services.wbs_service import seed_cost_codes
+
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     try:
+        loaded = seed_cost_codes(db)
+        if loaded:
+            print(f"  Loaded CSI MasterFormat library: {loaded} cost codes")
         for email, name, role in USERS:
             if not db.execute(select(User).where(User.email == email)).scalar_one_or_none():
                 db.add(User(email=email, full_name=name, role=role,
@@ -102,11 +107,11 @@ def main() -> None:
 
             concrete = db.execute(
                 select(BudgetLine).where(BudgetLine.project_id == project.id,
-                                         BudgetLine.cost_code == "03-300")
+                                         BudgetLine.cost_code == "03 30 00")
             ).scalar_one()
             steel = db.execute(
                 select(BudgetLine).where(BudgetLine.project_id == project.id,
-                                         BudgetLine.cost_code == "05-100")
+                                         BudgetLine.cost_code == "05 12 00")
             ).scalar_one()
 
             # Historic actuals so the dashboard has a burn rate out of the box.

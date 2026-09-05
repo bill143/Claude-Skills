@@ -7,6 +7,7 @@ from app.models.approval import ApprovalRequest, ApprovalRule  # noqa: F401
 from app.models.audit import AuditEvent  # noqa: F401
 from app.models.budget import BudgetLine, CostEntry, ForecastSnapshot  # noqa: F401
 from app.models.change_order import ChangeOrder, ChangeOrderLine  # noqa: F401
+from app.models.cost_code import CostCode  # noqa: F401
 from app.models.idempotency import IdempotencyRecord  # noqa: F401
 from app.models.project import Project  # noqa: F401
 from app.models.purchase_order import PurchaseOrder, PurchaseOrderLine  # noqa: F401

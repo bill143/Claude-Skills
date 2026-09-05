@@ -7,7 +7,7 @@ from app.db.session import get_db
 from app.models.enums import UserRole
 from app.models.project import Project
 from app.models.user import User
-from app.schemas.project import ProjectCreate, ProjectOut
+from app.schemas.project import ProjectCreate, ProjectOut, ProjectPatch
 from app.services import audit_service
 
 router = APIRouter(prefix="/projects", tags=["projects"])
@@ -59,3 +59,28 @@ def get_project(
     project_id: int, db: Session = Depends(get_db), _user: User = Depends(get_current_user)
 ):
     return get_project_or_404(project_id, db)
+
+
+@router.patch("/{project_id}", response_model=ProjectOut)
+def update_project(
+    project_id: int,
+    body: ProjectPatch,
+    db: Session = Depends(get_db),
+    user: User = Depends(require_roles(UserRole.PROJECT_MANAGER, UserRole.EXECUTIVE)),
+):
+    project = get_project_or_404(project_id, db)
+    updates = body.model_dump(exclude_unset=True, exclude_none=True)
+    if not updates:
+        raise HTTPException(status_code=422, detail="Nothing to update")
+    changes = {}
+    for field, value in updates.items():
+        old = getattr(project, field)
+        setattr(project, field, value)
+        changes[field] = {"from": str(old), "to": str(value)}
+    audit_service.record(
+        db, actor=user, entity_type="PROJECT", entity_id=project.id,
+        action="project_updated", payload=changes,
+    )
+    db.commit()
+    db.refresh(project)
+    return project
