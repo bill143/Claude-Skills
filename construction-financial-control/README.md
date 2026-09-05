@@ -6,7 +6,9 @@ role + threshold approval workflows, EAC/ETC forecasting, and a tamper-evident
 audit ledger.
 
 **Stack:** FastAPI · SQLAlchemy 2.0 · PostgreSQL · Alembic · JWT/RBAC ·
-Streamlit · (optional) Celery + Redis.
+Next.js 14 + Tailwind frontend (`frontend/`) · (optional) Celery + Redis.
+Budgets live on a **CSI MasterFormat WBS** (3,401-code library bundled) with
+Excel/CSV import, per-line manual ETC overrides, and document drill-downs.
 
 The design was distilled from an evidence-based review of ten open-source
 ERP/PM systems — see [Design provenance](#design-provenance) below.
@@ -21,8 +23,9 @@ docker compose up --build
 ```
 
 - API + docs: http://localhost:8000/docs
-- Streamlit UI: http://localhost:8501
+- **Web app (Next.js): http://localhost:3000**
 - Postgres: `localhost:5432` (cfcs / cfcs / cfcs)
+- Legacy Streamlit UI: `docker compose --profile legacy up` → http://localhost:8501
 
 The `api` container seeds demo data automatically. Sign in on the Streamlit
 sidebar as any of (password `ChangeMe123!`):
@@ -49,10 +52,12 @@ cp .env.example .env                  # defaults expect Postgres on localhost:54
 # Option B — zero-setup SQLite:
 #   export DATABASE_URL=sqlite:///./cfcs.db
 
-alembic upgrade head                  # schema (committed migrations 0001+0002)
-python scripts/seed.py                # demo data
+alembic upgrade head                  # schema (committed migrations 0001-0003)
+python scripts/seed.py                # demo data + CSI cost-code library
 uvicorn app.main:app --reload         # terminal 1 → http://localhost:8000/docs
-streamlit run streamlit_app.py        # terminal 2 → http://localhost:8501
+
+cd frontend && npm install            # terminal 2 → the web app
+API_PROXY_TARGET=http://localhost:8000 npm run dev   # http://localhost:3000
 ```
 
 Run the test suite and the end-to-end smoke test:

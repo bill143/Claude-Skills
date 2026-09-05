@@ -43,12 +43,24 @@ services:
       retries: 12
 
   ui:
+    build: ./frontend
+    environment:
+      API_PROXY_TARGET: http://api:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+  # Legacy Streamlit UI (superseded by the Next.js app on :3000).
+  # Start with: docker compose --profile legacy up
+  ui-streamlit:
     build: .
     command: streamlit run streamlit_app.py --server.port 8501 --server.address 0.0.0.0
     environment:
       API_BASE_URL: http://api:8000
     ports:
       - "8501:8501"
+    profiles: ["legacy"]
     depends_on:
       - api
 
