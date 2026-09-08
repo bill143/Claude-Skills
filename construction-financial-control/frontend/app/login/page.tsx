@@ -96,7 +96,7 @@ export default function LoginPage() {
             {busy ? "Signing in…" : "Sign in"}
           </Button>
           <p className="text-center text-xs text-muted">
-            Demo: pm@example.com / exec@example.com · ChangeMe123!
+            Demo accounts are created by scripts/seed.py
           </p>
         </form>
       </div>

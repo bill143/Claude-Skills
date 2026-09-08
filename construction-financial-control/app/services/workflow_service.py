@@ -211,9 +211,14 @@ def convert_pco(
 
 
 def check_po_budget(db: Session, po: PurchaseOrder) -> list[dict]:
-    """ERPNext-style budget control: evaluate each PO line against remaining budget.
+    """ERPNext-style budget control at PO submission.
 
-    Returns warnings; raises HTTP 422 when the project is set to STOP.
+    Projection per budget line = approved commitments + other in-flight
+    (pending-approval) POs − the amount this PO's source SCO already counts
+    (a buyout replaces its SCO, so it must not double-count) + this PO's
+    lines aggregated per budget line (several lines on one code are enforced
+    together, not one at a time). Returns warnings; raises HTTP 422 when the
+    project is set to STOP.
     """
     project = db.get(Project, po.project_id)
     if project is None:
@@ -222,20 +227,36 @@ def check_po_budget(db: Session, po: PurchaseOrder) -> list[dict]:
         return []
 
     tolerance = Decimal(str(1.0 + settings.BUDGET_TOLERANCE_PCT))
-    warnings = []
+    po_totals: dict[int, Decimal] = {}
+    budget_lines: dict[int, object] = {}
     for line in po.lines:
-        budget_line = line.budget_line
-        current_budget = Decimal(str(budget_line.original_budget)) + forecast_service.approved_oco_changes(
-            db, budget_line.id
+        po_totals[line.budget_line_id] = (
+            po_totals.get(line.budget_line_id, Decimal("0")) + Decimal(str(line.amount))
         )
-        committed = forecast_service.committed_cost(db, budget_line.id)
-        projected = committed + Decimal(str(line.amount))
+        budget_lines[line.budget_line_id] = line.budget_line
+
+    warnings = []
+    for budget_line_id, po_amount in po_totals.items():
+        budget_line = budget_lines[budget_line_id]
+        current_budget = Decimal(
+            str(budget_line.original_budget)  # type: ignore[attr-defined]
+        ) + forecast_service.approved_oco_changes(db, budget_line_id)
+        committed = forecast_service.committed_cost(db, budget_line_id)
+        pending = forecast_service.pending_po_cost(db, budget_line_id, exclude_po_id=po.id)
+        sco_offset = Decimal("0")
+        if po.source_change_order_id is not None:
+            sco_offset = forecast_service.active_sco_line_amount(
+                db, po.source_change_order_id, budget_line_id
+            )
+        projected = committed + pending - sco_offset + po_amount
         if projected > current_budget * tolerance:
             warnings.append({
-                "budget_line_id": budget_line.id,
-                "cost_code": budget_line.cost_code,
+                "budget_line_id": budget_line_id,
+                "cost_code": budget_line.cost_code,  # type: ignore[attr-defined]
                 "current_budget": float(current_budget),
                 "committed": float(committed),
+                "pending_pos": float(pending),
+                "superseded_sco_offset": float(sco_offset),
                 "projected_committed": float(projected),
                 "overrun": float(projected - current_budget),
             })

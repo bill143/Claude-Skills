@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, Query
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
@@ -7,7 +7,14 @@ from app.api.projects import get_project_or_404
 from app.db.session import get_db
 from app.models.approval import ApprovalRequest
 from app.models.change_order import ChangeOrder
-from app.models.enums import ApprovalStatus, ChangeOrderStatus, ChangeOrderType, ForecastMethod
+from app.models.enums import (
+    ApprovalEntityType,
+    ApprovalStatus,
+    ChangeOrderStatus,
+    ChangeOrderType,
+    ForecastMethod,
+)
+from app.models.purchase_order import PurchaseOrder
 from app.models.user import User
 from app.schemas.dashboard import ProjectKpis
 from app.services import forecast_service
@@ -36,9 +43,18 @@ def project_kpis(
             ),
         )
     ).scalar_one()
+    # Scoped to THIS project's documents, not every pending approval in the DB.
+    project_co_ids = select(ChangeOrder.id).where(ChangeOrder.project_id == project_id)
+    project_po_ids = select(PurchaseOrder.id).where(PurchaseOrder.project_id == project_id)
     kpis["pending_approvals"] = db.execute(
         select(func.count(ApprovalRequest.id)).where(
-            ApprovalRequest.status == ApprovalStatus.PENDING
+            ApprovalRequest.status == ApprovalStatus.PENDING,
+            or_(
+                (ApprovalRequest.entity_type == ApprovalEntityType.CHANGE_ORDER)
+                & ApprovalRequest.entity_id.in_(project_co_ids),
+                (ApprovalRequest.entity_type == ApprovalEntityType.PURCHASE_ORDER)
+                & ApprovalRequest.entity_id.in_(project_po_ids),
+            ),
         )
     ).scalar_one()
     return kpis

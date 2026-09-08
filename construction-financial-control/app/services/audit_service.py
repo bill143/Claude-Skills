@@ -9,7 +9,7 @@ import hashlib
 import json
 from datetime import UTC, datetime
 
-from sqlalchemy import event, select
+from sqlalchemy import event, select, text
 from sqlalchemy.orm import Session
 
 from app.models.audit import AuditEvent
@@ -48,27 +48,38 @@ def _canonical_ts(created_at: datetime) -> str:
 
 
 def _compute_hash(prev_hash: str, entity_type: str, entity_id: int, action: str,
-                  payload: dict, created_at: datetime) -> str:
-    material = (f"{prev_hash}|{entity_type}|{entity_id}|{action}|"
+                  actor_id: int | None, payload: dict, created_at: datetime) -> str:
+    # actor_id is part of the hash: rewriting WHO did something is tampering
+    # just as much as rewriting what was done.
+    material = (f"{prev_hash}|{entity_type}|{entity_id}|{action}|{actor_id}|"
                 f"{_canonical(payload)}|{_canonical_ts(created_at)}")
     return hashlib.sha256(material.encode("utf-8")).hexdigest()
 
 
 def record(db: Session, *, actor: User | None, entity_type: str, entity_id: int,
            action: str, payload: dict | None = None) -> AuditEvent:
-    """Append one event to the ledger. Flushes (does not commit) the session."""
+    """Append one event to the ledger. Flushes (does not commit) the session.
+
+    Appends are serialized: concurrent transactions must not both read the
+    same tail and fork the chain. On PostgreSQL a transaction-scoped advisory
+    lock does this; SQLite's single-writer lock already serializes writers.
+    """
     payload = payload or {}
+    if db.get_bind().dialect.name == "postgresql":
+        db.execute(text("SELECT pg_advisory_xact_lock(hashtext('audit_events_chain'))"))
     last = db.execute(select(AuditEvent).order_by(AuditEvent.id.desc()).limit(1)).scalar_one_or_none()
     prev_hash = last.hash if last else GENESIS_HASH
     created_at = datetime.now(UTC)
+    actor_id = actor.id if actor else None
     event = AuditEvent(
         entity_type=entity_type,
         entity_id=entity_id,
         action=action,
-        actor_id=actor.id if actor else None,
+        actor_id=actor_id,
         payload=payload,
         prev_hash=prev_hash,
-        hash=_compute_hash(prev_hash, entity_type, entity_id, action, payload, created_at),
+        hash=_compute_hash(prev_hash, entity_type, entity_id, action, actor_id,
+                           payload, created_at),
         created_at=created_at,
     )
     db.add(event)
@@ -85,7 +96,7 @@ def verify_chain(db: Session) -> dict:
             return {"valid": False, "events": len(events), "first_broken_event_id": entry.id,
                     "reason": "prev_hash mismatch"}
         expected = _compute_hash(prev_hash, entry.entity_type, entry.entity_id,
-                                 entry.action, entry.payload, entry.created_at)
+                                 entry.action, entry.actor_id, entry.payload, entry.created_at)
         if entry.hash != expected:
             return {"valid": False, "events": len(events), "first_broken_event_id": entry.id,
                     "reason": "hash mismatch"}

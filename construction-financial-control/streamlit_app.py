@@ -46,8 +46,8 @@ with st.sidebar:
     if "token" not in st.session_state:
         st.subheader("Sign in")
         with st.form("login"):
-            email = st.text_input("Email", value="pm@example.com")
-            password = st.text_input("Password", type="password", value="ChangeMe123!")
+            email = st.text_input("Email", placeholder="pm@example.com")
+            password = st.text_input("Password", type="password")
             if st.form_submit_button("Login", use_container_width=True):
                 try:
                     resp = requests.post(

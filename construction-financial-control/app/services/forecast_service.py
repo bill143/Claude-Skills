@@ -126,6 +126,45 @@ def actual_cost(db: Session, budget_line_id: int) -> Decimal:
     return _dec(total)
 
 
+def pending_po_cost(db: Session, budget_line_id: int, exclude_po_id: int | None = None) -> Decimal:
+    """In-flight (pending-approval) PO amounts on a line.
+
+    Used by the PO budget check to reserve headroom: two sequential submissions
+    against the same budget must see each other, not both pass against zero.
+    """
+    query = (
+        select(func.coalesce(func.sum(PurchaseOrderLine.amount), 0))
+        .join(PurchaseOrder, PurchaseOrderLine.purchase_order_id == PurchaseOrder.id)
+        .where(
+            PurchaseOrderLine.budget_line_id == budget_line_id,
+            PurchaseOrder.status == PurchaseOrderStatus.PENDING_APPROVAL,
+        )
+    )
+    if exclude_po_id is not None:
+        query = query.where(PurchaseOrder.id != exclude_po_id)
+    return _dec(db.execute(query).scalar_one())
+
+
+def active_sco_line_amount(db: Session, sco_id: int, budget_line_id: int) -> Decimal:
+    """What an approved, not-yet-superseded SCO currently contributes to
+    committed cost on one budget line (0 if it no longer counts)."""
+    sco = db.get(ChangeOrder, sco_id)
+    if (
+        sco is None
+        or sco.co_type != ChangeOrderType.SCO
+        or sco.status != ChangeOrderStatus.APPROVED
+        or _sco_superseded_by_po(db, sco_id)
+    ):
+        return ZERO
+    total = db.execute(
+        select(func.coalesce(func.sum(ChangeOrderLine.amount), 0)).where(
+            ChangeOrderLine.change_order_id == sco_id,
+            ChangeOrderLine.budget_line_id == budget_line_id,
+        )
+    ).scalar_one()
+    return _dec(total)
+
+
 def line_metrics(
     db: Session,
     line: BudgetLine,

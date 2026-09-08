@@ -62,6 +62,22 @@ def create_purchase_order(
             raise HTTPException(status_code=422, detail="POs can only be sourced from an SCO")
         if source_co.status != ChangeOrderStatus.APPROVED:
             raise HTTPException(status_code=422, detail="Source SCO must be APPROVED")
+        # One buyout PO per SCO: a second active PO from the same SCO would
+        # double the commitment once the supersede rule stops offsetting it.
+        existing_buyout = db.execute(
+            select(PurchaseOrder).where(
+                PurchaseOrder.source_change_order_id == source_co.id,
+                PurchaseOrder.status.notin_(
+                    [PurchaseOrderStatus.CANCELLED, PurchaseOrderStatus.REJECTED]
+                ),
+            ).limit(1)
+        ).scalar_one_or_none()
+        if existing_buyout is not None:
+            raise HTTPException(
+                status_code=409,
+                detail=f"SCO {source_co.number} is already bought out by "
+                       f"{existing_buyout.number}; cancel it first to re-buy",
+            )
         vendor_id = source_co.vendor_id or vendor_id
 
     if db.get(Vendor, vendor_id) is None:
