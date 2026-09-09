@@ -1,0 +1,25 @@
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+exclude = ["alembic/versions"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["B008"]  # FastAPI Depends(...) in defaults is idiomatic
+
+[tool.ruff.lint.per-file-ignores]
+"app/db/base.py" = ["F401"]
+"app/models/__init__.py" = ["F401", "I001"]
+# (str, Enum) is deliberate: portable VARCHAR storage + pydantic v2 value
+# serialization without committing to 3.11-only StrEnum semantics.
+"app/models/enums.py" = ["UP042"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+check_untyped_defs = true
+exclude = ["alembic/", "scripts/", "streamlit_app.py"]
