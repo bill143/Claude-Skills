@@ -1,7 +1,7 @@
 "use client";
 
-import { AlertTriangle, Plus, Send } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { AlertTriangle, Package, Plus, Send } from "lucide-react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   api,
   type BudgetLine,
@@ -17,7 +17,9 @@ import {
   ErrorNote,
   Field,
   Input,
+  KpiCard,
   Modal,
+  PageHeader,
   Select,
   SkeletonRows,
   StatusBadge,
@@ -92,7 +94,7 @@ function CreatePoModal({
   return (
     <Modal title="New Purchase Order" onClose={onClose}>
       <div className="space-y-4">
-        <div className="flex overflow-hidden rounded-md border border-border-default text-sm">
+        <div className="flex overflow-hidden rounded-md border border-border-default bg-inset p-0.5 text-sm">
           {(
             [
               ["sco", `From approved SCO (${scos.length})`],
@@ -103,8 +105,10 @@ function CreatePoModal({
               key={value}
               disabled={value === "sco" && scos.length === 0}
               onClick={() => setMode(value)}
-              className={`flex-1 px-3 py-2 transition-colors disabled:opacity-40 ${
-                mode === value ? "bg-accent text-white" : "bg-surface text-secondary hover:text-primary"
+              className={`flex-1 rounded px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-40 ${
+                mode === value
+                  ? "bg-elevated text-primary shadow-[inset_0_0_0_1px_var(--border-strong)]"
+                  : "text-muted hover:text-secondary"
               }`}
             >
               {label}
@@ -197,6 +201,20 @@ export default function PurchaseOrdersPage() {
     void load();
   }, [load]);
 
+  const stats = useMemo(() => {
+    if (!orders) return null;
+    const sum = (statuses: string[]) =>
+      orders
+        .filter((po) => statuses.includes(po.status))
+        .reduce((total, po) => total + po.total_amount, 0);
+    return {
+      committed: sum(["APPROVED", "CLOSED"]),
+      pending: sum(["PENDING_APPROVAL"]),
+      draftCount: orders.filter((po) => po.status === "DRAFT").length,
+      total: orders.length,
+    };
+  }, [orders]);
+
   const vendorName = (id: number) => vendors.find((v) => v.id === id)?.name ?? `Vendor #${id}`;
 
   const submit = async (po: PurchaseOrder) => {
@@ -224,18 +242,22 @@ export default function PurchaseOrdersPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="font-display text-2xl font-bold text-primary">Purchase Orders</h1>
-          <p className="mt-0.5 text-sm text-secondary">
-            Commitments against the budget. Submission runs the {project.budget_control} budget
+      <PageHeader
+        kicker="Cost Control"
+        title="Purchase Orders"
+        description={
+          <>
+            Commitments against the budget. Submission runs the{" "}
+            <span className="font-mono text-xs text-primary">{project.budget_control}</span> budget
             check, then the approval matrix.
-          </p>
-        </div>
-        <Button variant="primary" onClick={() => setShowCreate(true)}>
-          <Plus size={15} /> New PO
-        </Button>
-      </div>
+          </>
+        }
+        actions={
+          <Button variant="primary" onClick={() => setShowCreate(true)}>
+            <Plus size={15} /> New PO
+          </Button>
+        }
+      />
 
       {warnings ? (
         <p className="flex items-center gap-2 rounded-md border border-amber/30 bg-amber/10 px-3 py-2 text-xs text-amber">
@@ -246,6 +268,7 @@ export default function PurchaseOrdersPage() {
 
       {orders.length === 0 ? (
         <EmptyState
+          icon={<Package size={20} />}
           title="No purchase orders"
           body="Buy out approved SCOs into POs, or create manual POs against budget lines."
           action={
@@ -255,58 +278,85 @@ export default function PurchaseOrdersPage() {
           }
         />
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-border-default bg-surface">
-          <table className="w-full">
-            <thead className="bg-elevated">
-              <tr>
-                <th className={th}>Number</th>
-                <th className={th}>Vendor</th>
-                <th className={th}>Source</th>
-                <th className={th}>Status</th>
-                <th className={thRight}>Amount</th>
-                <th className={th}>Created</th>
-                <th className={`${th} text-right`}>Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border-subtle">
-              {orders.map((po) => (
-                <tr key={po.id} className="transition-colors hover:bg-hovered">
-                  <td className={`${td} font-mono text-accent`}>{po.number}</td>
-                  <td className={td}>{vendorName(po.vendor_id)}</td>
-                  <td className={`${td} text-muted`}>
-                    {po.source_change_order_id ? `SCO #${po.source_change_order_id}` : "manual"}
-                  </td>
-                  <td className={td}>
-                    <StatusBadge status={po.status} />
-                  </td>
-                  <td className={tdMono}>{money(po.total_amount)}</td>
-                  <td className={`${td} text-muted`}>{dateShort(po.created_at)}</td>
-                  <td className={`${td} text-right`}>
-                    {po.status === "DRAFT" ? (
-                      <Button size="sm" variant="primary" onClick={() => void submit(po)}>
-                        <Send size={13} /> Submit
-                      </Button>
-                    ) : po.status === "APPROVED" ? (
-                      <Button
-                        size="sm"
-                        variant="secondary"
-                        onClick={() =>
-                          void api(`/purchase-orders/${po.id}/transition`, {
-                            method: "POST",
-                            idempotent: true,
-                            body: { action: "close" },
-                          }).then(load)
-                        }
-                      >
-                        Close
-                      </Button>
-                    ) : null}
-                  </td>
+        <>
+          {stats ? (
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              <KpiCard stagger={0} label="Committed (approved + closed)" value={money(stats.committed)} />
+              <KpiCard
+                stagger={1}
+                label="Pending approval"
+                value={money(stats.pending)}
+                tone={stats.pending > 0 ? "amber" : "muted"}
+              />
+              <KpiCard
+                stagger={2}
+                label="Drafts"
+                value={String(stats.draftCount)}
+                tone={stats.draftCount > 0 ? "default" : "muted"}
+              />
+              <KpiCard stagger={3} label="Total POs" value={String(stats.total)} />
+            </div>
+          ) : null}
+
+          <div className="panel overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-elevated">
+                <tr>
+                  <th className={th}>Number</th>
+                  <th className={th}>Vendor</th>
+                  <th className={th}>Source</th>
+                  <th className={th}>Status</th>
+                  <th className={thRight}>Amount</th>
+                  <th className={th}>Created</th>
+                  <th className={`${th} text-right`}>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="divide-y divide-border-subtle">
+                {orders.map((po) => (
+                  <tr key={po.id} className="transition-colors hover:bg-hovered">
+                    <td className={`${td} font-mono text-accent`}>{po.number}</td>
+                    <td className={`${td} text-primary`}>{vendorName(po.vendor_id)}</td>
+                    <td className={td}>
+                      {po.source_change_order_id ? (
+                        <span className="rounded border border-info/25 bg-info/10 px-1.5 py-px font-mono text-[10px] text-info">
+                          SCO #{po.source_change_order_id}
+                        </span>
+                      ) : (
+                        <span className="text-xs text-muted">manual</span>
+                      )}
+                    </td>
+                    <td className={td}>
+                      <StatusBadge status={po.status} />
+                    </td>
+                    <td className={tdMono}>{money(po.total_amount)}</td>
+                    <td className={`${td} text-muted`}>{dateShort(po.created_at)}</td>
+                    <td className={`${td} text-right`}>
+                      {po.status === "DRAFT" ? (
+                        <Button size="sm" variant="primary" onClick={() => void submit(po)}>
+                          <Send size={13} /> Submit
+                        </Button>
+                      ) : po.status === "APPROVED" ? (
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          onClick={() =>
+                            void api(`/purchase-orders/${po.id}/transition`, {
+                              method: "POST",
+                              idempotent: true,
+                              body: { action: "close" },
+                            }).then(load)
+                          }
+                        >
+                          Close
+                        </Button>
+                      ) : null}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
 
       {showCreate ? (

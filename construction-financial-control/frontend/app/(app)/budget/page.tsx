@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, ChevronRight, FileUp, Pencil, Plus, X } from "lucide-react";
+import { ChevronDown, ChevronRight, FileUp, Pencil, Plus, Search, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   api,
@@ -19,6 +19,7 @@ import {
   Field,
   Input,
   Modal,
+  PageHeader,
   Select,
   SkeletonRows,
   StatusBadge,
@@ -91,7 +92,7 @@ function EtcCell({ line, onSaved }: { line: LineMetrics; onSaved: () => void }) 
               if (e.key === "Enter") void save(false);
               if (e.key === "Escape") setEditing(false);
             }}
-            className="h-7 w-28 rounded border border-accent bg-elevated px-2 text-right font-mono text-sm text-primary focus:outline-none"
+            className="h-7 w-28 rounded border border-accent bg-inset px-2 text-right font-mono text-sm text-primary focus:outline-none"
             aria-label="Manual cost to complete"
           />
           <button
@@ -119,7 +120,7 @@ function EtcCell({ line, onSaved }: { line: LineMetrics; onSaved: () => void }) 
       <span className="inline-flex items-center gap-1.5">
         {line.manual_etc !== null ? (
           <span
-            className="rounded bg-amber/15 px-1 text-[10px] font-medium uppercase text-amber"
+            className="rounded border border-amber/30 bg-amber/10 px-1 text-[9px] font-medium uppercase tracking-wider text-amber"
             title="PM-entered cost to complete"
           >
             manual
@@ -182,8 +183,8 @@ function Drawer({ lineId, onClose, onChanged }: { lineId: number; onClose: () =>
 
   const m = detail?.metrics;
   return (
-    <aside className="fixed inset-y-0 right-0 z-40 w-[26rem] animate-slide-in-right overflow-y-auto border-l border-border-default bg-surface shadow-2xl">
-      <div className="sticky top-0 flex items-center justify-between border-b border-border-subtle bg-surface px-5 py-4">
+    <aside className="fixed inset-y-0 right-0 z-40 w-full max-w-[26rem] animate-slide-in-right overflow-y-auto border-l border-border-default bg-surface shadow-2xl">
+      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border-subtle bg-surface/95 px-5 py-4 backdrop-blur">
         <div>
           <p className="font-mono text-sm text-accent">{m?.cost_code ?? "…"}</p>
           <h2 className="text-sm font-medium text-primary">{m?.description ?? "Loading"}</h2>
@@ -210,15 +211,15 @@ function Drawer({ lineId, onClose, onChanged }: { lineId: number; onClose: () =>
                 ["EAC", detail.metrics.eac],
               ] as const
             ).map(([label, value]) => (
-              <div key={label} className="rounded-md bg-elevated p-3">
-                <p className="text-[10px] uppercase tracking-widest text-muted">{label}</p>
-                <p className="mt-1 font-mono tabular-nums text-primary">{money(value)}</p>
+              <div key={label} className="rounded-md border border-border-subtle bg-elevated p-3">
+                <p className="text-[9px] uppercase tracking-[0.18em] text-muted">{label}</p>
+                <p className="figure mt-1 font-mono tabular-nums text-primary">{money(value)}</p>
               </div>
             ))}
           </div>
 
           <section>
-            <h3 className="mb-2 text-xs uppercase tracking-widest text-muted">
+            <h3 className="mb-2 text-[10px] font-medium uppercase tracking-[0.16em] text-muted">
               Change orders touching this line
             </h3>
             {detail.change_orders.length === 0 ? (
@@ -228,13 +229,13 @@ function Drawer({ lineId, onClose, onChanged }: { lineId: number; onClose: () =>
                 {detail.change_orders.map((co) => (
                   <li
                     key={`${co.id}`}
-                    className="flex items-center justify-between rounded-md bg-elevated px-3 py-2 text-sm"
+                    className="flex items-center justify-between rounded-md border border-border-subtle bg-elevated px-3 py-2 text-sm"
                   >
                     <span className="flex items-center gap-2">
                       <span className="font-mono text-xs text-accent">{co.number}</span>
                       <StatusBadge status={co.status} />
                     </span>
-                    <span className="font-mono tabular-nums">{money(co.line_amount)}</span>
+                    <span className="figure font-mono tabular-nums">{money(co.line_amount)}</span>
                   </li>
                 ))}
               </ul>
@@ -242,7 +243,9 @@ function Drawer({ lineId, onClose, onChanged }: { lineId: number; onClose: () =>
           </section>
 
           <section>
-            <h3 className="mb-2 text-xs uppercase tracking-widest text-muted">Purchase orders</h3>
+            <h3 className="mb-2 text-[10px] font-medium uppercase tracking-[0.16em] text-muted">
+              Purchase orders
+            </h3>
             {detail.purchase_orders.length === 0 ? (
               <p className="text-xs text-muted">None.</p>
             ) : (
@@ -250,13 +253,13 @@ function Drawer({ lineId, onClose, onChanged }: { lineId: number; onClose: () =>
                 {detail.purchase_orders.map((po) => (
                   <li
                     key={po.id}
-                    className="flex items-center justify-between rounded-md bg-elevated px-3 py-2 text-sm"
+                    className="flex items-center justify-between rounded-md border border-border-subtle bg-elevated px-3 py-2 text-sm"
                   >
                     <span className="flex items-center gap-2">
                       <span className="font-mono text-xs text-accent">{po.number}</span>
                       <StatusBadge status={po.status} />
                     </span>
-                    <span className="font-mono tabular-nums">{money(po.line_amount)}</span>
+                    <span className="figure font-mono tabular-nums">{money(po.line_amount)}</span>
                   </li>
                 ))}
               </ul>
@@ -264,7 +267,7 @@ function Drawer({ lineId, onClose, onChanged }: { lineId: number; onClose: () =>
           </section>
 
           <section>
-            <h3 className="mb-2 text-xs uppercase tracking-widest text-muted">
+            <h3 className="mb-2 text-[10px] font-medium uppercase tracking-[0.16em] text-muted">
               Actual cost entries
             </h3>
             {detail.cost_entries.length === 0 ? (
@@ -274,7 +277,7 @@ function Drawer({ lineId, onClose, onChanged }: { lineId: number; onClose: () =>
                 {detail.cost_entries.map((entry) => (
                   <li
                     key={entry.id}
-                    className="flex items-center justify-between rounded-md bg-elevated px-3 py-2 text-sm"
+                    className="flex items-center justify-between rounded-md border border-border-subtle bg-elevated px-3 py-2 text-sm"
                   >
                     <span className="min-w-0">
                       <span className="block truncate text-secondary">
@@ -282,7 +285,7 @@ function Drawer({ lineId, onClose, onChanged }: { lineId: number; onClose: () =>
                       </span>
                       <span className="font-mono text-[10px] text-muted">{entry.entry_date}</span>
                     </span>
-                    <span className="font-mono tabular-nums">{moneyExact(entry.amount)}</span>
+                    <span className="figure font-mono tabular-nums">{moneyExact(entry.amount)}</span>
                   </li>
                 ))}
               </ul>
@@ -350,10 +353,15 @@ function ImportWizard({ projectId, onClose, onDone }: { projectId: number; onClo
   };
 
   return (
-    <Modal title="Import budget from Excel / CSV" onClose={onClose} wide>
+    <Modal
+      title="Import budget from Excel / CSV"
+      subtitle="Preview first — nothing is written until you commit."
+      onClose={onClose}
+      wide
+    >
       {result ? (
         <div className="space-y-4 text-center">
-          <p className="font-display text-xl text-success">Import complete</p>
+          <p className="font-display text-xl font-semibold text-success">Import complete</p>
           <p className="text-sm text-secondary">
             {result.created} created · {result.updated} updated · {result.skipped} skipped
           </p>
@@ -372,7 +380,7 @@ function ImportWizard({ projectId, onClose, onDone }: { projectId: number; onClo
                   setFile(e.target.files?.[0] ?? null);
                   setPreview(null);
                 }}
-                className="block text-sm text-secondary file:mr-3 file:rounded-md file:border-0 file:bg-accent file:px-3 file:py-1.5 file:text-sm file:text-white hover:file:bg-blue-600"
+                className="block text-sm text-secondary file:mr-3 file:rounded-md file:border-0 file:bg-accent file:px-3 file:py-1.5 file:text-sm file:text-white hover:file:brightness-110"
               />
             </Field>
             <Field label="If a code already exists">
@@ -391,7 +399,7 @@ function ImportWizard({ projectId, onClose, onDone }: { projectId: number; onClo
 
           {preview ? (
             <>
-              <div className="flex gap-4 text-xs text-secondary">
+              <div className="flex flex-wrap gap-4 text-xs text-secondary">
                 <span>
                   <b className="text-primary">{preview.rows_parsed}</b> rows
                 </span>
@@ -591,6 +599,7 @@ export default function BudgetPage() {
   const [showImport, setShowImport] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("");
 
   const load = useCallback(async () => {
     if (!project) return;
@@ -609,34 +618,76 @@ export default function BudgetPage() {
     void load();
   }, [load]);
 
+  const filtered = useMemo(() => {
+    if (!wbs) return null;
+    const q = filter.trim().toLowerCase();
+    if (!q) return wbs;
+    const divisions = wbs.divisions
+      .map((division) => {
+        const sections = division.sections
+          .map((section) => ({
+            ...section,
+            lines: section.lines.filter(
+              (line) =>
+                line.cost_code.toLowerCase().includes(q) ||
+                (line.description ?? "").toLowerCase().includes(q),
+            ),
+          }))
+          .filter(
+            (section) =>
+              section.lines.length > 0 ||
+              section.code.toLowerCase().includes(q) ||
+              section.title.toLowerCase().includes(q),
+          );
+        return { ...division, sections };
+      })
+      .filter(
+        (division) => division.sections.length > 0 || division.title.toLowerCase().includes(q),
+      );
+    return { ...wbs, divisions };
+  }, [wbs, filter]);
+
+  const filtering = filter.trim().length > 0;
   const empty = useMemo(() => wbs !== null && wbs.divisions.length === 0, [wbs]);
 
   if (!project) return <SkeletonRows rows={8} />;
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="font-display text-2xl font-bold text-primary">Budget & WBS</h1>
-          <p className="mt-0.5 text-sm text-secondary">
-            CSI MasterFormat hierarchy — Division → Section → Line. Click a line for its documents;
-            click an ETC to enter your own cost-to-complete.
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <Button variant="secondary" onClick={() => setShowImport(true)}>
-            <FileUp size={15} /> Import Excel/CSV
-          </Button>
-          <Button variant="primary" onClick={() => setShowAdd(true)}>
-            <Plus size={15} /> Add line
-          </Button>
-        </div>
-      </div>
+      <PageHeader
+        kicker="Cost Control"
+        title="Budget & WBS"
+        description="CSI MasterFormat hierarchy — Division → Section → Line. Click a line for its documents; click an ETC to enter your own cost-to-complete."
+        actions={
+          <>
+            <Button variant="secondary" onClick={() => setShowImport(true)}>
+              <FileUp size={15} /> Import Excel/CSV
+            </Button>
+            <Button variant="primary" onClick={() => setShowAdd(true)}>
+              <Plus size={15} /> Add line
+            </Button>
+          </>
+        }
+      />
 
-      {loading || !wbs ? (
+      {!empty ? (
+        <div className="relative max-w-xs">
+          <Search size={14} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
+          <Input
+            className="!pl-8"
+            placeholder="Filter by code or description…"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            aria-label="Filter budget lines"
+          />
+        </div>
+      ) : null}
+
+      {loading || !filtered ? (
         <SkeletonRows rows={10} />
       ) : empty ? (
         <EmptyState
+          icon={<FileUp size={20} />}
           title="No budget lines yet"
           body="Import your budget spreadsheet to build the whole WBS in one shot, or add lines individually from the CSI library."
           action={
@@ -650,8 +701,19 @@ export default function BudgetPage() {
             </div>
           }
         />
+      ) : filtered.divisions.length === 0 ? (
+        <EmptyState
+          icon={<Search size={20} />}
+          title="No matches"
+          body={`Nothing in the WBS matches “${filter}”.`}
+          action={
+            <Button variant="secondary" onClick={() => setFilter("")}>
+              Clear filter
+            </Button>
+          }
+        />
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-border-default bg-surface">
+        <div className="panel overflow-x-auto">
           <table className="w-full min-w-[64rem]">
             <thead className="sticky top-0 z-10 bg-elevated">
               <tr>
@@ -664,11 +726,12 @@ export default function BudgetPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-border-subtle">
-              {wbs.divisions.map((division: WbsDivision) => (
+              {filtered.divisions.map((division: WbsDivision) => (
                 <DivisionRows
                   key={division.division}
                   division={division}
                   open={open}
+                  forceOpen={filtering}
                   toggle={(key) => setOpen({ ...open, [key]: !open[key] })}
                   onSelectLine={setDrawerLine}
                   onChanged={load}
@@ -677,8 +740,10 @@ export default function BudgetPage() {
             </tbody>
             <tfoot>
               <tr className="border-t-2 border-border-strong bg-elevated font-medium">
-                <td className={`${td} uppercase tracking-wider text-muted`}>Project total</td>
-                <RollupCells rollup={wbs.totals as unknown as Record<string, number>} />
+                <td className={`${td} text-[10px] uppercase tracking-[0.16em] text-muted`}>
+                  Project total
+                </td>
+                <RollupCells rollup={filtered.totals as unknown as Record<string, number>} />
               </tr>
             </tfoot>
           </table>
@@ -701,21 +766,23 @@ export default function BudgetPage() {
 function DivisionRows({
   division,
   open,
+  forceOpen,
   toggle,
   onSelectLine,
   onChanged,
 }: {
   division: WbsDivision;
   open: Record<string, boolean>;
+  forceOpen: boolean;
   toggle: (key: string) => void;
   onSelectLine: (id: number) => void;
   onChanged: () => void;
 }) {
-  const expanded = open[division.division] ?? false;
+  const expanded = forceOpen || (open[division.division] ?? false);
   return (
     <>
       <tr
-        className="cursor-pointer bg-base/40 transition-colors hover:bg-hovered"
+        className="cursor-pointer bg-inset/60 transition-colors hover:bg-hovered"
         onClick={() => toggle(division.division)}
       >
         <td className={`${td} font-medium`}>
@@ -725,7 +792,9 @@ function DivisionRows({
             ) : (
               <ChevronRight size={15} className="text-muted" />
             )}
-            <span className="font-mono text-amber">{division.division}</span>
+            <span className="rounded border border-amber/25 bg-amber/10 px-1.5 font-mono text-[11px] text-amber">
+              {division.division}
+            </span>
             <span className="text-primary">{division.title}</span>
           </span>
         </td>
@@ -738,6 +807,7 @@ function DivisionRows({
               divisionKey={division.division}
               section={section}
               open={open}
+              forceOpen={forceOpen}
               toggle={toggle}
               onSelectLine={onSelectLine}
               onChanged={onChanged}
@@ -752,6 +822,7 @@ function SectionRows({
   divisionKey,
   section,
   open,
+  forceOpen,
   toggle,
   onSelectLine,
   onChanged,
@@ -759,12 +830,13 @@ function SectionRows({
   divisionKey: string;
   section: { code: string; title: string; rollup: Record<string, number>; lines: LineMetrics[] };
   open: Record<string, boolean>;
+  forceOpen: boolean;
   toggle: (key: string) => void;
   onSelectLine: (id: number) => void;
   onChanged: () => void;
 }) {
   const key = `${divisionKey}:${section.code}`;
-  const expanded = open[key] ?? true;
+  const expanded = forceOpen || (open[key] ?? true);
   const single = section.lines.length === 1 && section.lines[0].cost_code === section.code;
   if (single) {
     const line = section.lines[0];

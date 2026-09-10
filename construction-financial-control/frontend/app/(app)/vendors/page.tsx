@@ -1,6 +1,6 @@
 "use client";
 
-import { Plus } from "lucide-react";
+import { Plus, Users } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { api, type Vendor } from "@/lib/api";
 import {
@@ -10,11 +10,22 @@ import {
   Field,
   Input,
   Modal,
+  PageHeader,
   Select,
   SkeletonRows,
+  TypeChip,
   td,
   th,
 } from "@/components/ui";
+
+function initialsOf(name: string): string {
+  return name
+    .split(/\s+/)
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
 
 export default function VendorsPage() {
   const [vendors, setVendors] = useState<Vendor[] | null>(null);
@@ -49,20 +60,20 @@ export default function VendorsPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="font-display text-2xl font-bold text-primary">Vendors & Subcontractors</h1>
-          <p className="mt-0.5 text-sm text-secondary">
-            SCOs and POs are written against this list.
-          </p>
-        </div>
-        <Button variant="primary" onClick={() => setShowCreate(true)}>
-          <Plus size={15} /> Add vendor
-        </Button>
-      </div>
+      <PageHeader
+        kicker="Directory"
+        title="Vendors & Subcontractors"
+        description="SCOs and POs are written against this list."
+        actions={
+          <Button variant="primary" onClick={() => setShowCreate(true)}>
+            <Plus size={15} /> Add vendor
+          </Button>
+        }
+      />
 
       {vendors.length === 0 ? (
         <EmptyState
+          icon={<Users size={20} />}
           title="No vendors yet"
           body="Add your subcontractors and suppliers to write SCOs and POs against them."
           action={
@@ -72,7 +83,7 @@ export default function VendorsPage() {
           }
         />
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-border-default bg-surface">
+        <div className="panel overflow-x-auto">
           <table className="w-full">
             <thead className="bg-elevated">
               <tr>
@@ -85,15 +96,16 @@ export default function VendorsPage() {
             <tbody className="divide-y divide-border-subtle">
               {vendors.map((vendor) => (
                 <tr key={vendor.id} className="transition-colors hover:bg-hovered">
-                  <td className={`${td} font-medium text-primary`}>{vendor.name}</td>
                   <td className={td}>
-                    <span
-                      className={`font-mono text-xs ${
-                        vendor.vendor_type === "SUBCONTRACTOR" ? "text-info" : "text-gold"
-                      }`}
-                    >
-                      {vendor.vendor_type}
+                    <span className="flex items-center gap-2.5">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border-strong bg-elevated font-mono text-[10px] text-secondary">
+                        {initialsOf(vendor.name)}
+                      </span>
+                      <span className="font-medium text-primary">{vendor.name}</span>
                     </span>
+                  </td>
+                  <td className={td}>
+                    <TypeChip value={vendor.vendor_type} />
                   </td>
                   <td className={`${td} text-secondary`}>{vendor.trade ?? "—"}</td>
                   <td className={`${td} text-secondary`}>{vendor.contact_email ?? "—"}</td>

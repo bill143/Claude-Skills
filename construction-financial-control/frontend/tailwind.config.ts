@@ -21,6 +21,8 @@ const config: Config = {
         danger: "var(--accent-danger)",
         info: "var(--accent-info)",
         gold: "var(--gold)",
+        inset: "var(--bg-inset)",
+        inverse: "var(--text-inverse)",
       },
       fontFamily: {
         display: ["var(--font-display)"],
@@ -36,6 +38,10 @@ const config: Config = {
           from: { opacity: "0", transform: "translateX(16px)" },
           to: { opacity: "1", transform: "translateX(0)" },
         },
+        slideInLeft: {
+          from: { opacity: "0", transform: "translateX(-24px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
         shimmer: {
           from: { backgroundPosition: "-200% 0" },
           to: { backgroundPosition: "200% 0" },
@@ -44,6 +50,7 @@ const config: Config = {
       animation: {
         "fade-in-scale": "fadeInScale 250ms ease-out",
         "slide-in-right": "slideInRight 300ms ease-out",
+        "slide-in-left": "slideInLeft 250ms ease-out",
         shimmer: "shimmer 1.6s linear infinite",
       },
     },

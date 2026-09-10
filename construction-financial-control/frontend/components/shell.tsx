@@ -1,33 +1,58 @@
 "use client";
 
 import {
-  Building2,
   CheckSquare,
   FileSpreadsheet,
   GitPullRequestArrow,
   LayoutDashboard,
   LogOut,
+  Menu,
   Package,
   Plus,
   ScrollText,
+  ShieldCheck,
   Users,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { api, setToken, type Project } from "@/lib/api";
+import { useEffect, useState } from "react";
+import { api, setToken, type ApprovalRequest, type Project } from "@/lib/api";
 import { useApp } from "@/lib/store";
 import { Button, ErrorNote, Field, Input, Modal, Select } from "@/components/ui";
 
-const NAV = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/budget", label: "Budget & WBS", icon: FileSpreadsheet },
-  { href: "/change-orders", label: "Change Orders", icon: GitPullRequestArrow },
-  { href: "/purchase-orders", label: "Purchase Orders", icon: Package },
-  { href: "/approvals", label: "Approvals", icon: CheckSquare },
-  { href: "/vendors", label: "Vendors", icon: Users },
-  { href: "/audit", label: "Audit Ledger", icon: ScrollText },
+const NAV_SECTIONS: {
+  label: string;
+  items: { href: string; label: string; icon: typeof LayoutDashboard; badge?: "approvals" }[];
+}[] = [
+  {
+    label: "Overview",
+    items: [{ href: "/dashboard", label: "Dashboard", icon: LayoutDashboard }],
+  },
+  {
+    label: "Cost Control",
+    items: [
+      { href: "/budget", label: "Budget & WBS", icon: FileSpreadsheet },
+      { href: "/change-orders", label: "Change Orders", icon: GitPullRequestArrow },
+      { href: "/purchase-orders", label: "Purchase Orders", icon: Package },
+    ],
+  },
+  {
+    label: "Governance",
+    items: [
+      { href: "/approvals", label: "Approvals", icon: CheckSquare, badge: "approvals" },
+      { href: "/audit", label: "Audit Ledger", icon: ScrollText },
+    ],
+  },
+  {
+    label: "Directory",
+    items: [{ href: "/vendors", label: "Vendors", icon: Users }],
+  },
 ];
+
+const PAGE_TITLES: Record<string, string> = Object.fromEntries(
+  NAV_SECTIONS.flatMap((section) => section.items.map((item) => [item.href, item.label])),
+);
 
 export function ProjectModal({
   existing,
@@ -163,106 +188,213 @@ export function ProjectModal({
   );
 }
 
+function BudgetControlChip({ mode }: { mode: string }) {
+  const tone =
+    mode === "STOP"
+      ? "border-danger/30 bg-danger/10 text-danger"
+      : mode === "WARN"
+        ? "border-amber/30 bg-amber/10 text-amber"
+        : "border-border-strong/40 bg-border-default/30 text-muted";
+  return (
+    <span
+      title={`Budget control: ${mode}`}
+      className={`hidden items-center gap-1 rounded border px-1.5 py-0.5 font-mono text-[10px] tracking-wider sm:inline-flex ${tone}`}
+    >
+      {mode}
+    </span>
+  );
+}
+
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { user, projects, project, selectProject, refreshProjects } = useApp();
   const [showNewProject, setShowNewProject] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [pendingCount, setPendingCount] = useState<number>(0);
 
-  return (
-    <div className="flex min-h-screen">
-      <aside className="fixed inset-y-0 left-0 z-40 flex w-60 flex-col border-r border-border-subtle bg-surface">
-        <div className="flex items-center gap-2.5 border-b border-border-subtle px-5 py-4">
-          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-accent font-display text-sm font-bold text-white">
-            CF
-          </div>
-          <div>
-            <p className="font-display text-sm font-bold leading-tight text-primary">CFCS</p>
-            <p className="text-[10px] uppercase tracking-widest text-muted">Financial Control</p>
-          </div>
+  useEffect(() => {
+    setDrawerOpen(false);
+    void api<ApprovalRequest[]>("/approvals/pending")
+      .then((list) => setPendingCount(list.length))
+      .catch(() => setPendingCount(0));
+  }, [pathname]);
+
+  const initials = (user?.full_name ?? "?")
+    .split(/\s+/)
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+
+  const pageTitle =
+    Object.entries(PAGE_TITLES).find(([href]) => pathname.startsWith(href))?.[1] ?? "CFCS";
+
+  const sidebar = (
+    <aside className="flex h-full w-60 flex-col border-r border-border-subtle bg-surface">
+      <div className="flex items-center gap-2.5 border-b border-border-subtle px-5 py-4">
+        <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-accent to-info font-display text-sm font-bold text-white shadow-[0_0_16px_-2px_var(--glow-accent)]">
+          CF
         </div>
-
-        <div className="border-b border-border-subtle p-3">
-          <p className="mb-1.5 px-1 text-[10px] uppercase tracking-widest text-muted">Project</p>
-          <div className="flex items-center gap-1.5">
-            <Select
-              aria-label="Select project"
-              className="h-8 text-xs"
-              value={project?.id ?? ""}
-              onChange={(e) => selectProject(Number(e.target.value))}
-            >
-              {projects.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.code} — {p.name}
-                </option>
-              ))}
-            </Select>
-            <button
-              onClick={() => setShowNewProject(true)}
-              aria-label="Create new project"
-              title="New project"
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border-default text-secondary transition-colors hover:border-accent hover:text-accent"
-            >
-              <Plus size={15} />
-            </button>
-          </div>
+        <div>
+          <p className="font-display text-sm font-bold leading-tight text-primary">CFCS</p>
+          <p className="text-[9px] uppercase tracking-[0.22em] text-muted">Financial Control</p>
         </div>
+        <button
+          onClick={() => setDrawerOpen(false)}
+          aria-label="Close navigation"
+          className="ml-auto rounded p-1 text-muted hover:text-primary lg:hidden"
+        >
+          <X size={16} />
+        </button>
+      </div>
 
-        <nav className="flex-1 space-y-0.5 overflow-y-auto p-3">
-          {NAV.map(({ href, label, icon: Icon }) => {
-            const active = pathname.startsWith(href);
-            return (
-              <Link
-                key={href}
-                href={href}
-                className={`flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition-colors duration-150 ${
-                  active
-                    ? "border-l-2 border-accent bg-accent/10 pl-[10px] text-primary"
-                    : "text-secondary hover:bg-hovered hover:text-primary"
-                }`}
-              >
-                <Icon size={17} strokeWidth={active ? 2.2 : 1.8} />
-                {label}
-              </Link>
-            );
-          })}
-        </nav>
+      <div className="border-b border-border-subtle p-3">
+        <p className="mb-1.5 px-1 text-[9px] uppercase tracking-[0.22em] text-muted">Project</p>
+        <div className="flex items-center gap-1.5">
+          <Select
+            aria-label="Select project"
+            className="h-8 text-xs"
+            value={project?.id ?? ""}
+            onChange={(e) => selectProject(Number(e.target.value))}
+          >
+            {projects.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.code} — {p.name}
+              </option>
+            ))}
+          </Select>
+          <button
+            onClick={() => setShowNewProject(true)}
+            aria-label="Create new project"
+            title="New project"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border-default text-secondary transition-colors hover:border-accent hover:text-accent"
+          >
+            <Plus size={15} />
+          </button>
+        </div>
+      </div>
 
-        <div className="border-t border-border-subtle p-3">
-          <div className="flex items-center justify-between rounded-md bg-elevated px-3 py-2">
+      <nav className="flex-1 space-y-4 overflow-y-auto p-3">
+        {NAV_SECTIONS.map((section) => (
+          <div key={section.label}>
+            <p className="mb-1 px-3 text-[9px] font-medium uppercase tracking-[0.22em] text-muted">
+              {section.label}
+            </p>
+            <div className="space-y-0.5">
+              {section.items.map(({ href, label, icon: Icon, badge }) => {
+                const active = pathname.startsWith(href);
+                const count = badge === "approvals" ? pendingCount : 0;
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`group relative flex items-center gap-2.5 rounded-md px-3 py-2 text-[13px] transition-colors duration-150 ${
+                      active
+                        ? "bg-accent/10 text-primary"
+                        : "text-secondary hover:bg-hovered hover:text-primary"
+                    }`}
+                  >
+                    {active ? (
+                      <span className="absolute inset-y-1.5 left-0 w-0.5 rounded-full bg-accent shadow-[0_0_8px_var(--accent-primary)]" />
+                    ) : null}
+                    <Icon
+                      size={16}
+                      strokeWidth={active ? 2.2 : 1.8}
+                      className={active ? "text-accent" : "text-muted group-hover:text-secondary"}
+                    />
+                    {label}
+                    {count > 0 ? (
+                      <span className="ml-auto flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-amber/15 px-1 font-mono text-[10px] font-medium text-amber">
+                        {count}
+                      </span>
+                    ) : null}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </nav>
+
+      <div className="space-y-2 border-t border-border-subtle p-3">
+        <p className="flex items-center gap-1.5 px-1 text-[10px] text-muted">
+          <ShieldCheck size={12} className="text-success" />
+          SHA-256 hash-chained ledger
+        </p>
+        <div className="flex items-center justify-between rounded-md bg-elevated px-3 py-2">
+          <div className="flex min-w-0 items-center gap-2.5">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border-strong bg-inset font-mono text-[10px] text-secondary">
+              {initials}
+            </span>
             <div className="min-w-0">
-              <p className="truncate text-sm text-primary">{user?.full_name}</p>
-              <p className="text-[10px] uppercase tracking-widest text-muted">
+              <p className="truncate text-xs font-medium text-primary">{user?.full_name}</p>
+              <p className="text-[9px] uppercase tracking-[0.18em] text-muted">
                 {user?.role.replace(/_/g, " ")}
               </p>
             </div>
-            <button
-              aria-label="Sign out"
-              title="Sign out"
-              onClick={() => {
-                setToken(null);
-                window.location.href = "/login";
-              }}
-              className="rounded p-1.5 text-muted transition-colors hover:bg-hovered hover:text-danger"
-            >
-              <LogOut size={16} />
-            </button>
           </div>
+          <button
+            aria-label="Sign out"
+            title="Sign out"
+            onClick={() => {
+              setToken(null);
+              window.location.href = "/login";
+            }}
+            className="rounded p-1.5 text-muted transition-colors hover:bg-hovered hover:text-danger"
+          >
+            <LogOut size={15} />
+          </button>
         </div>
-      </aside>
+      </div>
+    </aside>
+  );
 
-      <div className="ml-60 flex-1">
-        <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-border-subtle bg-base/90 px-6 backdrop-blur">
-          <div className="flex items-center gap-2 text-sm">
-            <Building2 size={15} className="text-muted" />
-            <span className="text-secondary">{project?.code ?? "—"}</span>
+  return (
+    <div className="flex min-h-screen">
+      {/* Desktop sidebar */}
+      <div className="fixed inset-y-0 left-0 z-40 hidden lg:block">{sidebar}</div>
+
+      {/* Mobile drawer */}
+      {drawerOpen ? (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"
+            onClick={() => setDrawerOpen(false)}
+          />
+          <div className="absolute inset-y-0 left-0 animate-slide-in-left">{sidebar}</div>
+        </div>
+      ) : null}
+
+      <div className="min-w-0 flex-1 lg:ml-60">
+        <header className="sticky top-0 z-30 flex h-14 items-center justify-between gap-3 border-b border-border-subtle bg-base/85 px-4 backdrop-blur-md sm:px-6">
+          <div className="flex min-w-0 items-center gap-2.5 text-sm">
+            <button
+              onClick={() => setDrawerOpen(true)}
+              aria-label="Open navigation"
+              className="rounded p-1.5 text-secondary hover:bg-hovered hover:text-primary lg:hidden"
+            >
+              <Menu size={17} />
+            </button>
+            <span className="rounded border border-border-default bg-elevated px-1.5 py-0.5 font-mono text-[11px] text-accent">
+              {project?.code ?? "—"}
+            </span>
+            <span className="hidden text-muted sm:inline">/</span>
+            <span className="hidden truncate text-secondary sm:inline">
+              {project?.name ?? "No project"}
+            </span>
             <span className="text-muted">/</span>
-            <span className="font-medium text-primary">{project?.name ?? "No project"}</span>
+            <span className="truncate font-medium text-primary">{pageTitle}</span>
           </div>
-          <p className="font-mono text-xs tabular-nums text-muted">
-            Synced {new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
-          </p>
+          <div className="flex shrink-0 items-center gap-2.5">
+            {project ? <BudgetControlChip mode={project.budget_control} /> : null}
+            <p className="font-mono text-[11px] tabular-nums text-muted">
+              <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-success align-middle" />
+              Synced{" "}
+              {new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
+            </p>
+          </div>
         </header>
-        <main className="px-6 py-5">{children}</main>
+        <main className="px-4 py-5 sm:px-6">{children}</main>
       </div>
 
       {showNewProject ? (
