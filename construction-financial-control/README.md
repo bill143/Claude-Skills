@@ -1,5 +1,12 @@
 # Construction Financial Control System (CFCS)
 
+> **⚠️ CONSOLIDATED — do not build here.** The company's system of record is
+> [`bill143/nexus-est-app`](https://github.com/bill143/nexus-est-app); its
+> Financial Management module covers this domain. This folder is preserved as
+> history and as the port source for CFCS's unique features (CSI WBS engine,
+> Excel/CSV budget import, manual ETC, command-center UI) being moved into
+> that platform. See `PLATFORM.md` at the repo root.
+
 A budget-forecasting and change-order control platform for general contractors:
 PCO → OCO/SCO change-order pipeline, PO commitments with budget control,
 role + threshold approval workflows, EAC/ETC forecasting, and a tamper-evident
