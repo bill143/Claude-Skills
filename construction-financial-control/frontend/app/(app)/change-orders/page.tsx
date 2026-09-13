@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowRight, Plus, Trash2 } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { ArrowRight, ChevronRight, GitPullRequestArrow, Plus, Trash2 } from "lucide-react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   api,
   type ApprovalRequest,
@@ -13,14 +13,17 @@ import { dateShort, money } from "@/lib/format";
 import { useApp } from "@/lib/store";
 import {
   Button,
+  ChainStepper,
   EmptyState,
   ErrorNote,
   Field,
   Input,
   Modal,
+  PageHeader,
   Select,
   SkeletonRows,
   StatusBadge,
+  TypeChip,
   td,
   tdMono,
   th,
@@ -35,6 +38,67 @@ const ACTION_LABELS: Record<string, string> = {
   void: "Void",
   convert: "Convert to OCO / SCO",
 };
+
+/* PCO pipeline + contract totals derived from the list. */
+function PipelineStrip({ orders }: { orders: ChangeOrder[] }) {
+  const stages = useMemo(() => {
+    const pcos = orders.filter((co) => co.co_type === "PCO");
+    const count = (status: string) => pcos.filter((co) => co.status === status).length;
+    const approvedTotal = (type: string) =>
+      orders
+        .filter((co) => co.co_type === type && co.status === "APPROVED")
+        .reduce((sum, co) => sum + co.total_amount, 0);
+    return {
+      pipeline: [
+        { label: "Draft", value: count("DRAFT") },
+        { label: "Pricing", value: count("PRICING") },
+        { label: "Submitted", value: count("SUBMITTED") },
+        { label: "Converted", value: count("CONVERTED") },
+      ],
+      oco: approvedTotal("OCO"),
+      sco: approvedTotal("SCO"),
+    };
+  }, [orders]);
+
+  return (
+    <div className="panel rise flex flex-wrap items-stretch gap-x-1 gap-y-3 px-4 py-3">
+      {stages.pipeline.map((stage, index) => (
+        <div key={stage.label} className="flex items-center">
+          <div className="px-2">
+            <p className="text-[9px] uppercase tracking-[0.18em] text-muted">{stage.label}</p>
+            <p
+              className={`figure mt-0.5 font-mono text-xl leading-none ${
+                stage.value > 0 ? "text-primary" : "text-muted"
+              }`}
+            >
+              {stage.value}
+            </p>
+          </div>
+          {index < stages.pipeline.length - 1 ? (
+            <ChevronRight size={14} className="mx-1 text-border-strong" />
+          ) : null}
+        </div>
+      ))}
+      <div className="mx-3 hidden w-px self-stretch bg-border-default sm:block" />
+      <div className="px-2">
+        <p className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em] text-muted">
+          <TypeChip value="OCO" /> approved
+        </p>
+        <p className="figure mt-0.5 font-mono text-xl leading-none text-gold">
+          {money(stages.oco)}
+        </p>
+      </div>
+      <div className="px-2">
+        <p className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em] text-muted">
+          <TypeChip value="SCO" /> approved
+        </p>
+        <p className="figure mt-0.5 font-mono text-xl leading-none text-info">
+          {money(stages.sco)}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 type DraftLine = { budget_line_id: number | ""; description: string; quantity: number; unit_cost: number };
 
@@ -94,7 +158,9 @@ function CreatePcoModal({ projectId, onClose, onDone }: { projectId: number; onC
         </Field>
 
         <div>
-          <p className="mb-2 text-xs uppercase tracking-wider text-muted">Cost lines</p>
+          <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.14em] text-muted">
+            Cost lines
+          </p>
           <div className="space-y-2">
             {lines.map((line, index) => (
               <div key={index} className="flex items-center gap-2">
@@ -168,7 +234,7 @@ function CreatePcoModal({ projectId, onClose, onDone }: { projectId: number; onC
             >
               <Plus size={14} /> Add line
             </Button>
-            <p className="font-mono text-sm tabular-nums text-primary">Total {money(total)}</p>
+            <p className="figure font-mono text-sm tabular-nums text-primary">Total {money(total)}</p>
           </div>
         </div>
 
@@ -214,7 +280,7 @@ function ConvertModal({ co, vendors, onClose, onDone }: { co: ChangeOrder; vendo
   return (
     <Modal title={`Convert ${co.number}`} onClose={onClose}>
       <div className="space-y-4">
-        <p className="text-sm text-secondary">
+        <p className="text-sm leading-relaxed text-secondary">
           Creates draft contract documents from this priced PCO. The SCO carries cost (
           <span className="font-mono">{money(co.total_amount)}</span>); the OCO adds your markup for
           the owner side.
@@ -226,7 +292,7 @@ function ConvertModal({ co, vendors, onClose, onDone }: { co: ChangeOrder; vendo
               className={`flex flex-1 cursor-pointer items-center gap-2 rounded-md border px-3 py-2.5 text-sm transition-colors ${
                 targets.includes(target)
                   ? "border-accent bg-accent/10 text-primary"
-                  : "border-border-default text-secondary"
+                  : "border-border-default text-secondary hover:border-border-strong"
               }`}
             >
               <input
@@ -304,7 +370,10 @@ export default function ChangeOrdersPage() {
   }, [load]);
 
   useEffect(() => {
-    if (!selected) return;
+    if (!selected) {
+      setApprovals([]);
+      return;
+    }
     void api<ApprovalRequest[]>(`/change-orders/${selected.id}/approvals`).then(setApprovals);
   }, [selected]);
 
@@ -331,22 +400,22 @@ export default function ChangeOrdersPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="font-display text-2xl font-bold text-primary">Change Orders</h1>
-          <p className="mt-0.5 text-sm text-secondary">
-            PCO → priced → converted to OCO (owner) / SCO (sub) → approved through the matrix.
-          </p>
-        </div>
-        <Button variant="primary" onClick={() => setShowCreate(true)}>
-          <Plus size={15} /> New PCO
-        </Button>
-      </div>
+      <PageHeader
+        kicker="Cost Control"
+        title="Change Orders"
+        description="PCO → priced → converted to OCO (owner) / SCO (sub) → approved through the matrix."
+        actions={
+          <Button variant="primary" onClick={() => setShowCreate(true)}>
+            <Plus size={15} /> New PCO
+          </Button>
+        }
+      />
 
       <ErrorNote error={error} />
 
       {orders.length === 0 ? (
         <EmptyState
+          icon={<GitPullRequestArrow size={20} />}
           title="No change orders"
           body="Start the pipeline with a Potential Change Order — price it, then convert it into owner and subcontractor documents."
           action={
@@ -356,129 +425,121 @@ export default function ChangeOrdersPage() {
           }
         />
       ) : (
-        <div className="grid gap-4 xl:grid-cols-3">
-          <div className="overflow-x-auto rounded-lg border border-border-default bg-surface xl:col-span-2">
-            <table className="w-full">
-              <thead className="bg-elevated">
-                <tr>
-                  <th className={th}>Number</th>
-                  <th className={th}>Type</th>
-                  <th className={th}>Title</th>
-                  <th className={th}>Status</th>
-                  <th className={thRight}>Amount</th>
-                  <th className={th}>Created</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border-subtle">
-                {orders.map((co) => (
-                  <tr
-                    key={co.id}
-                    onClick={() => setSelected(co)}
-                    className={`cursor-pointer transition-colors hover:bg-hovered ${
-                      selected?.id === co.id ? "bg-accent/5" : ""
-                    }`}
-                  >
-                    <td className={`${td} font-mono text-accent`}>{co.number}</td>
-                    <td className={td}>
-                      <span
-                        className={`font-mono text-xs ${
-                          co.co_type === "OCO"
-                            ? "text-gold"
-                            : co.co_type === "SCO"
-                              ? "text-info"
-                              : "text-secondary"
-                        }`}
-                      >
-                        {co.co_type}
-                      </span>
-                    </td>
-                    <td className={`${td} max-w-[14rem] truncate`}>{co.title}</td>
-                    <td className={td}>
-                      <StatusBadge status={co.status} />
-                    </td>
-                    <td className={tdMono}>{money(co.total_amount)}</td>
-                    <td className={`${td} text-muted`}>{dateShort(co.created_at)}</td>
+        <>
+          <PipelineStrip orders={orders} />
+          <div className="grid gap-4 xl:grid-cols-3">
+            <div className="panel overflow-x-auto xl:col-span-2">
+              <table className="w-full">
+                <thead className="bg-elevated">
+                  <tr>
+                    <th className={th}>Number</th>
+                    <th className={th}>Type</th>
+                    <th className={th}>Title</th>
+                    <th className={th}>Status</th>
+                    <th className={thRight}>Amount</th>
+                    <th className={th}>Created</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="rounded-lg border border-border-default bg-surface">
-            {!selected ? (
-              <p className="p-6 text-center text-sm text-muted">Select a change order.</p>
-            ) : (
-              <div className="space-y-4 p-4">
-                <div>
-                  <p className="font-mono text-sm text-accent">{selected.number}</p>
-                  <h2 className="font-display text-lg text-primary">{selected.title}</h2>
-                  <div className="mt-1 flex items-center gap-2">
-                    <StatusBadge status={selected.status} />
-                    <span className="font-mono text-sm tabular-nums text-primary">
-                      {money(selected.total_amount)}
-                    </span>
-                    {selected.schedule_impact_days ? (
-                      <span className="text-xs text-amber">+{selected.schedule_impact_days} days</span>
-                    ) : null}
-                  </div>
-                </div>
-
-                <div className="space-y-1">
-                  {selected.lines.map((line) => (
-                    <div
-                      key={line.id}
-                      className="flex justify-between rounded bg-elevated px-2.5 py-1.5 text-xs"
+                </thead>
+                <tbody className="divide-y divide-border-subtle">
+                  {orders.map((co) => (
+                    <tr
+                      key={co.id}
+                      onClick={() => setSelected(co)}
+                      className={`cursor-pointer transition-colors hover:bg-hovered ${
+                        selected?.id === co.id
+                          ? "bg-accent/5 shadow-[inset_2px_0_0_var(--accent-primary)]"
+                          : ""
+                      }`}
                     >
-                      <span className="truncate text-secondary">{line.description}</span>
-                      <span className="font-mono tabular-nums text-primary">{money(line.amount)}</span>
-                    </div>
+                      <td className={`${td} font-mono text-accent`}>{co.number}</td>
+                      <td className={td}>
+                        <TypeChip value={co.co_type} />
+                      </td>
+                      <td className={`${td} max-w-[14rem] truncate`}>{co.title}</td>
+                      <td className={td}>
+                        <StatusBadge status={co.status} />
+                      </td>
+                      <td className={tdMono}>{money(co.total_amount)}</td>
+                      <td className={`${td} text-muted`}>{dateShort(co.created_at)}</td>
+                    </tr>
                   ))}
-                </div>
+                </tbody>
+              </table>
+            </div>
 
-                {approvals.length ? (
+            <div className="panel">
+              {!selected ? (
+                <p className="p-6 text-center text-sm text-muted">
+                  Select a change order to see its lines, approval chain, and actions.
+                </p>
+              ) : (
+                <div className="space-y-4 p-4">
                   <div>
-                    <p className="mb-1.5 text-[10px] uppercase tracking-widest text-muted">
-                      Approval chain
+                    <p className="flex items-center gap-2">
+                      <span className="font-mono text-sm text-accent">{selected.number}</span>
+                      <TypeChip value={selected.co_type} />
                     </p>
-                    <ol className="space-y-1">
-                      {approvals.map((step) => (
-                        <li
-                          key={step.id}
-                          className="flex items-center justify-between rounded bg-elevated px-2.5 py-1.5 text-xs"
-                        >
-                          <span className="text-secondary">
-                            {step.sequence}. {step.required_role.replace(/_/g, " ")}
-                          </span>
-                          <StatusBadge status={step.status} />
-                        </li>
-                      ))}
-                    </ol>
+                    <h2 className="mt-0.5 font-display text-lg font-semibold text-primary">
+                      {selected.title}
+                    </h2>
+                    <div className="mt-1.5 flex flex-wrap items-center gap-2">
+                      <StatusBadge status={selected.status} />
+                      <span className="figure font-mono text-sm tabular-nums text-primary">
+                        {money(selected.total_amount)}
+                      </span>
+                      {selected.schedule_impact_days ? (
+                        <span className="text-xs text-amber">+{selected.schedule_impact_days} days</span>
+                      ) : null}
+                    </div>
                   </div>
-                ) : null}
 
-                <div className="space-y-1.5 border-t border-border-subtle pt-3">
-                  {selected.allowed_actions.length === 0 ? (
-                    <p className="text-xs text-muted">
-                      No actions available — this document is {selected.status.toLowerCase()}.
-                    </p>
-                  ) : (
-                    selected.allowed_actions.map((action) => (
-                      <Button
-                        key={action}
-                        className="w-full justify-between"
-                        variant={action === "void" ? "danger" : action === "convert" ? "primary" : "secondary"}
-                        onClick={() => void act(selected, action)}
+                  <div className="space-y-1">
+                    {selected.lines.map((line) => (
+                      <div
+                        key={line.id}
+                        className="flex justify-between rounded border border-border-subtle bg-elevated px-2.5 py-1.5 text-xs"
                       >
-                        {ACTION_LABELS[action] ?? action}
-                        <ArrowRight size={14} />
-                      </Button>
-                    ))
-                  )}
+                        <span className="truncate text-secondary">{line.description}</span>
+                        <span className="figure font-mono tabular-nums text-primary">
+                          {money(line.amount)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {approvals.length ? (
+                    <div>
+                      <p className="mb-1.5 text-[9px] font-medium uppercase tracking-[0.18em] text-muted">
+                        Approval chain
+                      </p>
+                      <ChainStepper steps={approvals} />
+                    </div>
+                  ) : null}
+
+                  <div className="space-y-1.5 border-t border-border-subtle pt-3">
+                    {selected.allowed_actions.length === 0 ? (
+                      <p className="text-xs text-muted">
+                        No actions available — this document is {selected.status.toLowerCase()}.
+                      </p>
+                    ) : (
+                      selected.allowed_actions.map((action) => (
+                        <Button
+                          key={action}
+                          className="w-full justify-between"
+                          variant={action === "void" ? "danger" : action === "convert" ? "primary" : "secondary"}
+                          onClick={() => void act(selected, action)}
+                        >
+                          {ACTION_LABELS[action] ?? action}
+                          <ArrowRight size={14} />
+                        </Button>
+                      ))
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
+        </>
       )}
 
       {showCreate ? (
